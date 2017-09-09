@@ -1,0 +1,65 @@
+{
+	"children": {
+		"ulgyChildID_1": {
+			"birthdate": "06/05/2011",
+			"comments": "Allergic to peanuts.  On the autism spectrum.",
+			"name": "Leo",
+			"uid": "KpopLolTtyl"
+		},
+		"ulgyChildID_2": {
+			"birthdate": "07/08/2015",
+			"comments": "Lactose sensitive.",
+			"name": "Charlie",
+			"uid": "KpopLolTtyl"
+		}
+	},
+	"records": {
+		"ulgyRecordID_1": {
+			"antecedent": "Diverted Attention",
+			"childID": "ulgyChildID_1",
+			"comments": "Leo started making disruptive sounds while I was trying tomake a work call.",
+			"consequence": "Attention",
+			"date": "06/09/2017",
+			"duration": "10-15",
+			"time": "10:30AM",
+			"uid": "KpopLolTtyl"
+		},
+		"ulgyRecordID_2": {
+			"antecedent": "Demand",
+			"childID": "ulgyChildID_1",
+			"comments": "Leo didn't want to get dressed and started looping and yelling.",
+			"consequence": "Escape",
+			"date": "06/11/2017",
+			"duration": "5-10",
+			"time": "07:30AM",
+			"uid": "KpopLolTtyl"
+		},
+		"ulgyRecordID_3": {
+			"antecedent": "Item Removed",
+			"childID": "ulgyChildID_2",
+			"comments": "Charlie flipped out because he wanted Leo's toy car.  Leo gave it to him so he'd stop crying.",
+			"consequence": "Item Given",
+			"date": "06/24/2017",
+			"duration": "0-4",
+			"time": "08:20AM",
+			"uid": "KpopLolTtyl"
+		},
+		"ulgyRecordID_4": {
+			"antecedent": "Item Removed",
+			"childID": "ulgyChildID_2",
+			"comments": "Charlie flipped out because he wanted Leo's breakfast.  We distracted him by putting Trolls on TV.",
+			"consequence": "Distraction",
+			"date": "06/25/2017",
+			"duration": "0-4",
+			"time": "10:20AM",
+			"uid": "KpopLolTtyl"
+		}
+
+	},
+	"users": {
+		"ulgyUserID_1": {
+			"name": "Dan Certa",
+			"uid": "KpopLolTtyl"
+		}
+	}
+}
