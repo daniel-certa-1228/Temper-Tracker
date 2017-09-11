@@ -1,0 +1,15 @@
+<h1>ALL CHILDREN</h1>
+
+<h2>{{title}}</h2>
+
+<div class="row">
+	<div class="col-sm-4" ng-repeat="child in childrenData">
+		<div>
+			<p>CHILD: {{child.name}}</p>
+			<p>BIRTHDATE: {{child.birthdate}}</p>
+			<p>PARENT COMMENTS: {{child.comments}}</p>
+			<a href="#">Edit</a>
+			<a href="#">Delete</a>
+		</div>
+	</div>
+</div>

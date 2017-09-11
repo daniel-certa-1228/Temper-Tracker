@@ -1,0 +1,17 @@
+<h2>{{title}}</h2>
+<!-- <p>Child Name: {{}}</p> -->
+<div class="row">
+	<div class="col-sm-4" ng-repeat="record in records">
+		<div>
+			<p>CHILD: {{record.child}}</p>
+			<p>DATE: {{record.date}}</p>
+			<p>TIME: {{record.time}}</p>
+			<p>DURATION: {{record.duration}}</p>
+			<p>ANTECEDENT: {{record.antecedent}}</p>
+			<p>CONSEQUENCE: {{record.consequence}}</p>
+			<p>PARENT COMMENTS: {{record.comments}}</p>
+			<a href="#">Edit</a>
+			<a href="#">Delete</a>
+		</div>
+	</div>
+</div>
