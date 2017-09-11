@@ -50,11 +50,11 @@
     <label for="parent_comments">Parent Comments:</label>
     <textarea class="form-control" id="parent_comments" rows="3" ng-model="record.comments"></textarea>
   </div>
-  <button type="button" class="btn btn-primary" ng-click="addRecord()">Save</button>
+  <button type="button" class="btn btn-primary" ng-click="addRecord()" ng-hide="editRec">Save</button>
 
-  <button type="button" class="btn btn-primary" ng-click="editRecord()">Save EDIT</button>
+  <button type="button" class="btn btn-primary" ng-click="editRecord()" ng-hide="addRec">Save EDIT</button>
 
   <a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
 
-  <button type="button" class="btn btn-danger" ng-click="deleteRecordEdit()">Delete</button>
+  <button type="button" class="btn btn-danger" ng-click="deleteRecordFromEdit()">Delete</button>
 </form>

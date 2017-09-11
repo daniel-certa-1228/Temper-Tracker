@@ -4,6 +4,7 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 
 	let user = UserFactory.getCurrentUser();
 
+	$scope.editKid = true;
 	$scope.title = "Edit Child Info";
 
 	$scope.child = {

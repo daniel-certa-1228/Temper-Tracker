@@ -3,7 +3,7 @@
 app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory) {
 
 	let user = UserFactory.getCurrentUser();
-
+	$scope.addRec = true;
 	$scope.title = "Add Record";
 
 	$scope.record = {

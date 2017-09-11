@@ -21,6 +21,10 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/record-add-edit.html',
 		controller: 'EditRecordCtrl'
 	})
+	.when('/record/:itemId/view', {
+		templateUrl: 'partials/record-view-single.html',
+		controller: 'ViewSingleRecordCtrl'
+	})
 	.when('/list-records', {
 		templateUrl: 'partials/records-all.html',
 		controller: 'ViewRecordsCtrl'
@@ -39,6 +43,10 @@ app.config(($routeProvider) => {
 	.when('/child/:itemId/edit', {
 		templateUrl: 'partials/children-add-edit.html',
 		controller: 'EditChildCtrl'
+	})
+	.when('/child/:itemId/view', {
+		templateUrl: 'partials/children-view-single.html',
+		controller: 'ViewSingleChildCtrl'
 	})
 	.otherwise('/');
 });
