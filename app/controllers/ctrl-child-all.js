@@ -2,7 +2,7 @@
 
 app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory) {
 
-	$scope.title = "View All Children";
+	$scope.title = "All Children";
 	// $scope.records = [];
 	$scope.childrenData = [];
 
@@ -19,4 +19,14 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 	};
 
 	$scope.showAllChildren();
+
+	$scope.deleteChild = (id) => {
+		ChildFactory.deleteChild(id)
+		.then((data)=> {
+			console.log( "data", data );
+		})
+		.then(() => {
+			$scope.showAllChildren();
+		});
+	};
 });

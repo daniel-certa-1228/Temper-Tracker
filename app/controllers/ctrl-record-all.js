@@ -34,4 +34,14 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 
 	$scope.showAllRecords();
 
+	$scope.deleteRecord = (id) => {
+		RecordFactory.deleteRecord(id)
+		.then((data) => {
+			console.log( "data", data );
+		})
+		.then(() => {
+			$scope.showAllRecords();
+		});
+	};
+
 });

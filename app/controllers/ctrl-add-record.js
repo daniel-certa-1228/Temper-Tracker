@@ -4,6 +4,8 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 
 	let user = UserFactory.getCurrentUser();
 
+	$scope.title = "Add Record";
+
 	$scope.record = {
 		childID:'',
 		date:'',
@@ -23,6 +25,22 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 			$location.url('/list-records');
 		});
 	};
+	// $scope.childInfo = {};
+	$scope.childrenInfo = [];
+
+	let getChildDropdownData = () => {
+		ChildFactory.getAllChildren()
+		.then((data) => {
+			console.log( "data", data );
+			for (let i = 0; i < data.length; i++) {
+				console.log( "data", data[i] );
+				$scope.childrenInfo.push(data[i]);
+			}
+			console.log( "$scope.childrenInfo", $scope.childrenInfo );
+		});
+	};
+
+	getChildDropdownData();
 
 
 });

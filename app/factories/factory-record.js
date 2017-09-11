@@ -44,6 +44,19 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 		});
 	};
 
+	const getSingleRecord = (recordID) => {
+		return $q((resolve, reject) => {
+			$http.get(`${FBCreds.databaseURL}/records/${recordID}.json`)
+			.then((recordObj) => {
+				let singleRecordObjObj = recordObj.data;
+				resolve(singleRecordObjObj);
+			})
+			.catch((error) => {
+				console.log( "error at ChildFactory.getSingleChild", error );
+			});
+		});
+	};
+
 	const addRecord = (obj) => {
 		let newRecordObj = JSON.stringify(obj);
 		return $q((resolve, reject) => {
@@ -84,5 +97,5 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-	return{getAllRecords, getRecordsByChildID, addRecord, editRecord, deleteRecord};
+	return{getAllRecords, getRecordsByChildID, addRecord, editRecord, deleteRecord, getSingleRecord};
 });
