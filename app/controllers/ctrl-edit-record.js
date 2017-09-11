@@ -51,10 +51,14 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 	getChildDropdownData();
 
 	$scope.editRecord = () => {
-
+		RecordFactory.editRecord($routeParams.itemId, $scope.record)
+		.then((data) => {
+			console.log( "Edit Successfule", data );
+			$location.url('/list-records');
+		});
 	};
 
-	$scope.deleteRecord = () => {
+	$scope.deleteRecordFromEdit = () => {
 		RecordFactory.deleteRecord($routeParams.itemId)
 		.then((data) => {
 			console.log( "data", data );

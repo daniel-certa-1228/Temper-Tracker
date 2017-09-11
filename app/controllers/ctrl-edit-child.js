@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory) {
+app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory) {
 
 	let user = UserFactory.getCurrentUser();
 
@@ -25,15 +25,39 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 		});	
 	};
 
-	$scope.deleteChild = () => {
+	$scope.editChild = () => {
+		ChildFactory.editChild($routeParams.itemId, $scope.child)
+		.then((data) => {
+			console.log( "Edit Successful", data );
+			$location.url('/all-children');
+		});
+	};
+
+
+	$scope.deleteChildFromEdit = () => {
 		ChildFactory.deleteChild($routeParams.itemId)
 		.then((data)=> {
 			console.log( "data", data );
 		})
 		.then(() => {
+			// console.log( "$routeParams.itemId", $routeParams.itemId );
+			RecordFactory.getRecordsByChildID($routeParams.itemId)
+			.then((data) => {
+				console.log( "all child records", data );
+				for (let i = 0; i < data.length; i++) {
+					RecordFactory.deleteRecord(data[i].id);
+				}
+			});
+		})
+		.then(() => {
 			$location.url('/all-children');
 		});
 	};
+
+	// const getAllChildRecords = () => {
+	// 	RecordFactory.getRecordsByChildID($routeParams.itemId)
+
+	// }
 
 	getSingleChild();
 });

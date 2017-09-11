@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory) {
+app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory) {
 
 	$scope.title = "All Children";
 	// $scope.records = [];
@@ -24,6 +24,15 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 		ChildFactory.deleteChild(id)
 		.then((data)=> {
 			console.log( "data", data );
+		})
+		.then(() => {
+			RecordFactory.getRecordsByChildID($routeParams.itemId)
+			.then((data) => {
+				console.log( "all child records", data );
+				for (let i = 0; i < data.length; i++) {
+					RecordFactory.deleteRecord(data[i].id);
+				}
+			});
 		})
 		.then(() => {
 			$scope.showAllChildren();
