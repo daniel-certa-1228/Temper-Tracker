@@ -2,7 +2,7 @@
 
 <form>
   <div class="form-group">
-    <select class="form-control" id="childSelect">
+    <select class="form-control" id="childSelect" ng-model="record.childID">
       <option value="">Select Child</option>
       <option>2</option>
       <option>3</option>
@@ -12,16 +12,16 @@
   </div>
     <div class="form-group">
     <label for="dateSelect">Date:</label>
-    	<input type="date" id="dateSelect">
+    	<input type="date" id="dateSelect" ng-model="record.date">
     </select>
   </div>
       <div class="form-group">
     <label for="startTime">Start of Behavior:</label>
-    	<input type="time" id="startTime">
+    	<input type="time" id="startTime" ng-model="record.time">
     </select>
   </div>
     <div class="form-group">
-    <select class="form-control" id="duration">
+    <select class="form-control" id="duration" ng-model="record.duration">
       <option value="">Duration of Behavior</option>
       <option value="0-4_minutes">0-4 minutes</option>
       <option value="5-10_minutes">5-10 minutes</option>
@@ -31,7 +31,7 @@
     </select>
   </div>
   <div class="form-group">
-    <select class="form-control" id="antecedent">
+    <select class="form-control" id="antecedent" ng-model="record.antecedent">
       <option value="">Antecedent</option>
       <option>Diverted Attention</option>
       <option>Demand</option>
@@ -39,7 +39,7 @@
     </select>
   </div>
   <div class="form-group">
-    <select class="form-control" id="antecedent">
+    <select class="form-control" id="consequence" ng-model="record.consequence">
       <option value="">Consequence</option>
       <option>Attention</option>
       <option>Item Given</option>
@@ -50,6 +50,9 @@
   </div>
   <div class="form-group">
     <label for="parent_comments">Parent Comments:</label>
-    <textarea class="form-control" id="parent_comments" rows="3"></textarea>
+    <textarea class="form-control" id="parent_comments" rows="3" ng-model="record.comments"></textarea>
   </div>
+  <button type="button" class="btn btn-primary" ng-click="addRecord()">Save</button>
+  <button type="button" class="btn btn-secondary">Cancel</button>
+  <button type="button" class="btn btn-danger">Delete</button>
 </form>
