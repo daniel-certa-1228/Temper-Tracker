@@ -4,6 +4,7 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 
 	let user = UserFactory.getCurrentUser();
 
+	$scope.editRec = true;
 	$scope.title = "Edit Record";
 
 	$scope.record = {

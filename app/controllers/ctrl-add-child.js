@@ -3,7 +3,7 @@
 app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory) {
 
 	let user = UserFactory.getCurrentUser();
-
+	$scope.addKid = true;
 	$scope.title = "Add Child";
 	$scope.child = {
 		birthdate: '',
