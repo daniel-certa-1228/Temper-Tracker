@@ -27,7 +27,7 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 	const getRecordsByChildID = (childID) => {
 		let childRecordsArray = [];
 		return $q((resolve,reject) => {
-			$http.get(`${FBCreds.databaseURL}/pins.json?orderBy="childID"&equalTo="${childID}"`)
+			$http.get(`${FBCreds.databaseURL}/records.json?orderBy="childID"&equalTo="${childID}"`)
 			.then((recordsByChildObj) => {
 				let allByChildRecords = recordsByChildObj.data;
 				console.log( "allByChildRecords from RecordFactory", allByChildRecords );
@@ -40,6 +40,19 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 			})
 			.catch((error) => {
 				console.log( "error at RecordFactory.getRecordsByChildID", error );
+			});
+		});
+	};
+
+	const getSingleRecord = (recordID) => {
+		return $q((resolve, reject) => {
+			$http.get(`${FBCreds.databaseURL}/records/${recordID}.json`)
+			.then((recordObj) => {
+				let singleRecordObjObj = recordObj.data;
+				resolve(singleRecordObjObj);
+			})
+			.catch((error) => {
+				console.log( "error at ChildFactory.getSingleChild", error );
 			});
 		});
 	};
@@ -84,5 +97,5 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-	return{getAllRecords, getRecordsByChildID, addRecord, editRecord, deleteRecord};
+	return{getAllRecords, getRecordsByChildID, addRecord, editRecord, deleteRecord, getSingleRecord};
 });

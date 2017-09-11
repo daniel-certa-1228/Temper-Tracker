@@ -4,13 +4,11 @@
   <div class="form-group">
     <select class="form-control" id="childSelect" ng-model="record.childID">
       <option value="">Select Child</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+      <option ng-repeat='child in childrenInfo' value='{{child.id}}'>{{child.name}}</option>
+
     </select>
   </div>
-    <div class="form-group">
+  <div class="form-group">
     <label for="dateSelect">Date:</label>
     	<input type="date" id="dateSelect" ng-model="record.date">
     </select>
@@ -23,11 +21,11 @@
     <div class="form-group">
     <select class="form-control" id="duration" ng-model="record.duration">
       <option value="">Duration of Behavior</option>
-      <option value="0-4_minutes">0-4 minutes</option>
-      <option value="5-10_minutes">5-10 minutes</option>
-      <option value="11-20_minutes">11-20 minutes</option>
-      <option value="21-30_minuted">21-30 minutes</option>
-      <option value="Over_30_minutes">Over 30 minutes</option>
+      <option value="0-4">0-4 minutes</option>
+      <option value="5-10">5-10 minutes</option>
+      <option value="11-20">11-20 minutes</option>
+      <option value="21-30">21-30 minutes</option>
+      <option value="30">Over 30 minutes</option>
     </select>
   </div>
   <div class="form-group">
@@ -53,6 +51,10 @@
     <textarea class="form-control" id="parent_comments" rows="3" ng-model="record.comments"></textarea>
   </div>
   <button type="button" class="btn btn-primary" ng-click="addRecord()">Save</button>
-  <button type="button" class="btn btn-secondary">Cancel</button>
-  <button type="button" class="btn btn-danger">Delete</button>
+
+  <button type="button" class="btn btn-primary" ng-click="editRecord()">Save EDIT</button>
+
+  <a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
+
+  <button type="button" class="btn btn-danger" ng-click="deleteRecordEdit()">Delete</button>
 </form>

@@ -1,1 +1,27 @@
-<h1>ADD/EDIT CHILD</h1>
+<h2>{{title}}</h2>
+
+<form>
+  <div class="form-group">
+    <label class="form-control-label" for="formGroupExampleInput">Child's Name:</label>
+    <input type="text" class="form-control" id="childName" placeholder="Child's Name" ng-model="child.name">
+  </div>
+
+  <div class="form-group">
+    <label for="dateSelect">Birthdate:</label>
+    	<input type="date" id="dateSelect" ng-model="child.birthdate"">
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="parent_comments">Parent Comments:</label>
+    <textarea class="form-control" id="parent_comments" rows="3" placeholder="Parent Comments" ng-model="child.comments"></textarea>
+  </div>
+
+  <button type="button" class="btn btn-primary" ng-click="addChild()">Save</button>
+
+  <button type="button" class="btn btn-primary" ng-click="editChild()">Save EDIT</button>
+
+  <a ng-href="#!/all-children"><button type="button" class="btn btn-secondary">Cancel</button><a>
+
+  <button type="button" class="btn btn-danger" ng-click="deleteChildFromEdit()">Delete</button>
+</form>
