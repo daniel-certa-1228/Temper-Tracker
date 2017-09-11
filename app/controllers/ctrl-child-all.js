@@ -21,12 +21,14 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 	$scope.showAllChildren();
 
 	$scope.deleteChild = (id) => {
+
+		console.log( "id", id );
 		ChildFactory.deleteChild(id)
 		.then((data)=> {
 			console.log( "data", data );
 		})
 		.then(() => {
-			RecordFactory.getRecordsByChildID($routeParams.itemId)
+			RecordFactory.getRecordsByChildID(id)
 			.then((data) => {
 				console.log( "all child records", data );
 				for (let i = 0; i < data.length; i++) {
