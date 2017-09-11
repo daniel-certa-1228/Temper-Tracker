@@ -44,5 +44,9 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/children-add-edit.html',
 		controller: 'EditChildCtrl'
 	})
+	.when('/child/:itemId/view', {
+		templateUrl: 'partials/children-view-single.html',
+		controller: 'ViewSingleChildCtrl'
+	})
 	.otherwise('/');
 });

@@ -6,8 +6,8 @@
 			<p>CHILD: {{child.name}}</p>
 			<p>BIRTHDATE: {{child.birthdate}}</p>
 			<p>PARENT COMMENTS: {{child.comments}}</p>
-			<a ng-href="#!/child/{{child.id}}/edit">Edit</a>
-			<a ng-click="deleteChild(child.id)" style="color: red;">Delete</a>
+			<a ng-href="#!/child/{{child.id}}/view"><button type="button" class="btn btn-secondary">View</button></a>
+			<a ng-href="#!/child/{{child.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>
 		</div>
 	</div>
 </div>

@@ -23,12 +23,7 @@ app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams,
 		.then
 		((data) => {
 			$scope.record = data;
-			// let fixedDate = new Date(data.date);
-			// let fixedTime = new Date(data.time);
-			// $scope.record.date = fixedDate;
-			// $scope.record.time = fixedTime;
 			$scope.record.id = $routeParams.itemId;
-			// console.log( "$scope.record", $scope.record );
 			return data.childID;
 		})
 		.then((childID) => {
@@ -38,9 +33,7 @@ app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams,
 				$scope.record.child = data.name;
 				console.log( "$scope.record", $scope.record );
 			});
-
 		});
-
 	};
 
 	getSingleRecord();

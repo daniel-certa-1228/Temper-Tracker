@@ -10,9 +10,9 @@
 	<p>PARENT COMMENTS: {{record.comments}}</p>
 <!-- 	<a ng-href="#!/record/{{record.id}}/edit">Edit</a>
 	<a ng-click="deleteRecord(record.id)" style="color: red;">Delete</a> -->
-  <button type="button" class="btn btn-primary" ng-click="editRecord()">EDIT</button>
+  <a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>
 
   <a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
 
-  <button type="button" class="btn btn-danger" ng-click="deleteRecordEdit()">Delete</button>
+ <!--  <button type="button" class="btn btn-danger" ng-click="deleteRecordEdit()">Delete</button> -->
 </div>
