@@ -10,8 +10,9 @@
 			<p>ANTECEDENT: {{record.antecedent}}</p>
 			<p>CONSEQUENCE: {{record.consequence}}</p>
 			<p>PARENT COMMENTS: {{record.comments}}</p>
+			<a ng-href="#!/record/{{record.id}}/view">View</a>
 			<a ng-href="#!/record/{{record.id}}/edit">Edit</a>
-			<a ng-click="deleteRecord(record.id)" style="color: red;">Delete</a>
+			<!-- <a ng-click="deleteRecord(record.id)" style="color: red;">Delete</a> -->
 		</div>
 	</div>
 </div>

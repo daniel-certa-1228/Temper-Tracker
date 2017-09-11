@@ -21,6 +21,10 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/record-add-edit.html',
 		controller: 'EditRecordCtrl'
 	})
+	.when('/record/:itemId/view', {
+		templateUrl: 'partials/record-view-single.html',
+		controller: 'ViewSingleRecordCtrl'
+	})
 	.when('/list-records', {
 		templateUrl: 'partials/records-all.html',
 		controller: 'ViewRecordsCtrl'
