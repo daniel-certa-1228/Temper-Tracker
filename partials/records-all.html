@@ -1,11 +1,13 @@
-<h2>{{title}}</h2>
-    <select class="form-control" id="childSelect" ng-model="searchText.search">
+<header class="partial-h2">
+  <h2>{{title}}</h2>
+</header>
+    <select class="form-control" id="childSelectRecords" ng-model="searchText.search">
       <option value="">Select Child to View Their Records</option>
       <option ng-repeat='child in childrenData' value='{{child.name}}'>{{child.name}}</option>
 </select>
 <!-- <p>Child Name: {{}}</p> -->
 <div class="row">
-	<div class="col-sm-4" ng-repeat="record in records | filter: searchText.search">
+	<div class="col-sm-4 main-card" ng-repeat="record in records | filter: searchText.search">
 		<div>
 			<p>CHILD: {{record.child}}</p>
 			<p>DATE: {{record.date}}</p>
