@@ -47,4 +47,18 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 		});
 	};
 
+	// let getChildDropdownData = () => {
+	// 	ChildFactory.getAllChildren(user)
+	// 	.then((data) => {
+	// 		console.log( "data", data );
+	// 		for (let i = 0; i < data.length; i++) {
+	// 			console.log( "data", data[i] );
+	// 			$scope.childrenInfo.push(data[i]);
+	// 		}
+	// 		console.log( "$scope.childrenInfo", $scope.childrenInfo );
+	// 	});
+	// };
+
+	// getChildDropdownData();
+
 });
