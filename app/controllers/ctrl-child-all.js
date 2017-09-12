@@ -2,13 +2,14 @@
 
 app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory) {
 
+	let user = UserFactory.getCurrentUser();
 	$scope.title = "All Children";
 	// $scope.records = [];
 	$scope.childrenData = [];
 
 	$scope.showAllChildren = () => {
 		console.log( "showAllChildren firing");
-		ChildFactory.getAllChildren()
+		ChildFactory.getAllChildren(user)
 		.then((data) => {
 			$scope.childrenData = data;
 			console.log( "$scope.childrenData", $scope.childrenData );

@@ -2,19 +2,20 @@
 
 app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory) {
 
+	let user = UserFactory.getCurrentUser();
 	$scope.title = "View All Records";
 	$scope.records = [];
 	$scope.childrenData = [];
 
 	$scope.showAllRecords = () => {
 		console.log( "showAllRecords firing" );
-		ChildFactory.getAllChildren()
+		ChildFactory.getAllChildren(user)
 		.then((data) => {
 			$scope.childrenData = data;
 			console.log( "$scope.childrenData", $scope.childrenData);
 		})
 		.then(() => {
-			RecordFactory.getAllRecords()
+			RecordFactory.getAllRecords(user)
 			.then((data) => {
 				$scope.records = data;
 				console.log( "$scope.records", $scope.records );

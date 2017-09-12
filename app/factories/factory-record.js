@@ -3,10 +3,10 @@ console.log( "factory-record.js" );
 
 app.factory('RecordFactory', function($q, $http, FBCreds) {
 	
-	const getAllRecords = () => {
+	const getAllRecords = (user) => {
 		let allRecordsArray = [];
 		return $q((resolve,reject) => {
-			$http.get(`${FBCreds.databaseURL}/records.json`)
+			$http.get(`${FBCreds.databaseURL}/records.json?orderBy="uid"&equalTo="${user}"`)
 			.then((allRecordsObj) => {
 				let allRecords = allRecordsObj.data;
 				console.log( "allRecords from RecordFactory", allRecords );
