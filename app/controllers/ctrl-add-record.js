@@ -29,7 +29,7 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 	$scope.childrenInfo = [];
 
 	let getChildDropdownData = () => {
-		ChildFactory.getAllChildren()
+		ChildFactory.getAllChildren(user)
 		.then((data) => {
 			console.log( "data", data );
 			for (let i = 0; i < data.length; i++) {

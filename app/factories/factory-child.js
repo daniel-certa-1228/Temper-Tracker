@@ -3,10 +3,10 @@ console.log( "factory-child.js" );
 
 app.factory('ChildFactory', function($q, $http, FBCreds) {
 
-	const getAllChildren = () => {
+	const getAllChildren = (user) => {
 		let allChildrenArray = [];
 		return $q((resolve, reject) => {
-			$http.get(`${FBCreds.databaseURL}/children.json`)
+			$http.get(`${FBCreds.databaseURL}/children.json?orderBy="uid"&equalTo="${user}"`)
 			.then((allChildrenObj) => {
 				let allChildren = allChildrenObj.data;
 				Object.keys(allChildren)
