@@ -36,14 +36,21 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
     }
   });
 
+
 	const windowCheck = (location) => {
+
 		if ((location === "/list-records") || (location === "/all-children")) {
 			$scope.searchbar = true;
+			$scope.searchText = FilterFactory;
 		}  else  {
+			$scope.searchText = angular.copy($scope.default);
+			// $scope.searchText = null;
 			$scope.searchbar = false;
 		}
 		console.log( "$scope.searchbar", $scope.searchbar );
 	};
+
+
 
 	$scope.$watch(() => {
 		let path = $location.path();
