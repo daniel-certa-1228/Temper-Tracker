@@ -63,6 +63,11 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 		return firebase.auth().signInWithPopup(googleProvider);
 	};
 
-	return{getCurrentUser, getUserEmailFromFB, isAuthenticated, getUserObj, postUserObj, authWithProvider};
+	let logOut = () => {
+		console.log("factoryLogOut firing");
+		return firebase.auth().signOut();
+	};
+
+	return{getCurrentUser, getUserEmailFromFB, isAuthenticated, getUserObj, postUserObj, authWithProvider, logOut};
 
 });

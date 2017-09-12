@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller="NavbarCtrl">
   <a class="navbar-brand" ng-href="#!/home">TemperTracker™</a>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -25,9 +25,10 @@
           <a class="dropdown-item" ng-href="#!/all-children">See All Children</a>
           <a class="dropdown-item" ng-href="#!/add-child">Add Child</a>
           <hr>
-          <a class="dropdown-item" href="#">LogOut</a>
+<!--           <a class="dropdown-item" ng-href ng-selected="logOut">LogOut</a> -->
         </div>
       </li>
     </ul>
+      <button type="button" class="btn btn-outline-primary" ng-click="logOut()">Log Out</button>
   </div>
 </nav>
