@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller="NavbarCtrl">
-  <a class="navbar-brand" ng-href="#!/home">TemperTracker™</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller="NavbarCtrl" id="nav">
+  <a class="navbar-brand" id="logo" ng-href="#!/home">TemperTracker™</a>
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" ng-disabled="!searchbar">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" ng-model="searchText.search" ng-disabled="!searchbar">
   </form>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,11 +24,10 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" ng-href="#!/all-children">See All Children</a>
           <a class="dropdown-item" ng-href="#!/add-child">Add Child</a>
-          <hr>
 <!--           <a class="dropdown-item" ng-href ng-selected="logOut">LogOut</a> -->
         </div>
       </li>
     </ul>
-      <button type="button" class="btn btn-outline-primary" ng-click="logOut()" ng-show="isLoggedIn">Log Out</button>
+      <button type="button" id="logOutBtn" class="btn btn-outline-primary" ng-click="logOut()" ng-show="isLoggedIn">Log Out</button>
   </div>
 </nav>

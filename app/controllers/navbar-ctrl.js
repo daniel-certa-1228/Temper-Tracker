@@ -1,10 +1,10 @@
 "use strict";
 
-app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, UserFactory) {
+app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, UserFactory, FilterFactory) {
 
-	// $scope.searchText = filterFactory;
+	$scope.searchText = FilterFactory;
   	$scope.isLoggedIn = false;
-  	$scope.searchbar = false;
+  	// $scope.searchbar = false;
 
 
 	$scope.logOut = () => {

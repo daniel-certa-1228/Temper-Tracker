@@ -1,7 +1,7 @@
 <h2>{{title}}</h2>
 <!-- <p>Child Name: {{}}</p> -->
 <div class="row">
-	<div class="col-sm-4" ng-repeat="record in records">
+	<div class="col-sm-4" ng-repeat="record in records | filter: searchText.search">
 		<div>
 			<p>CHILD: {{record.child}}</p>
 			<p>DATE: {{record.date}}</p>

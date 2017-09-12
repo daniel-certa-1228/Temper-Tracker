@@ -1,12 +1,14 @@
 "use strict";
 
-app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory) {
-
+app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory) {
+	
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "View All Records";
 	$scope.records = [];
 	$scope.childrenData = [];
-
+	$scope.searchText = FilterFactory;
+	
+	
 	$scope.showAllRecords = () => {
 		console.log( "showAllRecords firing" );
 		ChildFactory.getAllChildren(user)

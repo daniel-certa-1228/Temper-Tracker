@@ -1,10 +1,47 @@
+body {
+	position: relative;
+}
 
+#nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+}
 
+// #logo {
+// 	margin-right: 4em;
+// }
+
+#main-container {
+	padding-top: 80px;
+	padding-bottom: 50px;
+}
 
 footer {
-	// position: absolute;
-	left: 0px;
-	bottom: 0px;
-	// bottom: 0;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 25px;
 	background-color: #F8F9FA;
+	z-index: 99;
 }
+
+.page-header {
+	text-align: center;
+}
+
+#welcome {
+	// display: inline-block;
+	margin: 5% auto 0;
+}
+
+#loginBtn {
+	padding: 1em 0;
+	font-size: 2em;
+	// font-weight: bold;
+	margin: 10% 0 0;
+}
+
+
