@@ -10,6 +10,10 @@ body {
 	z-index: 99;
 }
 
+#logo {
+	margin-right: 2em;
+}
+
 #main-container {
 	padding-top: 80px;
 	padding-bottom: 50px;
@@ -43,11 +47,34 @@ footer {
 	margin-bottom: 1em;
 }
 
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	grid-auto-rows: 1fr;
+}
 .main-card {
 	// margin-bottom: 1em;
 	padding-bottom: .5em;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
+	position: relative;
+	// height: 100%;
 }
+
+.card-interior {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.comments {
+	padding-bottom: 1.5em;
+}
+.cardButtons {
+	position: absolute;
+	bottom: 0;
+}
+
 
 #loginBtn {
 	padding: 1em 0;
@@ -55,7 +82,7 @@ footer {
 	margin: 10% 0 0;
 }
 
-@media only screen and (max-width: 444px) {
+@media only screen and (max-width: 470px) {
 
 	#keywordSearch {
 		display: none;
@@ -67,7 +94,7 @@ footer {
 
 	#navUl {
 		margin-left: 10%;
-		margin-right: 2em;
+		margin-right: 3em;
 	}
 
 

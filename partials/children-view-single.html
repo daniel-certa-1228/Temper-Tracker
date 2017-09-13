@@ -5,7 +5,13 @@
 
 <div>
 	<p>CHILD: {{child.name}}</p>
-	<p>BIRTHDATE: {{child.birthdate}}</p>
+	<!-- <p>BIRTHDATE: {{child.birthdate}}</p> -->
+	<div class="form-group">
+	    <label for="dateSelect">Birthdate:</label>
+	    	<input type="date" id="dateSelect" ng-model="child.birthdate" readonly>
+	    </select>
+	</div>
+	
 	<p>PARENT COMMENTS: {{child.comments}}</p>
 
 	<a ng-href="#!/child/{{child.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>

@@ -4,16 +4,19 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 	
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "All Children";
-	// $scope.records = [];
 	$scope.childrenData = [];
 	$scope.searchText = FilterFactory;
 	
-
 	$scope.showAllChildren = () => {
 		console.log( "showAllChildren firing");
 		ChildFactory.getAllChildren(user)
 		.then((data) => {
 			$scope.childrenData = data;
+			for (let i = 0; i < data.length; i++) {
+				let fixedDate = new Date(data[i].birthdate);
+				$scope.childrenData[i].birthdate = fixedDate;
+				console.log( "fixedDate", fixedDate );
+			}
 			console.log( "$scope.childrenData", $scope.childrenData );
 		})
 		.catch((error) => {
