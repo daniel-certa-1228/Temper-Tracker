@@ -1,7 +1,9 @@
-<h2>{{title}}</h2>
+<header class="partial-h2">
+  <h2>{{title}}</h2>
+</header>
 
 <div class="row">
-	<div class="col-sm-4" ng-repeat="child in childrenData | filter: searchText.search">
+	<div class="col-sm-4 main-card" ng-repeat="child in childrenData | filter: searchText.search">
 		<div>
 			<p>CHILD: {{child.name}}</p>
 			<p>BIRTHDATE: {{child.birthdate}}</p>

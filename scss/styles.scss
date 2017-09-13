@@ -1,3 +1,4 @@
+
 body {
 	position: relative;
 }
@@ -8,10 +9,6 @@ body {
 	width: 100%;
 	z-index: 99;
 }
-
-// #logo {
-// 	margin-right: 4em;
-// }
 
 #main-container {
 	padding-top: 80px;
@@ -26,6 +23,7 @@ footer {
 	height: 25px;
 	background-color: #F8F9FA;
 	z-index: 99;
+	font-size: .8em;
 }
 
 .page-header {
@@ -33,15 +31,46 @@ footer {
 }
 
 #welcome {
-	// display: inline-block;
 	margin: 5% auto 0;
+}
+
+.partial-h2 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+#childSelectRecords {
+	margin-bottom: 1em;
+}
+
+.main-card {
+	// margin-bottom: 1em;
+	padding-bottom: .5em;
+	margin-bottom: 1em;
 }
 
 #loginBtn {
 	padding: 1em 0;
 	font-size: 2em;
-	// font-weight: bold;
 	margin: 10% 0 0;
+}
+
+@media only screen and (max-width: 444px) {
+
+	#keywordSearch {
+		display: none;
+	}
+
+}
+
+@media only screen and (min-width: 992px) {
+
+	#navUl {
+		margin-left: 10%;
+		margin-right: 2em;
+	}
+
+
 }
 
 

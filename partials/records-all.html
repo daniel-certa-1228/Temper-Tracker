@@ -1,22 +1,24 @@
-<h2>{{title}}</h2>
-    <select class="form-control" id="childSelect" ng-model="searchText.search">
+<header class="partial-h2">
+  <h2>{{title}}</h2>
+</header>
+    <select class="form-control" id="childSelectRecords" ng-model="kidFilter.search">
       <option value="">Select Child to View Their Records</option>
-      <option ng-repeat='child in childrenData' value='{{child.name}}'>{{child.name}}</option>
+      <option ng-repeat='child in childrenData' value='{{child.id}}'>{{child.name}}</option>
 </select>
 <!-- <p>Child Name: {{}}</p> -->
 <div class="row">
-	<div class="col-sm-4" ng-repeat="record in records | filter: searchText.search">
+	<div class="col-sm-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
 		<div>
 			<p>CHILD: {{record.child}}</p>
 			<p>DATE: {{record.date}}</p>
 			<p>TIME: {{record.time}}</p>
-			<p>DURATION: {{record.duration}}</p>
+			<p>DURATION: {{record.duration}} minutes</p>
 			<p>ANTECEDENT: {{record.antecedent}}</p>
 			<p>CONSEQUENCE: {{record.consequence}}</p>
 			<p>PARENT COMMENTS: {{record.comments}}</p>
+			<p ng-show="false">CHILD-ID:{{record.childID}}</p>
 			<a ng-href="#!/record/{{record.id}}/view"><button type="button" class="btn btn-secondary">View</button></a>
 			<a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>
-			<!-- <a ng-click="deleteRecord(record.id)" style="color: red;">Delete</a> -->
 		</div>
 	</div>
 </div>

@@ -1,12 +1,13 @@
 "use strict";
 
-app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory) {
+app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren) {
 	
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "View All Records";
 	$scope.records = [];
 	$scope.childrenData = [];
 	$scope.searchText = FilterFactory;
+	$scope.kidFilter = FilterFactoryChildren;
 	
 	
 	$scope.showAllRecords = () => {
@@ -37,28 +38,14 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 
 	$scope.showAllRecords();
 
-	$scope.deleteRecord = (id) => {
-		RecordFactory.deleteRecord(id)
-		.then((data) => {
-			console.log( "data", data );
-		})
-		.then(() => {
-			$scope.showAllRecords();
-		});
-	};
-
-	// let getChildDropdownData = () => {
-	// 	ChildFactory.getAllChildren(user)
+	// $scope.deleteRecord = (id) => {
+	// 	RecordFactory.deleteRecord(id)
 	// 	.then((data) => {
 	// 		console.log( "data", data );
-	// 		for (let i = 0; i < data.length; i++) {
-	// 			console.log( "data", data[i] );
-	// 			$scope.childrenInfo.push(data[i]);
-	// 		}
-	// 		console.log( "$scope.childrenInfo", $scope.childrenInfo );
+	// 	})
+	// 	.then(() => {
+	// 		$scope.showAllRecords();
 	// 	});
 	// };
-
-	// getChildDropdownData();
 
 });
