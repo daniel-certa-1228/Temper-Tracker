@@ -1,7 +1,7 @@
 "use strict";
 console.log( "app.js" );
 
-const app = angular.module('TemperTracker', ['ngRoute']);
+const app = angular.module('TemperTracker', ['ngRoute', 'chart.js']);
 
 app.run(($location, FBCreds) => {
 	firebase.initializeApp(FBCreds);
@@ -12,13 +12,27 @@ let isAuth = (UserFactory) => new Promise((resolve, reject) => {
 	UserFactory.isAuthenticated()
 	.then((userExists) => {
 		if(userExists) {
-			console.log( "YOU GOOD" );
+			// console.log( "YOU GOOD" );
 			resolve();
 		}  else  {
 			console.log( "YOU ARE NOT AUTHORIZED" );
 			reject();
 		}
 	});
+});
+
+app.config((ChartJsProvider) => {
+	// Configure all charts
+    ChartJsProvider.setOptions({
+      colors: ['#97BBCD', '#DCDCDC', '#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360']
+    });
+    // Configure all doughnut charts
+    ChartJsProvider.setOptions('doughnut', {
+      cutoutPercentage: 60
+    });
+    ChartJsProvider.setOptions('bubble', {
+      tooltips: { enabled: false }
+    });
 });
 
 app.config(($routeProvider) => {
@@ -48,7 +62,9 @@ app.config(($routeProvider) => {
 		resolve: {isAuth}
 	})
 	.when('/graphs', {
-		templateUrl: 'partials/graphs.html'
+		templateUrl: 'partials/graphs.html',
+		controller: 'GraphCtrl',
+		resolve: {isAuth}
 	}).
 	when('/all-children', {
 		templateUrl: 'partials/children-all.html',

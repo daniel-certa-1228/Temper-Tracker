@@ -1,5 +1,5 @@
 "use strict";
-console.log( "factory-record.js" );
+// console.log( "factory-record.js" );
 
 app.factory('RecordFactory', function($q, $http, FBCreds) {
 	
