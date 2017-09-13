@@ -68,5 +68,4 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 			$location.url('/list-records');
 		});
 	};
-
 });

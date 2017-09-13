@@ -23,6 +23,10 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 				$scope.records = data;
 				console.log( "$scope.records", $scope.records );
 				for (let i = 0; i < $scope.records.length; i++) {
+					let fixedDate = new Date(data[i].date);
+					let fixedTime = new Date(data[i].time);
+					$scope.records[i].date = fixedDate;
+					$scope.records[i].time = fixedTime;
 					for (let j = 0; j < $scope.childrenData.length; j++) {
 						if($scope.records[i].childID === $scope.childrenData[j].id) {
 							$scope.records[i].child = $scope.childrenData[j].name;
@@ -35,17 +39,5 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 			console.log( "error at ViewRecordsCtrl.showAllRecords", error );
 		});
 	};
-
 	$scope.showAllRecords();
-
-	// $scope.deleteRecord = (id) => {
-	// 	RecordFactory.deleteRecord(id)
-	// 	.then((data) => {
-	// 		console.log( "data", data );
-	// 	})
-	// 	.then(() => {
-	// 		$scope.showAllRecords();
-	// 	});
-	// };
-
 });

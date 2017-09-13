@@ -10,9 +10,19 @@
 	<div class="col-sm-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
 		<div class="card-interior">
 			<p>CHILD: {{record.child}}</p>
-			<p>DATE: {{record.date}}</p>
+			<div class="form-group">
+			    <label for="dateSelect">DATE:</label>
+			    	<input type="date" id="dateSelect" ng-model="record.date" readonly>
+			    </select>
+		  	</div>
+			 <div class="form-group">
+			    <label for="startTime">Start of Behavior:</label>
+			    	<input type="time" id="startTime" ng-model="record.time" readonly>
+			    </select>
+		  	</div>
+<!-- 		<p>DATE: {{record.date}}</p>
 			<p>TIME: {{record.time}}</p>
-			<p>DURATION: {{record.duration}} minutes</p>
+ -->		<p>DURATION: {{record.duration}} minutes</p>
 			<p>ANTECEDENT: {{record.antecedent}}</p>
 			<p>CONSEQUENCE: {{record.consequence}}</p>
 			<p class="comments">PARENT COMMENTS: {{record.comments}}</p>

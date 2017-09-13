@@ -55,10 +55,5 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 		});
 	};
 
-	// const getAllChildRecords = () => {
-	// 	RecordFactory.getRecordsByChildID($routeParams.itemId)
-
-	// }
-
 	getSingleChild();
 });
