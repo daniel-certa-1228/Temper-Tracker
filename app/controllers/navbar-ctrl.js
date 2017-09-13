@@ -47,7 +47,7 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 			// $scope.searchText = null;
 			$scope.searchbar = false;
 		}
-		console.log( "$scope.searchbar", $scope.searchbar );
+		// console.log( "$scope.searchbar", $scope.searchbar );
 	};
 
 

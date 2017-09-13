@@ -1,20 +1,16 @@
 <header class="partial-h2">
   <h2>{{title}}</h2>
 </header>
-<!-- <p>Child Name: {{}}</p> -->
 <div>
 	<p>CHILD: {{record.child}}</p>
 	<p>DATE: {{record.date}}</p>
 	<p>TIME: {{record.time}}</p>
-	<p>DURATION: {{record.duration}}</p>
+	<p>DURATION: {{record.duration}} minutes</p>
 	<p>ANTECEDENT: {{record.antecedent}}</p>
 	<p>CONSEQUENCE: {{record.consequence}}</p>
 	<p>PARENT COMMENTS: {{record.comments}}</p>
-<!-- 	<a ng-href="#!/record/{{record.id}}/edit">Edit</a>
-	<a ng-click="deleteRecord(record.id)" style="color: red;">Delete</a> -->
-  <a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>
 
-  <a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
+  	<a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>
 
- <!--  <button type="button" class="btn btn-danger" ng-click="deleteRecordEdit()">Delete</button> -->
+ 	<a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
 </div>
