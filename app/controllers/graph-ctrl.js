@@ -25,10 +25,10 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
 
       let user = UserFactory.getCurrentUser();
 
-	    let getAnteData = () => {
+	    const getAnteData = () => {
 	    	RecordFactory.getAllRecords(user)
 	    	.then((data) => {
-	    		console.log( "data", data );
+	    		// console.log( "data", data );
 	    		data.forEach(function(record){
 	    			$scope.anteArray.push(record.antecedent);
 	    		});
@@ -57,19 +57,62 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
     }, 400);
 }]);
 
-// app.controller('DoughnutCtrl_2', ['$scope', '$timeout', function ($scope, $timeout) {
-//     $scope.labels = ['Attention', 'Item Given', 'Item Removed', 'Escape', 'None'];
-//     $scope.data = [0, 0, 0, 0, 0];
+app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFactory', function ($scope, $timeout, UserFactory, RecordFactory) {
+    $scope.labels = ['Attention', 'Item Given', 'Item Removed', 'Escape', 'None'];
+    $scope.data = [0, 0, 0, 0, 0];
 
-//     $scope.object = {
-//     	labels: $scope.labels,
-//     	data: $scope.data
-//     };
+    $scope.consequenceArray = [];
 
-//     $timeout(function () {
-//       $scope.data = [4, 8, 2, 1, 3];
-//     }, 500);
-// }]);
+    $scope.attentionArray = [];
+    $scope.givenArray = [];
+    $scope.removedArray = [];
+    $scope.escapeArray = [];
+    $scope.noneArray = [];
+
+	let user = UserFactory.getCurrentUser();
+
+	const getConsequenceData = () => {
+		RecordFactory.getAllRecords(user)
+		.then((data) => {
+			console.log( "consequence data", data );
+			data.forEach(function(record){
+	    			$scope.consequenceArray.push(record.consequence);
+	    		});
+	    		return $scope.consequenceArray.sort();
+		})
+		.then((consequences) => {
+			console.log( "consequences", consequences );
+			$scope.attentionArray = consequences.filter(function(cons){
+				return cons.charAt(0) === 'A';
+			});
+			$scope.givenArray = consequences.filter(function(cons){
+				return cons.charAt(5) === 'G';
+			});
+			$scope.removedArray = consequences.filter(function(cons){
+				return cons.charAt(5) === 'R';
+			});
+			$scope.escapeArray = consequences.filter(function(cons){
+				return cons.charAt(0) === 'E';
+			});
+			$scope.noneArray = consequences.filter(function(cons){
+				return cons.charAt(0) === 'N';
+			});
+			// console.log( "$scope.noneArray", $scope.noneArray );
+		})
+		.then(() => {
+			$scope.data = [$scope.attentionArray.length, $scope.givenArray.length, $scope.removedArray.length, $scope.escapeArray.length, $scope.noneArray.length];
+			console.log( "$scope.data", $scope.data );
+		})
+		.catch((error) => {
+	    		console.log( "error", error );
+	    });
+	};
+	getConsequenceData();
+
+    $timeout(function () {
+      $scope.data = [4, 8, 2, 1, 3];
+    }, 400);
+}]);
 
 // app.controller('BarCtrl', ['$scope', function ($scope) {
 //     $scope.options = { legend: { display: true } };
