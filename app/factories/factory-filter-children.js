@@ -1,8 +1,8 @@
 "use strict";
-console.log( "factory-filter.js" );
+// console.log( "factory-filter-children.js" );
 
 app.factory('FilterFactoryChildren', function(){
-	console.log( "FilterFactoryChildren is being called" );
+	// console.log( "FilterFactoryChildren is being called" );
 	return{ 
 		search: "" 
 	};

@@ -3,6 +3,20 @@ body {
 	position: relative;
 }
 
+#loginBtn {
+	padding: 1em 0;
+	font-size: 2em;
+	margin: 10% 0 0;
+}
+
+.page-header {
+	text-align: center;
+}
+
+#welcome {
+	margin: 5% auto 0;
+}
+
 #nav {
 	position: fixed;
 	top: 0;
@@ -28,14 +42,6 @@ footer {
 	background-color: #F8F9FA;
 	z-index: 99;
 	font-size: .8em;
-}
-
-.page-header {
-	text-align: center;
-}
-
-#welcome {
-	margin: 5% auto 0;
 }
 
 .partial-h2 {
@@ -74,12 +80,32 @@ footer {
 	position: absolute;
 	bottom: 0;
 }
+//GRAPH JS
+.panel-heading {
+	text-align: center;
+}
 
+.graph-div {
+	margin-bottom: 1em;
+}
 
-#loginBtn {
-	padding: 1em 0;
-	font-size: 2em;
-	margin: 10% 0 0;
+.chart {
+	margin: auto;
+}
+
+.data-row {
+	margin: 1em auto 0;
+	// display: inline-block;
+	// margin-left: 2em;
+	// margin-top: 1em;
+}
+
+.data-labels {
+	margin-right: 2em;
+}
+
+.graph-label {
+	margin-bottom: 0;
 }
 
 @media only screen and (max-width: 470px) {

@@ -1,5 +1,5 @@
 "use strict";
-console.log( "factory-child.js" );
+// console.log( "factory-child.js" );
 
 app.factory('ChildFactory', function($q, $http, FBCreds) {
 

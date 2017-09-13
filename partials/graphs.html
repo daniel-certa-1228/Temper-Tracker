@@ -1,1 +1,41 @@
-<h1>GRAPHS</h1>
+<header class="partial-h2">
+  <h2>{{title}}</h2>
+</header>
+
+<div class="row">
+
+    <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutCtrl">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h5>Antecedent</h5></div>
+        	<div class="panel-body">
+          		<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
+          		<div class="row data-row">
+	          		<div class="col-xs-6 data-labels">
+	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+	          		</div>
+	          		<div class="col-xs-6">
+	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+	          		</div>
+	          	</div>	
+        	</div>
+        </div>
+    </div>
+
+        <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutCtrl_2">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h5>Consequence</h5></div>
+        	<div class="panel-body">
+          		<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
+          		<div class="row data-row">
+	          		<div class="col-xs-6 data-labels">
+	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+	          		</div>
+	          		<div class="col-xs-6">
+	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+	          		</div>
+	          	</div>	
+        	</div>
+        </div>
+    </div>
+
+</div>
