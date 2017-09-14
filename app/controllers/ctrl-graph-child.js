@@ -1,28 +1,32 @@
 "use strict";
-console.log( "graph-ctrl.js" );
+console.log( "graph-ctrl-child.js" );
 
-app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren){
+app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren){
 
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs";
 	$scope.childrenInfo = [];
+	$scope.childInfo = [];
 
-	let getChildDropdownData = () => {
+	let getChildrenData = () => {
 		ChildFactory.getAllChildren(user)
 		.then((data) => {
-			// console.log( "data", data );
+			console.log( "data", data );
 			for (let i = 0; i < data.length; i++) {
 				$scope.childrenInfo.push(data[i]);
-				// console.log( "data", data[i] );
+				console.log( "data", data[i].id );
+				if ($routeParams.itemId === data[i].id ) {
+					$scope.childInfo.push(data[i]);
+				}
 			}
-			// console.log( "CHILD INFOOOOO", $scope.childrenInfo );
+			console.log( "CHILD INFOOOOO", $scope.childrenInfo );
 		});
 	};
-	getChildDropdownData();
+	getChildrenData();
 
 });
 // ANTECEDENT DONUT GRAPH
-app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFactory', function ($scope, $timeout, UserFactory, RecordFactory) {
+app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'UserFactory', 'RecordFactory', function ($scope, $timeout, $routeParams,UserFactory, RecordFactory) {
     $scope.labels = ['Diverted Attention', 'Parental Demand', 'Item Removed'];
     $scope.data = [0, 0, 0];
 
@@ -39,7 +43,7 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
       let user = UserFactory.getCurrentUser();
 
 	    const getAnteData = () => {
-	    	RecordFactory.getAllRecords(user)
+	    	RecordFactory.getRecordsByChildID($routeParams.itemId)
 	    	.then((data) => {
 	    		// console.log( "data", data );
 	    		data.forEach(function(record){
@@ -48,7 +52,7 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
 	    		return $scope.anteArray.sort();
 	    	})
 	    	.then((antecedents) => {
-	    		// console.log( "antecedents", antecedents );
+	    		console.log( "antecedents", antecedents );
 	    		$scope.demands = antecedents.filter(function(ante){
 	    			return ante.charAt(0) === 'P';
 	    		});
@@ -70,9 +74,11 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
     }, 400);
 }]);
 // CONSEQUENCE DONUT GRAPH
-app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFactory', function ($scope, $timeout, UserFactory, RecordFactory) {
+app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'UserFactory', 'RecordFactory', function ($scope, $timeout, $routeParams,UserFactory,  RecordFactory) {
     $scope.labels = ['Attention', 'Item Given', 'Item Removed', 'Escape', 'None'];
     $scope.data = [0, 0, 0, 0, 0];
+
+    
 
     $timeout(function () {
 	    // $scope.data = [4, 8, 2, 1, 3];
@@ -87,16 +93,16 @@ app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFa
 		let user = UserFactory.getCurrentUser();
 
 		const getConsequenceData = () => {
-			RecordFactory.getAllRecords(user)
+			RecordFactory.getRecordsByChildID($routeParams.itemId)
 			.then((data) => {
-				// console.log( "consequence data", data );
+				console.log( "consequence data", data );
 				data.forEach(function(record){
 		    			$scope.consequenceArray.push(record.consequence);
 		    		});
 		    		return $scope.consequenceArray.sort();
 			})
 			.then((consequences) => {
-				// console.log( "consequences", consequences );
+				console.log( "consequences", consequences );
 				$scope.attentionArray = consequences.filter(function(cons){
 					return cons.charAt(0) === 'A';
 				});
@@ -116,7 +122,7 @@ app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFa
 			})
 			.then(() => {
 				$scope.data = [$scope.attentionArray.length, $scope.givenArray.length, $scope.removedArray.length, $scope.escapeArray.length, $scope.noneArray.length];
-				// console.log( "$scope.data", $scope.data );
+				console.log( "$scope.data", $scope.data );
 			})
 			.catch((error) => {
 		    		console.log( "error", error );
@@ -126,7 +132,7 @@ app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFa
 	    }, 400);
 }]);
 
-app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory) {
+app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, RecordFactory) {
   $scope.labels =[ "0-4 min.", "5-10 min.", "11-20 min.", "21-30 min.", "Over 30 min." ];
 
   $scope.data = [
@@ -145,7 +151,7 @@ app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory) {
 
 
   const getDurationData = () => {
-  	RecordFactory.getAllRecords(user)
+  	RecordFactory.getRecordsByChildID($routeParams.itemId)
   	.then((data) => {
   		// console.log( "duration data", data );
   		data.forEach((record) => {

@@ -1,5 +1,5 @@
 <header class="partial-h2">
-  <h2>{{title}}</h2>
+  <h2 ng-repeat="child in childInfo">{{title}} - {{child.name}}</h2>
 </header>
 
 <div class="dropdown graph-drop">
@@ -8,12 +8,15 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" ng-href="#!/graphs">Back To Graphs Home</a>
+
   </div>
 </div>
 
 <div class="row">
 
-    <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutCtrl">
+    <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutChildCtrl">
         <div class="panel panel-default">
             <div class="panel-heading"><h5>Antecedent</h5></div>
         	<div class="panel-body">
@@ -30,7 +33,7 @@
         </div>
     </div>
 
-        <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart-2" ng-controller="DoughnutCtrl_2">
+        <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutChildCtrl_2">
         <div class="panel panel-default">
             <div class="panel-heading"><h5>Consequence</h5></div>
         	<div class="panel-body">
@@ -46,8 +49,7 @@
         	</div>
         </div>
     </div>
-
-    <div class="col-lg-6 col-sm-12 graph-div" id="radar-chart" ng-controller="RadarCtrl">
+    <div class="col-lg-6 col-sm-12 graph-div" id="radar-chart" ng-controller="RadarChildCtrl">
           <div class="panel panel-default">
             <div class="panel-heading"><h5>Duration</h5></div>
             <div class="panel-body">
