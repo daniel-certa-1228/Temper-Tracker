@@ -60,11 +60,9 @@ footer {
 	grid-auto-rows: 1fr;
 }
 .main-card {
-	// margin-bottom: 1em;
 	padding-bottom: .5em;
 	margin-bottom: 2em;
 	position: relative;
-	// height: 100%;
 }
 
 .card-interior {
@@ -80,7 +78,9 @@ footer {
 	position: absolute;
 	bottom: 0;
 }
-//GRAPH JS
+
+//////////GRAPH JS//////////////////////////////////////
+
 .panel-heading {
 	text-align: center;
 }
@@ -95,15 +95,19 @@ footer {
 
 .data-row {
 	margin: 1em auto 0;
-	// display: inline-block;
-	// margin-left: 2em;
-	// margin-top: 1em;
 }
 
 .data-labels {
 	margin-right: 2em;
 }
 
+.data-labels-sm {
+	margin-right: 0;
+}
+
+.data-nums-sm {
+	margin-right: 0;
+}
 .graph-label {
 	margin-bottom: 0;
 }
@@ -117,7 +121,6 @@ footer {
 	#keywordSearch {
 		display: none;
 	}
-
 }
 
 @media only screen and (min-width: 992px) {
@@ -126,8 +129,4 @@ footer {
 		margin-left: 10%;
 		margin-right: 3em;
 	}
-
-
 }
-
-
