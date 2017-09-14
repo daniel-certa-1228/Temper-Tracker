@@ -5,14 +5,14 @@
 <div class="row">
 	<div class="col-sm-4 main-card" ng-repeat="child in childrenData | filter: searchText.search">
 		<div>
-			<p>CHILD: {{child.name}}</p>
+			<p><strong>Child:</strong> {{child.name}}</p>
 			<!-- <p>BIRTHDATE: {{child.birthdate}}</p> -->
 			  <div class="form-group">
-			    <label for="dateSelect">Birthdate:</label>
+			    <label for="dateSelect"><strong>Birthdate: </strong></label>
 			    	<input type="date" id="dateSelect" ng-model="child.birthdate" readonly>
 			    </select>
 			  </div>
-			<p class="comments">PARENT COMMENTS: {{child.comments}}</p>
+			<p class="comments"><strong>Comments: </strong>{{child.comments}}</p>
 			<div class="cardButtons">
 				<a ng-href="#!/child/{{child.id}}/view"><button type="button" class="btn btn-secondary">View</button></a>
 				<a ng-href="#!/child/{{child.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>

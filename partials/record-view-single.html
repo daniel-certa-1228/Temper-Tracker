@@ -2,21 +2,21 @@
   <h2>{{title}}</h2>
 </header>
 <div>
-	<p>CHILD: {{record.child}}</p>
+	<p><strong>Child: </strong>{{record.child}}</p>
 	 <div class="form-group">
-	    <label for="dateSelect">DATE:</label>
+	    <label for="dateSelect"><strong>Date: </strong></label>
 	    	<input type="date" id="dateSelect" ng-model="record.date" readonly>
 	    </select>
   	</div>
 	 <div class="form-group">
-	    <label for="startTime">Start of Behavior:</label>
+	    <label for="startTime"><strong>Start of Behavior: </strong></label>
 	    	<input type="time" id="startTime" ng-model="record.time" readonly>
 	    </select>
   	</div>
-	<p>DURATION: {{record.duration}} minutes</p>
-	<p>ANTECEDENT: {{record.antecedent}}</p>
-	<p>CONSEQUENCE: {{record.consequence}}</p>
-	<p>PARENT COMMENTS: {{record.comments}}</p>
+	<p><strong>Duration: </strong>{{record.duration}} minutes</p>
+	<p><strong>Antecedent: </strong>{{record.antecedent}}</p>
+	<p><strong>Consequence: </strong>{{record.consequence}}</p>
+	<p><strong>Comments: </strong>{{record.comments}}</p>
 
   	<a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-primary">EDIT</button></a>
 
