@@ -65,8 +65,13 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/graphs.html',
 		controller: 'GraphCtrl',
 		resolve: {isAuth}
-	}).
-	when('/all-children', {
+	})
+	.when('/child/:itemId/graphs', {
+		templateUrl: 'partials/graphs-child.html',
+		controller: 'GraphChildCtrl',
+		resolve: {isAuth}
+	})
+	.when('/all-children', {
 		templateUrl: 'partials/children-all.html',
 		controller: 'ViewChildrenCtrl',
 		resolve: {isAuth}
