@@ -64,7 +64,32 @@
             </div>
           </div>
         </div>
+
+<div class="col-lg-6 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl">
+    <div class="panel panel-default">
+          <div class="panel-heading"><h5>Time of Day</h5></div>
+          <div class="panel-body">
+            <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
+                    chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+                    chart-dataset-override="datasetOverride"></canvas>
+                      <div class="row data-row">
+                          <div class="col-sm-3 data-labels-sm">
+                            <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
+                          </div>
+                          <div class="col-sm-3">
+                            <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
+                          </div>
+                          <div class="col-sm-3 data-labels-sm">
+                            <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
+                          </div>
+                          <div class="col-sm-3">
+                            <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
+                          </div>
+                      </div>
+            </div>
       </div>
+</div>
+
 <!--     <div class="col-lg-6 col-sm-12 graph-div" id="horizontal bar-chart" ng-controller="BarCtrl">
         <div class="panel panel-default">
             <div class="panel-heading"><h5>Duration of Behavior</h5></div>

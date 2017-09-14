@@ -9,7 +9,7 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 			$http.get(`${FBCreds.databaseURL}/records.json?orderBy="uid"&equalTo="${user}"`)
 			.then((allRecordsObj) => {
 				let allRecords = allRecordsObj.data;
-				console.log( "allRecords from RecordFactory", allRecords );
+				// console.log( "allRecords from RecordFactory", allRecords );
 				Object.keys(allRecords)
 				.forEach((key) => {
 					allRecords[key].id = key;
@@ -30,7 +30,7 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 			$http.get(`${FBCreds.databaseURL}/records.json?orderBy="childID"&equalTo="${childID}"`)
 			.then((recordsByChildObj) => {
 				let allByChildRecords = recordsByChildObj.data;
-				console.log( "allByChildRecords from RecordFactory", allByChildRecords );
+				// console.log( "allByChildRecords from RecordFactory", allByChildRecords );
 				Object.keys(allByChildRecords)
 				.forEach((key) => {
 					allByChildRecords[key].id = key;
@@ -62,7 +62,7 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 		return $q((resolve, reject) => {
 			$http.post(`${FBCreds.databaseURL}/records.json`, newRecordObj)
 			.then((data) => {
-				console.log( "add data", data );
+				// console.log( "add data", data );
 				resolve(data);
 			})
 			.catch((error) => {
