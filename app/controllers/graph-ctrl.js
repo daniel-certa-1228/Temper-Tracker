@@ -4,7 +4,7 @@ console.log( "graph-ctrl.js" );
 app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren){
 
 	let user = UserFactory.getCurrentUser();
-	$scope.title = "Graphs";
+	$scope.title = "Graphs - All Records";
 	$scope.childrenInfo = [];
 
 	let getChildDropdownData = () => {
