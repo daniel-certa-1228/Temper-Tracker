@@ -46,14 +46,15 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 		// console.log( "$scope.searchbar", $scope.searchbar );
 	};
 
-
-	// $scope.$on('locationChangeSuccess', function() {
-	// 	console.log( "ROUTE CHANGE" );
-	// });
+	$scope.$on('$locationChangeStart', function(event) {
+	 	console.log( "CHANGEEEEEE" );
+	 	// $scope.searchText = angular.copy($scope.default);
+	});
 
 	$scope.$watch(() => {
 		let path = $location.path();
 		windowCheck(path);
+		// console.log( "path", path );
     return $location.path();
 	});
 
