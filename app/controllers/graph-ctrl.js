@@ -133,7 +133,7 @@ app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFa
 ///////////////////////////////////////////////////////
 
 app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory) {
-  $scope.labels =[ "0-4 min.", "5-10 min.", "11-20 min.", "21-30 min.", "Over 30 min." ];
+  $scope.labels =[ "0-4 min", "5-10 min", "11-20 min", "21-30 min", "Over 30 min" ];
 
   $scope.data = [
     [0, 0, 0, 0, 0]
