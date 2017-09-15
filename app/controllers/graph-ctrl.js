@@ -4,7 +4,7 @@ console.log( "graph-ctrl.js" );
 app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren){
 
 	let user = UserFactory.getCurrentUser();
-	$scope.title = "Graphs";
+	$scope.title = "Graphs - All Records";
 	$scope.childrenInfo = [];
 
 	let getChildDropdownData = () => {
@@ -24,6 +24,7 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 /////////////////////////////////////////////////////////////
 
 app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFactory', function ($scope, $timeout, UserFactory, RecordFactory) {
+    $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a'];
     $scope.labels = ['Diverted Attention', 'Parental Demand', 'Item Removed'];
     $scope.data = [0, 0, 0];
 
@@ -71,6 +72,7 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
 ///////////////////////////////////////////////////////
 
 app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFactory', function ($scope, $timeout, UserFactory, RecordFactory) {
+    $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a', '#46bfbd', '#fdb45c'];
     $scope.labels = ['Attention', 'Item Given', 'Item Removed', 'Escape', 'None'];
     $scope.data = [0, 0, 0, 0, 0];
 

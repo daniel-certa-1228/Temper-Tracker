@@ -27,6 +27,7 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
 });
 // ANTECEDENT DONUT GRAPH
 app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'UserFactory', 'RecordFactory', function ($scope, $timeout, $routeParams,UserFactory, RecordFactory) {
+    $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a'];
     $scope.labels = ['Diverted Attention', 'Parental Demand', 'Item Removed'];
     $scope.data = [0, 0, 0];
 
@@ -75,6 +76,7 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
 }]);
 // CONSEQUENCE DONUT GRAPH
 app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'UserFactory', 'RecordFactory', function ($scope, $timeout, $routeParams,UserFactory,  RecordFactory) {
+    $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a', '#46bfbd', '#fdb45c'];
     $scope.labels = ['Attention', 'Item Given', 'Item Removed', 'Escape', 'None'];
     $scope.data = [0, 0, 0, 0, 0];
 

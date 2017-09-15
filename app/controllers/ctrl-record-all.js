@@ -23,6 +23,7 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 				$scope.records = data;
 				console.log( "$scope.records", $scope.records );
 				for (let i = 0; i < $scope.records.length; i++) {
+					// console.log( "$scope.records[i].timestamp", $scope.records[i].timestamp );
 					let fixedDate = new Date(data[i].date);
 					let fixedTime = new Date(data[i].time);
 					$scope.records[i].date = fixedDate;
@@ -33,6 +34,14 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 						}
 					}
 				}
+				// return $scope.records;
+			})
+			.then(() => {
+				$scope.records.sort(function(a, b) {
+					console.log( "", (a.timestamp) - (b.timestamp) );
+    			return (a.timestamp) - (b.timestamp);
+				});
+				$scope.records.reverse();
 			});
 		})
 		.catch((error) => {

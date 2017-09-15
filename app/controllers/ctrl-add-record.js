@@ -3,6 +3,7 @@
 app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory) {
 
 	let user = UserFactory.getCurrentUser();
+	let currentTime = Math.floor(Date.now());
 	$scope.addRec = true;
 	$scope.title = "Add Record";
 
@@ -14,7 +15,8 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 		antecedent:'',
 		consequence:'',
 		comments:'',
-		uid: user
+		uid: user,
+		timestamp: currentTime
 	};
 
 	$scope.addRecord = () => {
