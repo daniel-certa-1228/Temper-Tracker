@@ -28,10 +28,6 @@ body {
 	margin-right: 1.5em;
 }
 
-// #keywordSearch {
-// 		width: 250px;
-// 	}
-
 #main-container {
 	padding-top: 80px;
 	padding-bottom: 50px;
@@ -53,10 +49,6 @@ footer {
 	margin-bottom: 1em;
 }
 
-// #childSelectRecords {
-// 	margin-bottom: 1em;
-// }
-
 .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -64,9 +56,10 @@ footer {
 	grid-auto-rows: 1fr;
 }
 .main-card {
-	padding-bottom: .5em;
+	padding-bottom: 1em;
 	margin-bottom: 2em;
 	position: relative;
+	// box-shadow: 0px 0px 5px 0px rgba(196,196,196,1);
 }
 
 .card-interior {
@@ -80,7 +73,7 @@ footer {
 }
 .cardButtons {
 	position: absolute;
-	bottom: 0;
+	bottom: 10px;
 }
 
 ////////////////////////////////////////////////////////
@@ -98,7 +91,6 @@ footer {
 
 #childSelectRecords {
 	display: inline-block;
-	// max-width: 80%;
 	margin: auto;
 }
 
@@ -114,7 +106,6 @@ footer {
 	margin-bottom: 2em;
 	padding-bottom: 2em;
 	border-bottom: 1px solid grey;
-	// border-bottom: 1px solid lightgrey;
 }
 
 .chart {
@@ -162,10 +153,6 @@ footer {
 	text-align: center;
 }
 
-// #graph-dropdown {
-// 	// display: inline-block;
-// }
-
 ////////////////////////////////////////////////////////
 //////////MEDIA QUERIES/////////////////////////////////
 ////////////////////////////////////////////////////////
@@ -188,15 +175,6 @@ footer {
 
 }
 
-
-// @media only screen and (max-width: 768px) {
-
-// 	#printBTN {
-// 		// display: inline-block;
-// 		// margin-left: .5em;
-// 	}
-// }
-
 @media only screen and (max-width: 991px) {
 
 	#logo {
@@ -217,16 +195,6 @@ footer {
 
 }
 
-// @media only screen and (min-width: 767px) {
-	
-// 	// #childSelectRecords {
-
-// 	// 	max-width: 80%;
-
-// 	// }
-
-// }
-
 @media only screen and (min-width: 992px) {
 
 	#navUl {
@@ -234,7 +202,10 @@ footer {
 		margin-right: 3em;
 	}
 
-	// #printBTN {
-	// 	// margin-left: 0;
-	// }
+		#childSelectRecords {
+
+		max-width: 75%;
+
+	}
+
 }

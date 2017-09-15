@@ -4,14 +4,14 @@
 	</header>
 	<div class="select-group">
 		<select class="form-control" id="childSelectRecords" ng-model="kidFilter.search">
-		      <option value="">Select Child to View Their Records</option>
+		      <option value="">Select Child's Records to View </option>
 		      <option ng-repeat='child in childrenData' value='{{child.id}}'>{{child.name}}</option>
 		</select>
 		<button type="button" class="btn btn-outline-primary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
 	</div>
-	<!-- <p>Child Name: {{}}</p> -->
+
 	<div class="row">
-		<div class="col-lg-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
+		<div class="col-lg-6 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
 			<div class="card-interior">
 				<p><strong>Child: </strong>{{record.child}}</p>
 				<div class="form-group">
@@ -24,9 +24,7 @@
 				    	<input type="time" id="startTime" ng-model="record.time" readonly>
 				    </select>
 			  	</div>
-	<!-- 		<p>DATE: {{record.date}}</p>
-				<p>TIME: {{record.time}}</p>
-	 -->		<p><strong>Duration: </strong>{{record.duration}} minutes</p>
+				<p><strong>Duration: </strong>{{record.duration}} minutes</p>
 				<p><strong>Antecedent: </strong>{{record.antecedent}}</p>
 				<p><strong>Consequence: </strong>{{record.consequence}}</p>
 				<p class="comments"><strong>Comments: </strong>{{record.comments}}</p>

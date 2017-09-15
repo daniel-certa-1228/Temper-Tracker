@@ -323,12 +323,3 @@ app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, Rec
   };
   getTimeData();
 });
-
-// app.controller('BarCtrl', ['$scope', function ($scope) {
-//     $scope.options = { legend: { display: true } };
-//     $scope.labels = ['0-4 min.', '5-10 min.', '11-20 min.', '21-30 min.', 'Over 30 min.'];
-//     $scope.series = ['Series A'];
-//     $scope.data = [
-//       [5, 0, 3, 8, 3]
-//     ];
-//   }]);
