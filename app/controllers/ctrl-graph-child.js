@@ -215,7 +215,7 @@ app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, Rec
         {
           id: 'y-axis-2',
           type: 'linear',
-          display: true,
+          display: false,
           position: 'right'
         }
       ]

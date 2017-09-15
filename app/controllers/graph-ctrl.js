@@ -213,7 +213,7 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory) {
         {
           id: 'y-axis-2',
           type: 'linear',
-          display: true,
+          display: false,
           position: 'right'
         }
       ]

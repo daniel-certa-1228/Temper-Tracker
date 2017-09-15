@@ -38,7 +38,7 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 			})
 			.then(() => {
 				$scope.records.sort(function(a, b) {
-					console.log( "", (a.timestamp) - (b.timestamp) );
+					// console.log( "", (a.timestamp) - (b.timestamp) );
     			return (a.timestamp) - (b.timestamp);
 				});
 				$scope.records.reverse();
