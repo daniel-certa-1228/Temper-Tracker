@@ -4,8 +4,6 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 
 	$scope.searchText = FilterFactory;
   	$scope.isLoggedIn = false;
-  	// $scope.searchbar = false;
-
 
 	$scope.logOut = () => {
 		console.log( "logout firing" );
@@ -36,21 +34,22 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
     }
   });
 
-
 	const windowCheck = (location) => {
 
 		if ((location === "/list-records") || (location === "/all-children")) {
 			$scope.searchbar = true;
 			$scope.searchText = FilterFactory;
 		}  else  {
-			$scope.searchText = angular.copy($scope.default);
-			// $scope.searchText = null;
 			$scope.searchbar = false;
+			$scope.searchText = angular.copy($scope.default);
 		}
 		// console.log( "$scope.searchbar", $scope.searchbar );
 	};
 
 
+	// $scope.$on('locationChangeSuccess', function() {
+	// 	console.log( "ROUTE CHANGE" );
+	// });
 
 	$scope.$watch(() => {
 		let path = $location.path();
