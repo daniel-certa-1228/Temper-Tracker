@@ -28,6 +28,10 @@ body {
 	margin-right: 1.5em;
 }
 
+// #keywordSearch {
+// 		width: 250px;
+// 	}
+
 #main-container {
 	padding-top: 80px;
 	padding-bottom: 50px;
@@ -49,9 +53,9 @@ footer {
 	margin-bottom: 1em;
 }
 
-#childSelectRecords {
-	margin-bottom: 1em;
-}
+// #childSelectRecords {
+// 	margin-bottom: 1em;
+// }
 
 .row {
 	display: flex;
@@ -79,14 +83,37 @@ footer {
 	bottom: 0;
 }
 
+////////////////////////////////////////////////////////
+//////////PRINT/SELECT//////////////////////////////////
+////////////////////////////////////////////////////////
+
+.select-group {
+	margin-bottom: 1em;
+}
+
+#printBTN {
+	display: inline-block;
+	margin-left: 1.5em;
+}
+
+#childSelectRecords {
+	display: inline-block;
+	// max-width: 80%;
+	margin: auto;
+}
+
+////////////////////////////////////////////////////////
 //////////GRAPH JS//////////////////////////////////////
+////////////////////////////////////////////////////////
 
 .panel-heading {
 	text-align: center;
 }
 
 .graph-div {
-	margin-bottom: 1em;
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	border-bottom: 1px solid grey;
 	// border-bottom: 1px solid lightgrey;
 }
 
@@ -134,12 +161,71 @@ footer {
 	margin: 0 auto 1em;
 	text-align: center;
 }
-@media only screen and (max-width: 470px) {
+
+// #graph-dropdown {
+// 	// display: inline-block;
+// }
+
+////////////////////////////////////////////////////////
+//////////MEDIA QUERIES/////////////////////////////////
+////////////////////////////////////////////////////////
+
+@media only screen and (max-width: 499px) {
 
 	#keywordSearch {
 		display: none;
 	}
+
+	#printBTN {
+		display: none;
+	}
+
+	#childSelectRecords {
+		display: block;
+		max-width: 100%;
+		margin: 0;
+	}
+
 }
+
+
+// @media only screen and (max-width: 768px) {
+
+// 	#printBTN {
+// 		// display: inline-block;
+// 		// margin-left: .5em;
+// 	}
+// }
+
+@media only screen and (max-width: 991px) {
+
+	#logo {
+		margin-right: 0;
+	}
+
+
+
+}
+
+@media only screen and (min-width: 500px) {
+
+	#childSelectRecords {
+
+		max-width: 65%;
+
+	}
+
+}
+
+// @media only screen and (min-width: 767px) {
+	
+// 	// #childSelectRecords {
+
+// 	// 	max-width: 80%;
+
+// 	// }
+
+// }
 
 @media only screen and (min-width: 992px) {
 
@@ -147,4 +233,8 @@ footer {
 		margin-left: 10%;
 		margin-right: 3em;
 	}
+
+	// #printBTN {
+	// 	// margin-left: 0;
+	// }
 }

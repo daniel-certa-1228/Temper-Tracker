@@ -2,14 +2,17 @@
   <h2>{{title}}</h2>
 </header>
 
-<div class="dropdown graph-drop">
-  <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Select Child to View Their Metrics
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
+  <div class="dropdown graph-drop" id="graph-dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Select Child to View Their Metrics
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
+    </div>
+    <button type="button" class="btn btn-outline-primary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
   </div>
-</div>
+  
+
 
 <div class="row">
 
@@ -53,6 +56,31 @@
         </div>
     </div>
 
+    <div class="col-lg-6 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl">
+      <div class="panel panel-default">
+          <div class="panel-heading"><h5>Time of Day</h5></div>
+            <div class="panel-body">
+              <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
+                      chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+                      chart-dataset-override="datasetOverride"></canvas>
+                <div class="row data-row">
+                    <div class="col-xs-3 data-labels-sm">
+                      <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
+                    </div>
+                    <div class="col-xs-3 data-nums-sm">
+                      <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
+                    </div>
+                    <div class="col-xs-3 data-labels-sm">
+                      <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
+                    </div>
+                    <div class="col-xs-3 data-nums-sm">
+                      <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
     <div class="col-lg-6 col-sm-12 graph-div" id="radar-chart" ng-controller="RadarCtrl">
           <div class="panel panel-default">
             <div class="panel-heading"><h5>Duration</h5></div>
@@ -70,40 +98,5 @@
             </div>
           </div>
         </div>
-
-<div class="col-lg-6 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl">
-    <div class="panel panel-default">
-          <div class="panel-heading"><h5>Time of Day</h5></div>
-          <div class="panel-body">
-            <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                    chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                    chart-dataset-override="datasetOverride"></canvas>
-                      <div class="row data-row">
-                          <div class="col-xs-3 data-labels-sm">
-                            <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
-                          </div>
-                          <div class="col-xs-3 data-nums-sm">
-                            <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
-                          </div>
-                          <div class="col-xs-3 data-labels-sm">
-                            <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
-                          </div>
-                          <div class="col-xs-3 data-nums-sm">
-                            <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
-                          </div>
-                      </div>
-            </div>
-      </div>
-</div>
-
-<!--     <div class="col-lg-6 col-sm-12 graph-div" id="horizontal bar-chart" ng-controller="BarCtrl">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h5>Duration of Behavior</h5></div>
-            <div class="panel-body">
-              <canvas id="horizontal" class="chart chart-horizontal-bar" chart-data="data"
-                      chart-labels="labels"></canvas>
-            </div>
-        </div>
-    </div> -->
 
 </div>

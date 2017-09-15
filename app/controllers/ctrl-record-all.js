@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren) {
+app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout) {
 	
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "View All Records";
@@ -9,7 +9,11 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 	$scope.searchText = FilterFactory;
 	$scope.kidFilter = FilterFactoryChildren;
 	
-	
+	$scope.printRecords = () => {
+		$timeout($window.print, 0);
+	};
+
+
 	$scope.showAllRecords = () => {
 		console.log( "showAllRecords firing" );
 		ChildFactory.getAllChildren(user)
@@ -38,7 +42,7 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 			})
 			.then(() => {
 				$scope.records.sort(function(a, b) {
-					console.log( "", (a.timestamp) - (b.timestamp) );
+					// console.log( "", (a.timestamp) - (b.timestamp) );
     			return (a.timestamp) - (b.timestamp);
 				});
 				$scope.records.reverse();

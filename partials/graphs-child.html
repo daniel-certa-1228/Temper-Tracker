@@ -1,113 +1,104 @@
-<header class="partial-h2">
-  <h2 ng-repeat="child in childInfo">{{title}} - {{child.name}}</h2>
-</header>
 
-<div class="dropdown graph-drop">
-  <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Select Child to View Their Metrics
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" ng-href="#!/graphs">Back To Graphs Home</a>
+  <header class="partial-h2">
+    <h2 ng-repeat="child in childInfo">{{title}} - {{child.name}}</h2>
+  </header>
 
+  <div class="dropdown graph-drop">
+    <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Select Child to View Their Metrics
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" ng-href="#!/graphs">Back To Graphs Home</a>
+
+    </div>
+    <button type="button" class="btn btn-outline-primary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
   </div>
-</div>
 
-<div class="row">
+  <div class="row">
 
-    <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutChildCtrl">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h5>Antecedent</h5></div>
-        	<div class="panel-body">
-          		<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
-              <div class="row data-row">
-                <div class="col-xs-1 data-colors">
-                  <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
-                </div>
-                <div class="col-xs-6 data-labels">
-                  <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-                </div>
-                <div class="col-xs-5">
-                  <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
-                </div>
-              </div>
-        	</div>
-        </div>
-    </div>
-
-    <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutChildCtrl_2">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h5>Consequence</h5></div>
-        	<div class="panel-body">
-          		<canvas id="doughnut2" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
-              <div class="row data-row">
-                <div class="col-xs-1 data-colors">
-                  <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
-                </div>
-                <div class="col-xs-6 data-labels">
-                  <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-                </div>
-                <div class="col-xs-5">
-                  <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
-                </div>
-              </div>	
-        	</div>
-        </div>
-    </div>
-
-    <div class="col-lg-6 col-sm-12 graph-div" id="radar-chart" ng-controller="RadarChildCtrl">
+      <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutChildCtrl">
           <div class="panel panel-default">
-            <div class="panel-heading"><h5>Duration</h5></div>
-            <div class="panel-body">
-              <canvas id="area" class="chart chart-radar" chart-data="data"
-                      chart-labels="labels" chart-options="options" chart-click="onClick"></canvas>
+              <div class="panel-heading"><h5>Antecedent</h5></div>
+          	<div class="panel-body">
+            		<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
                 <div class="row data-row">
+                  <div class="col-xs-1 data-colors">
+                    <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
+                  </div>
                   <div class="col-xs-6 data-labels">
                     <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
                   </div>
-                  <div class="col-xs-6">
-                    <p ng-repeat="number in numbers track by $index" class="graph-label">{{number}}</p>
+                  <div class="col-xs-5">
+                    <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
                   </div>
-                </div>  
-            </div>
+                </div>
+          	</div>
           </div>
-        </div>
-      
+      </div>
+
+      <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutChildCtrl_2">
+          <div class="panel panel-default">
+              <div class="panel-heading"><h5>Consequence</h5></div>
+          	<div class="panel-body">
+            		<canvas id="doughnut2" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
+                <div class="row data-row">
+                  <div class="col-xs-1 data-colors">
+                    <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
+                  </div>
+                  <div class="col-xs-6 data-labels">
+                    <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+                  </div>
+                  <div class="col-xs-5">
+                    <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+                  </div>
+                </div>	
+          	</div>
+          </div>
+      </div>
 
       <div class="col-lg-6 col-sm-12 graph-div" id="line-chart" ng-controller="LineChildCtrl">
-          <div class="panel panel-default">
-                <div class="panel-heading"><h5>Time of Day</h5></div>
-                <div class="panel-body">
-                  <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                          chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                          chart-dataset-override="datasetOverride"></canvas>
-                            <div class="row data-row">
-                                <div class="col-xs-3 data-labels-sm">
-                                  <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
-                                </div>
-                                <div class="col-xs-3 data-nums-sm">
-                                  <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
-                                </div>
-                                <div class="col-xs-3 data-labels-sm">
-                                  <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
-                                </div>
-                                <div class="col-xs-3 data-nums-sm">
-                                  <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
-                                </div>
-                            </div>
-                  </div>
-            </div>
-      </div>
-</div>
-<!--     <div class="col-lg-6 col-sm-12 graph-div" id="horizontal bar-chart" ng-controller="BarCtrl">
         <div class="panel panel-default">
-            <div class="panel-heading"><h5>Duration of Behavior</h5></div>
-            <div class="panel-body">
-              <canvas id="horizontal" class="chart chart-horizontal-bar" chart-data="data"
-                      chart-labels="labels"></canvas>
-            </div>
-        </div>
-    </div> -->
+              <div class="panel-heading"><h5>Time of Day</h5></div>
+              <div class="panel-body">
+                <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
+                        chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+                        chart-dataset-override="datasetOverride"></canvas>
+                    <div class="row data-row">
+                        <div class="col-xs-3 data-labels-sm">
+                          <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
+                        </div>
+                        <div class="col-xs-3 data-nums-sm">
+                          <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
+                        </div>
+                        <div class="col-xs-3 data-labels-sm">
+                          <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
+                        </div>
+                        <div class="col-xs-3 data-nums-sm">
+                          <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
+                        </div>
+                    </div>
+                </div>
+          </div>
+      </div>
 
-<!-- </div> -->
+      <div class="col-lg-6 col-sm-12 graph-div" id="radar-chart" ng-controller="RadarChildCtrl">
+            <div class="panel panel-default">
+              <div class="panel-heading"><h5>Duration</h5></div>
+              <div class="panel-body">
+                <canvas id="area" class="chart chart-radar" chart-data="data"
+                        chart-labels="labels" chart-options="options" chart-click="onClick"></canvas>
+                  <div class="row data-row">
+                    <div class="col-xs-6 data-labels">
+                      <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p ng-repeat="number in numbers track by $index" class="graph-label">{{number}}</p>
+                    </div>
+                  </div>  
+              </div>
+            </div>
+          </div>
+      
+  </div>

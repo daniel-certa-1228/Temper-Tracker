@@ -1,7 +1,7 @@
 "use strict";
 console.log( "graph-ctrl-child.js" );
 
-app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren){
+app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout){
 
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs";
@@ -23,6 +23,10 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
 		});
 	};
 	getChildrenData();
+
+  $scope.printRecords = () => {
+    $timeout($window.print, 0);
+  };
 
 });
 // ANTECEDENT DONUT GRAPH
@@ -215,7 +219,7 @@ app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, Rec
         {
           id: 'y-axis-2',
           type: 'linear',
-          display: true,
+          display: false,
           position: 'right'
         }
       ]
