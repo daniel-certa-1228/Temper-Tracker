@@ -7,11 +7,11 @@
 		      <option value="">Select Child to View Their Records</option>
 		      <option ng-repeat='child in childrenData' value='{{child.id}}'>{{child.name}}</option>
 		</select>
-		<button type="button" class="btn btn-outline-info" id="printBTN" ng-click="printRecords()">Print Records</button>
+		<button type="button" class="btn btn-outline-primary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
 	</div>
 	<!-- <p>Child Name: {{}}</p> -->
 	<div class="row">
-		<div class="col-sm-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
+		<div class="col-lg-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
 			<div class="card-interior">
 				<p><strong>Child: </strong>{{record.child}}</p>
 				<div class="form-group">
