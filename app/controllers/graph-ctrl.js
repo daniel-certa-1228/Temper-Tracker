@@ -1,7 +1,7 @@
 "use strict";
 console.log( "graph-ctrl.js" );
 
-app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren){
+app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout){
 
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs - All Records";
@@ -16,6 +16,10 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 		});
 	};
 	getChildDropdownData();
+
+  $scope.printRecords = () => {
+    $timeout($window.print, 0);
+  };
 
 });
 

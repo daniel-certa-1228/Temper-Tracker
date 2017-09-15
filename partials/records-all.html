@@ -2,10 +2,13 @@
 	<header class="partial-h2">
 	  <h2>{{title}}</h2>
 	</header>
-	    <select class="form-control" id="childSelectRecords" ng-model="kidFilter.search">
-	      <option value="">Select Child to View Their Records</option>
-	      <option ng-repeat='child in childrenData' value='{{child.id}}'>{{child.name}}</option>
-	</select>
+	<div class="select-group">
+		<select class="form-control" id="childSelectRecords" ng-model="kidFilter.search">
+		      <option value="">Select Child to View Their Records</option>
+		      <option ng-repeat='child in childrenData' value='{{child.id}}'>{{child.name}}</option>
+		</select>
+		<button type="button" class="btn btn-outline-info" id="printBTN" ng-click="printRecords()">Print Records</button>
+	</div>
 	<!-- <p>Child Name: {{}}</p> -->
 	<div class="row">
 		<div class="col-sm-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
