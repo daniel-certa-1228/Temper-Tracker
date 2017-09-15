@@ -21,14 +21,17 @@
             <div class="panel-heading"><h5>Antecedent</h5></div>
         	<div class="panel-body">
           		<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
-          		<div class="row data-row">
-	          		<div class="col-xs-6 data-labels">
-	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-	          		</div>
-	          		<div class="col-xs-6">
-	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
-	          		</div>
-	          	</div>	
+              <div class="row data-row">
+                <div class="col-xs-1 data-colors">
+                  <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
+                </div>
+                <div class="col-xs-6 data-labels">
+                  <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+                </div>
+                <div class="col-xs-5">
+                  <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+                </div>
+              </div>
         	</div>
         </div>
     </div>
@@ -38,14 +41,17 @@
             <div class="panel-heading"><h5>Consequence</h5></div>
         	<div class="panel-body">
           		<canvas id="doughnut2" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
-          		<div class="row data-row">
-	          		<div class="col-xs-6 data-labels">
-	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-	          		</div>
-	          		<div class="col-xs-6">
-	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
-	          		</div>
-	          	</div>	
+              <div class="row data-row">
+                <div class="col-xs-1 data-colors">
+                  <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
+                </div>
+                <div class="col-xs-6 data-labels">
+                  <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+                </div>
+                <div class="col-xs-5">
+                  <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+                </div>
+              </div>	
         	</div>
         </div>
     </div>

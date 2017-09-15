@@ -94,6 +94,11 @@ footer {
 	margin: auto;
 }
 
+.color-spans {
+	width: 15px;
+	height: 15px;
+}
+
 .data-row {
 	margin: 1em auto 0;
 }
@@ -109,6 +114,18 @@ footer {
 .data-nums-sm {
 	padding-right: 3em;
 }
+
+.data-colors {
+	margin-right: .5em;
+	padding-right: 0;
+}
+
+.color-spans {
+	margin-top: .3em;
+	margin-bottom: .5em;
+	margin-right: 0;
+}
+
 .graph-label {
 	margin-bottom: 0;
 }
