@@ -35,7 +35,7 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
   });
 
 	const windowCheck = (location) => {
-
+		//disables nav bar if there is nothing to search
 		if ((location === "/list-records") || (location === "/all-children")) {
 			$scope.searchbar = true;
 			$scope.searchText = FilterFactory;
@@ -43,16 +43,22 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 			$scope.searchbar = false;
 			$scope.searchText = angular.copy($scope.default);
 		}
-		// console.log( "$scope.searchbar", $scope.searchbar );
 	};
 
-
+	//watch $scope to check what page we're on
 	$scope.$watch(() => {
 		let path = $location.path();
 		windowCheck(path);
-		// console.log( "path", path );
     return $location.path();
 	});
+
+	//animation to have hambuger menu close on click
+	 $(function(){ 
+     var navMain = $(".navbar-collapse");
+     navMain.on("click", "a:not([data-toggle])", null, function () {
+         navMain.collapse('hide');
+     });
+ });
 
 });
 	// $scope.$on('$locationChangeStart', function(event) {
