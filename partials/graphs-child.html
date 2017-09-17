@@ -18,6 +18,17 @@
 
   <div class="row">
 
+      <div class="col-lg-12 col-sm-12 graph-div" id="line-chart" ng-controller="LineChildCtrl_2">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h5>Incidence of Challenging Behavior per Day - Last 30 Days</h5></div>
+          <div class="panel-body">
+            <canvas id="line2" class="chart chart-line" chart-data="data" chart-labels="labels"
+                    chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+                    chart-dataset-override="datasetOverride"></canvas>
+          </div>
+        </div>
+      </div>
+
       <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutChildCtrl">
           <div class="panel panel-default">
               <div class="panel-heading"><h5>Antecedent</h5></div>

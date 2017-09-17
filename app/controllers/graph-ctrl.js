@@ -321,3 +321,118 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory) {
   };
   getTimeData();
 });
+
+///////////////////////////////////////////////////////
+//////////////// LAST 30 DAYS LINE GRAPH  /////////////
+///////////////////////////////////////////////////////
+
+app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
+
+  let thirty = 0;
+  let twentyNine = 0;
+  let twentyEight = 0;
+  let twentySeven = 0;
+  let twentySix = 0;
+  let twentyFive = 0;
+  let twentyFour = 0;
+  let twentyThree = 0;
+  let twentyTwo = 0;
+  let twentyOne = 0;
+  let twenty = 0;
+  let nineteen = 0;
+  let eighteen = 0;
+  let seventeen = 0;
+  let sixteen = 0;
+  let fifteen = 0;
+  let fourteen = 0;
+  let thirteen = 0;
+  let twelve = 0;
+  let eleven = 0;
+  let ten = 0;
+  let nine = 0;
+  let eight = 0;
+  let seven = 0;
+  let six = 0;
+  let five = 0;
+  let four = 0;
+  let three = 0;
+  let two = 0;
+  let one = 0;
+  let zero = 0;
+
+  let user = UserFactory.getCurrentUser();
+  //Graph Settings
+  $scope.labels = [];
+  $scope.series = ['Series A'];
+  $scope.data = [
+    [zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyOne, twentyTwo, twentyThree, twentyFour, twentyFive, twentySix, twentySeven, twentyEight, twentyNine, thirty ]
+  ];
+  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  $scope.options = {
+    scales: {
+      yAxes: [
+        {
+          id: 'y-axis-1',
+          type: 'linear',
+          display: true,
+          position: 'left'
+        },
+        {
+          id: 'y-axis-2',
+          type: 'linear',
+          display: false,
+          position: 'right'
+        }
+      ]
+    }
+  };
+
+  let dbDates = [];
+  $scope.dateReference = [];
+
+  const getALlData = () => {
+    RecordFactory.getAllRecords(user)
+    .then((data) => {
+      data.forEach((record) => {
+        let dates = new Date(record.date).toString().slice(4,15);
+        dbDates.push(dates);
+      });
+      return dbDates;
+    })
+    .then((dbDates) => {
+      console.log( "dbDates", dbDates );
+      for (let i = 0; i < $scope.dateReference.length; i++) {
+        for (let j = 0; j < dbDates.length; j++) {
+          if ($scope.dateReference[i] === dbDates[j]) {
+              $scope.data[0][i]++;
+            // console.log( "dbDates", $scope.dateReference[i], dbDates[j] );
+          }
+        }
+      }
+      console.log( "thirt", thirty );
+    });
+  };
+  getALlData();
+
+//Create a stable reference of the last 30 days
+  const fillDateReference = () => {
+    for (let i = 30; i > 0; i--) {
+      let dateLabel = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,15);
+      $scope.dateReference.push(dateLabel);
+    }
+    let today = new Date().toString().slice(4,15);
+    $scope.dateReference.push(today);
+    // console.log( "$scope.dateReferencey", $scope.dateReference );
+  };
+  fillDateReference();
+//Dynamically fill the x-axis of the chart
+  const fillLabels = () => {
+    for (let i = 30; i > 0; i--) {
+      let dateLabel = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,10);
+      $scope.labels.push(dateLabel);
+    }
+    let today = new Date().toString().slice(4,10);
+    $scope.labels.push("Today- " + today);
+  };
+  fillLabels();
+});

@@ -46,10 +46,6 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 		// console.log( "$scope.searchbar", $scope.searchbar );
 	};
 
-	$scope.$on('$locationChangeStart', function(event) {
-	 	console.log( "CHANGEEEEEE" );
-	 	// $scope.searchText = angular.copy($scope.default);
-	});
 
 	$scope.$watch(() => {
 		let path = $location.path();
@@ -59,3 +55,11 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 	});
 
 });
+	// $scope.$on('$locationChangeStart', function(event) {
+	//  	console.log( "CHANGEEEEEE" );
+	//  	// $scope.searchText = angular.copy($scope.default);
+	//  	// let input = document.getElementById("keywordSearch");
+
+	//  	// input.value = '';
+
+	// });
