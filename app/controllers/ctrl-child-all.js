@@ -15,7 +15,7 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 			for (let i = 0; i < data.length; i++) {
 				let fixedDate = new Date(data[i].birthdate);
 				$scope.childrenData[i].birthdate = fixedDate;
-				console.log( "fixedDate", fixedDate );
+				// console.log( "fixedDate", fixedDate );
 			}
 			console.log( "$scope.childrenData", $scope.childrenData );
 		})
