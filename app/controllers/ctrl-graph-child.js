@@ -34,6 +34,7 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
     $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a'];
     $scope.labels = ['Diverted Attention', 'Parental Demand', 'Item Removed'];
     $scope.data = [0, 0, 0];
+    $scope.percentages = [0, 0, 0];
 
 
     $timeout(function () {
@@ -71,6 +72,11 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
 	    	.then(() => {
 	    		$scope.data = [$scope.demands.length, $scope.diverted.length, $scope.itemRemoved.length];
 	    	})
+        .then(() => {
+          let totals = ($scope.demands.length + $scope.diverted.length + $scope.itemRemoved.length);
+          $scope.percentages = [(Math.round(($scope.demands.length/totals)*100)),(Math.round(($scope.diverted.length/totals)*100)), (Math.round(($scope.itemRemoved.length/totals)*100))];
+          console.log( "$scope.percentages", $scope.percentages );
+        })
 	    	.catch((error) => {
 	    		console.log( "error", error );
 	    	});
@@ -130,6 +136,10 @@ app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'Us
 				$scope.data = [$scope.attentionArray.length, $scope.givenArray.length, $scope.removedArray.length, $scope.escapeArray.length, $scope.noneArray.length];
 				console.log( "$scope.data", $scope.data );
 			})
+      .then(() => {
+        let conTotals = ($scope.attentionArray.length + $scope.givenArray.length + $scope.removedArray.length + $scope.escapeArray.length + $scope.noneArray.length);
+        $scope.conPercentages = [(Math.round(($scope.attentionArray.length/conTotals)*100)),(Math.round(($scope.givenArray.length/conTotals)*100)), (Math.round(($scope.removedArray.length/conTotals)*100)), (Math.round(($scope.escapeArray.length/conTotals)*100)), (Math.round(($scope.noneArray.length/conTotals)*100))];
+      })
 			.catch((error) => {
 		    		console.log( "error", error );
 		    });
@@ -189,7 +199,10 @@ app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, Re
     [$scope.ZeroArray.length, $scope.FiveArray.length, $scope.ElevenArray.length, $scope.TwentyOneArray.length, $scope.ThirtyArray.length]];
 
     	$scope.numbers = $scope.data[0];
-  	});
+  	})
+    .then(() => {
+
+    });
   };
   getDurationData();
 });

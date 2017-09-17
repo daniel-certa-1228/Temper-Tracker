@@ -39,9 +39,12 @@
 	          		<div class="col-xs-6 data-labels">
 	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
 	          		</div>
-	          		<div class="col-xs-5">
+	          		<div class="col-xs-2 data-nums-sm">
 	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
 	          		</div>
+                <div class="col-xs-3">
+                  <p ng-repeat="percentage in percentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                </div>
 	          	</div>	
         	</div>
         </div>
@@ -59,9 +62,12 @@
 	          		<div class="col-xs-6 data-labels">
 	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
 	          		</div>
-	          		<div class="col-xs-5">
-	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
-	          		</div>
+                <div class="col-xs-2 data-nums-sm">
+                  <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+                </div>
+                <div class="col-xs-3">
+                  <p ng-repeat="percentage in conPercentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                </div>
 	          	</div>	
         	</div>
         </div>
