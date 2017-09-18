@@ -30,7 +30,7 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
 
 });
 // ANTECEDENT DONUT GRAPH
-app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'UserFactory', 'RecordFactory', function ($scope, $timeout, $routeParams,UserFactory, RecordFactory) {
+app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'UserFactory', 'RecordFactory', 'MathFactory', function ($scope, $timeout, $routeParams,UserFactory, RecordFactory, MathFactory) {
     $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a'];
     $scope.labels = ['Diverted Attention', 'Parental Demand', 'Item Removed'];
     $scope.data = [0, 0, 0];
@@ -73,9 +73,10 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
 	    		$scope.data = [$scope.demands.length, $scope.diverted.length, $scope.itemRemoved.length];
 	    	})
         .then(() => {
-          let totals = ($scope.demands.length + $scope.diverted.length + $scope.itemRemoved.length);
-          $scope.percentages = [(Math.round(($scope.demands.length/totals)*100)),(Math.round(($scope.diverted.length/totals)*100)), (Math.round(($scope.itemRemoved.length/totals)*100))];
-          console.log( "$scope.percentages", $scope.percentages );
+          let totals = $scope.data.reduce((acc,cur) => acc + cur, 0);
+
+          $scope.percentages = [MathFactory.calcPercent($scope.demands.length, totals), MathFactory.calcPercent($scope.diverted.length, totals), MathFactory.calcPercent($scope.itemRemoved.length, totals)];
+          // console.log( "$scope.percentages", $scope.percentages );
         })
 	    	.catch((error) => {
 	    		console.log( "error", error );
@@ -85,7 +86,7 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
     }, 400);
 }]);
 // CONSEQUENCE DONUT GRAPH
-app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'UserFactory', 'RecordFactory', function ($scope, $timeout, $routeParams,UserFactory,  RecordFactory) {
+app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'UserFactory', 'RecordFactory', 'MathFactory', function ($scope, $timeout, $routeParams,UserFactory, RecordFactory, MathFactory) {
     $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a', '#46bfbd', '#fdb45c'];
     $scope.labels = ['Attention', 'Item Given', 'Item Removed', 'Escape', 'None'];
     $scope.data = [0, 0, 0, 0, 0];
@@ -137,8 +138,9 @@ app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'Us
 				console.log( "$scope.data", $scope.data );
 			})
       .then(() => {
-        let conTotals = ($scope.attentionArray.length + $scope.givenArray.length + $scope.removedArray.length + $scope.escapeArray.length + $scope.noneArray.length);
-        $scope.conPercentages = [(Math.round(($scope.attentionArray.length/conTotals)*100)), (Math.round(($scope.givenArray.length/conTotals)*100)), (Math.round(($scope.removedArray.length/conTotals)*100)), (Math.round(($scope.escapeArray.length/conTotals)*100)), (Math.round(($scope.noneArray.length/conTotals)*100))];
+        let conTotals = $scope.data.reduce((acc,cur) => acc + cur, 0);
+        
+        $scope.conPercentages = [MathFactory.calcPercent($scope.attentionArray.length, conTotals), MathFactory.calcPercent($scope.givenArray.length, conTotals), MathFactory.calcPercent($scope.removedArray.length, conTotals), MathFactory.calcPercent($scope.escapeArray.length, conTotals), MathFactory.calcPercent($scope.noneArray.length, conTotals)];
       })
 			.catch((error) => {
 		    		console.log( "error", error );
@@ -148,7 +150,7 @@ app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'Us
 	    }, 400);
 }]);
 
-app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, RecordFactory) {
+app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, RecordFactory, MathFactory) {
   $scope.labels =[ "0-4 min", "5-10 min", "11-20 min", "21-30 min", "Over 30 min" ];
 
   $scope.data = [
@@ -194,15 +196,13 @@ app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, Re
   		});
   	})
   	.then(() => {
-  		// console.log( "durations", $scope.ZeroArray.length, $scope.FiveArray.length, $scope.ElevenArray.length, $scope.TwentyOneArray.length, $scope.ThirtyArray.length );
-  		$scope.data = [
-    [$scope.ZeroArray.length, $scope.FiveArray.length, $scope.ElevenArray.length, $scope.TwentyOneArray.length, $scope.ThirtyArray.length]];
+  		$scope.data = [[$scope.ZeroArray.length, $scope.FiveArray.length, $scope.ElevenArray.length, $scope.TwentyOneArray.length, $scope.ThirtyArray.length]];
 
     	$scope.numbers = $scope.data[0];
   	})
     .then(() => {
-      let durTotals = ($scope.ZeroArray.length + $scope.FiveArray.length + $scope.ElevenArray.length + $scope.TwentyOneArray.length + $scope.ThirtyArray.length);
-      $scope.durPercentages = [(Math.round(($scope.ZeroArray.length/durTotals)*100)), (Math.round(($scope.FiveArray.length/durTotals)*100)), (Math.round(($scope.ElevenArray.length/durTotals)*100)), (Math.round(($scope.TwentyOneArray.length/durTotals)*100)), (Math.round(($scope.ThirtyArray.length/durTotals)*100))];
+      let durTotals = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
+      $scope.durPercentages = [MathFactory.calcPercent($scope.ZeroArray.length, durTotals), MathFactory.calcPercent($scope.FiveArray.length, durTotals), MathFactory.calcPercent($scope.ElevenArray.length, durTotals), MathFactory.calcPercent($scope.TwentyOneArray.length, durTotals), MathFactory.calcPercent($scope.ThirtyArray.length, durTotals)];
     });
   };
   getDurationData();
@@ -212,7 +212,7 @@ app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, Re
 //////////////// TIME OF DAY LINE GRAPH  //////////////
 ///////////////////////////////////////////////////////
 
-app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, RecordFactory) {
+app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, RecordFactory, MathFactory) {
 
   $scope.labels = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm"];
   $scope.series = ['Series A'];
@@ -335,8 +335,9 @@ app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, Rec
   		$scope.labels2 = $scope.labels.slice(8,16);
   	})
     .then(() => {
-      let timeTotals = ($scope.SixAmArray.length+$scope.SevenAmArray.length+$scope.EightAmArray.length+$scope.NineAmArray.length+$scope.TenAmArray.length+$scope.ElevenAmArray.length+$scope.TwelvePmArray.length+$scope.OnePmArray.length+$scope.TwoPmArray.length+$scope.ThreePmArray.length+$scope.FourPmArray.length+$scope.FivePmArray.length+$scope.SixPmArray.length+$scope.SevenPmArray.length+$scope.EightPmArray.length+$scope.NinePmArray.length);
-      $scope.timePercentages = [(Math.round(($scope.SixAmArray.length/timeTotals)*100)), (Math.round(($scope.SevenAmArray.length/timeTotals)*100)), (Math.round(($scope.EightAmArray.length/timeTotals)*100)), (Math.round(($scope.NineAmArray.length/timeTotals)*100)), (Math.round(($scope.TenAmArray.length/timeTotals)*100)), (Math.round(($scope.ElevenAmArray.length/timeTotals)*100)), (Math.round(($scope.TwelvePmArray.length/timeTotals)*100)), (Math.round(($scope.OnePmArray.length/timeTotals)*100)), (Math.round(($scope.TwoPmArray.length/timeTotals)*100)), (Math.round(($scope.ThreePmArray.length/timeTotals)*100)), (Math.round(($scope.FourPmArray.length/timeTotals)*100)), (Math.round(($scope.FivePmArray.length/timeTotals)*100)), (Math.round(($scope.SixPmArray.length/timeTotals)*100)), (Math.round(($scope.SevenPmArray.length/timeTotals)*100)), (Math.round(($scope.EightPmArray.length/timeTotals)*100)), (Math.round(($scope.NinePmArray.length/timeTotals)*100))];
+      let timeTotals = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
+
+      $scope.timePercentages = [MathFactory.calcPercent($scope.SixAmArray.length, timeTotals), MathFactory.calcPercent($scope.SevenAmArray.length, timeTotals), MathFactory.calcPercent($scope.EightAmArray.length, timeTotals), MathFactory.calcPercent($scope.NineAmArray.length, timeTotals), MathFactory.calcPercent($scope.TenAmArray.length, timeTotals), MathFactory.calcPercent($scope.ElevenAmArray.length, timeTotals), MathFactory.calcPercent($scope.TwelvePmArray.length, timeTotals), MathFactory.calcPercent($scope.OnePmArray.length, timeTotals), MathFactory.calcPercent($scope.TwoPmArray.length, timeTotals), MathFactory.calcPercent($scope.ThreePmArray.length, timeTotals), MathFactory.calcPercent($scope.FourPmArray.length, timeTotals), MathFactory.calcPercent($scope.FivePmArray.length, timeTotals), MathFactory.calcPercent($scope.SixPmArray.length, timeTotals), MathFactory.calcPercent($scope.SevenPmArray.length, timeTotals), MathFactory.calcPercent($scope.EightPmArray.length, timeTotals), MathFactory.calcPercent($scope.NinePmArray.length, timeTotals)];
 
         $scope.timePercentages1 = $scope.timePercentages.slice(0,8);
         $scope.timePercentages2 = $scope.timePercentages.slice(8,16);
@@ -436,12 +437,12 @@ app.controller("LineChildCtrl_2", function ($scope, UserFactory, RecordFactory, 
     });
   };
   getALlData();
-
+  
 //Create a stable reference of the last 30 days
   const fillDateReference = () => {
     for (let i = 30; i > 0; i--) {
-      let dateLabel = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,15);
-      $scope.dateReference.push(dateLabel);
+      let dateRef = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,15);
+      $scope.dateReference.push(dateRef);
     }
     let today = new Date().toString().slice(4,15);
     $scope.dateReference.push(today);
