@@ -83,17 +83,23 @@
                         chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
                         chart-dataset-override="datasetOverride"></canvas>
                     <div class="row data-row">
-                        <div class="col-xs-3 data-labels-sm">
+                        <div class="col-xs-2 data-labels-sm">
                           <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
                         </div>
-                        <div class="col-xs-3 data-nums-sm">
+                        <div class="col-xs-2 data-nums-sm">
                           <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
                         </div>
-                        <div class="col-xs-3 data-labels-sm">
+                        <div class="col-xs-2 data-nums-sm">
+                          <p ng-repeat="percentage in timePercentages1 track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                        </div>
+                        <div class="col-xs-2 data-labels-sm">
                           <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
                         </div>
-                        <div class="col-xs-3 data-nums-sm">
+                        <div class="col-xs-2 data-nums-sm">
                           <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
+                        </div>
+                        <div class="col-xs-2 data-nums-sm">
+                          <p ng-repeat="percentage in timePercentages2 track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
                         </div>
                     </div>
                 </div>
