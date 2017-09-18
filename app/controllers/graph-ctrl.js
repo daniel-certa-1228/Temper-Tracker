@@ -198,7 +198,11 @@ app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory) {
     [$scope.ZeroArray.length, $scope.FiveArray.length, $scope.ElevenArray.length, $scope.TwentyOneArray.length, $scope.ThirtyArray.length]];
 
     	$scope.numbers = $scope.data[0];
-  	});
+  	})
+    .then(() => {
+      let durTotals = ($scope.ZeroArray.length + $scope.FiveArray.length + $scope.ElevenArray.length + $scope.TwentyOneArray.length + $scope.ThirtyArray.length);
+      $scope.durPercentages = [(Math.round(($scope.ZeroArray.length/durTotals)*100)), (Math.round(($scope.FiveArray.length/durTotals)*100)), (Math.round(($scope.ElevenArray.length/durTotals)*100)), (Math.round(($scope.TwentyOneArray.length/durTotals)*100)), (Math.round(($scope.ThirtyArray.length/durTotals)*100))];
+    });
   };
   getDurationData();
 });
@@ -324,11 +328,18 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory) {
   	})
   	.then(() => {
   		$scope.data[0] = [$scope.SixAmArray.length, $scope.SevenAmArray.length, $scope.EightAmArray.length, $scope.NineAmArray.length, $scope.TenAmArray.length, $scope.ElevenAmArray.length, $scope.TwelvePmArray.length, $scope.OnePmArray.length, $scope.TwoPmArray.length, $scope.ThreePmArray.length, $scope.FourPmArray.length, $scope.FivePmArray.length, $scope.SixPmArray.length, $scope.SevenPmArray.length, $scope.EightPmArray.length, $scope.NinePmArray.length];
-  		$scope.numbers1 = $scope.data[0].slice(0,7);
-  		$scope.numbers2 = $scope.data[0].slice(8,15);
-  		$scope.labels1 = $scope.labels.slice(0,7);
-  		$scope.labels2 = $scope.labels.slice(8,15);
-  	});
+  		$scope.numbers1 = $scope.data[0].slice(0,8);
+  		$scope.numbers2 = $scope.data[0].slice(8,16);
+  		$scope.labels1 = $scope.labels.slice(0,8);
+  		$scope.labels2 = $scope.labels.slice(8,16);
+  	})
+    .then(() => {
+      let timeTotals = ($scope.SixAmArray.length+$scope.SevenAmArray.length+$scope.EightAmArray.length+$scope.NineAmArray.length+$scope.TenAmArray.length+$scope.ElevenAmArray.length+$scope.TwelvePmArray.length+$scope.OnePmArray.length+$scope.TwoPmArray.length+$scope.ThreePmArray.length+$scope.FourPmArray.length+$scope.FivePmArray.length+$scope.SixPmArray.length+$scope.SevenPmArray.length+$scope.EightPmArray.length+$scope.NinePmArray.length);
+      $scope.timePercentages = [(Math.round(($scope.SixAmArray.length/timeTotals)*100)), (Math.round(($scope.SevenAmArray.length/timeTotals)*100)), (Math.round(($scope.EightAmArray.length/timeTotals)*100)), (Math.round(($scope.NineAmArray.length/timeTotals)*100)), (Math.round(($scope.TenAmArray.length/timeTotals)*100)), (Math.round(($scope.ElevenAmArray.length/timeTotals)*100)), (Math.round(($scope.TwelvePmArray.length/timeTotals)*100)), (Math.round(($scope.OnePmArray.length/timeTotals)*100)), (Math.round(($scope.TwoPmArray.length/timeTotals)*100)), (Math.round(($scope.ThreePmArray.length/timeTotals)*100)), (Math.round(($scope.FourPmArray.length/timeTotals)*100)), (Math.round(($scope.FivePmArray.length/timeTotals)*100)), (Math.round(($scope.SixPmArray.length/timeTotals)*100)), (Math.round(($scope.SevenPmArray.length/timeTotals)*100)), (Math.round(($scope.EightPmArray.length/timeTotals)*100)), (Math.round(($scope.NinePmArray.length/timeTotals)*100))];
+
+        $scope.timePercentages1 = $scope.timePercentages.slice(0,8);
+        $scope.timePercentages2 = $scope.timePercentages.slice(8,16);
+    });
   };
   getTimeData();
 });
