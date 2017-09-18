@@ -106,12 +106,15 @@
               <div class="panel-body">
                 <canvas id="area" class="chart chart-radar" chart-data="data"
                         chart-labels="labels" chart-options="options" chart-click="onClick"></canvas>
-                  <div class="row data-row">
-                    <div class="col-xs-6 data-labels">
-                      <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-                    </div>
-                    <div class="col-xs-6">
-                      <p ng-repeat="number in numbers track by $index" class="graph-label">{{number}}</p>
+                    <div class="row data-row">
+                      <div class="col-xs-6 data-labels">
+                        <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+                      </div>
+                      <div class="col-xs-3">
+                        <p ng-repeat="number in numbers track by $index" class="graph-label data-nums-sm">{{number}}</p>
+                      </div>
+                      <div class="col-xs-3">
+                        <p ng-repeat="percentage in durPercentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
                     </div>
                   </div>  
               </div>

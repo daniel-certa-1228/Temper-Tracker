@@ -138,7 +138,7 @@ app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'Us
 			})
       .then(() => {
         let conTotals = ($scope.attentionArray.length + $scope.givenArray.length + $scope.removedArray.length + $scope.escapeArray.length + $scope.noneArray.length);
-        $scope.conPercentages = [(Math.round(($scope.attentionArray.length/conTotals)*100)),(Math.round(($scope.givenArray.length/conTotals)*100)), (Math.round(($scope.removedArray.length/conTotals)*100)), (Math.round(($scope.escapeArray.length/conTotals)*100)), (Math.round(($scope.noneArray.length/conTotals)*100))];
+        $scope.conPercentages = [(Math.round(($scope.attentionArray.length/conTotals)*100)), (Math.round(($scope.givenArray.length/conTotals)*100)), (Math.round(($scope.removedArray.length/conTotals)*100)), (Math.round(($scope.escapeArray.length/conTotals)*100)), (Math.round(($scope.noneArray.length/conTotals)*100))];
       })
 			.catch((error) => {
 		    		console.log( "error", error );
@@ -201,7 +201,8 @@ app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, Re
     	$scope.numbers = $scope.data[0];
   	})
     .then(() => {
-
+      let durTotals = ($scope.ZeroArray.length + $scope.FiveArray.length + $scope.ElevenArray.length + $scope.TwentyOneArray.length + $scope.ThirtyArray.length);
+      $scope.durPercentages = [(Math.round(($scope.ZeroArray.length/durTotals)*100)), (Math.round(($scope.FiveArray.length/durTotals)*100)), (Math.round(($scope.ElevenArray.length/durTotals)*100)), (Math.round(($scope.TwentyOneArray.length/durTotals)*100)), (Math.round(($scope.ThirtyArray.length/durTotals)*100))];
     });
   };
   getDurationData();

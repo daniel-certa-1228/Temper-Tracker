@@ -198,7 +198,11 @@ app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory) {
     [$scope.ZeroArray.length, $scope.FiveArray.length, $scope.ElevenArray.length, $scope.TwentyOneArray.length, $scope.ThirtyArray.length]];
 
     	$scope.numbers = $scope.data[0];
-  	});
+  	})
+    .then(() => {
+      let durTotals = ($scope.ZeroArray.length + $scope.FiveArray.length + $scope.ElevenArray.length + $scope.TwentyOneArray.length + $scope.ThirtyArray.length);
+      $scope.durPercentages = [(Math.round(($scope.ZeroArray.length/durTotals)*100)), (Math.round(($scope.FiveArray.length/durTotals)*100)), (Math.round(($scope.ElevenArray.length/durTotals)*100)), (Math.round(($scope.TwentyOneArray.length/durTotals)*100)), (Math.round(($scope.ThirtyArray.length/durTotals)*100))];
+    });
   };
   getDurationData();
 });
