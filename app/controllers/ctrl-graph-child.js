@@ -437,12 +437,12 @@ app.controller("LineChildCtrl_2", function ($scope, UserFactory, RecordFactory, 
     });
   };
   getALlData();
-
+  
 //Create a stable reference of the last 30 days
   const fillDateReference = () => {
     for (let i = 30; i > 0; i--) {
-      let dateLabel = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,15);
-      $scope.dateReference.push(dateLabel);
+      let dateRef = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,15);
+      $scope.dateReference.push(dateRef);
     }
     let today = new Date().toString().slice(4,15);
     $scope.dateReference.push(today);
