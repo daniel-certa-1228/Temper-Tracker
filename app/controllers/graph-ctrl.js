@@ -217,7 +217,7 @@ app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory, MathFa
 app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFactory) {
 
   $scope.labels = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm"];
-  $scope.series = ['Series A'];
+  $scope.series = ['Incidents'];
   $scope.data = [
     [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 55, 40]
   ];
@@ -391,7 +391,7 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
   let user = UserFactory.getCurrentUser();
   //Graph Settings
   $scope.labels = [];
-  $scope.series = ['Series A'];
+  $scope.series = ['Incidents'];
   $scope.data = [
     [zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyOne, twentyTwo, twentyThree, twentyFour, twentyFive, twentySix, twentySeven, twentyEight, twentyNine, thirty ]
   ];
