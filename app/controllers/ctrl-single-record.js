@@ -35,7 +35,7 @@ app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams,
 			ChildFactory.getSingleChild(childID)
 			.then((data) => {
 				$scope.record.child = data.name;
-				console.log( "$scope.record", $scope.record );
+				// console.log( "$scope.record", $scope.record );
 			});
 		});
 	};

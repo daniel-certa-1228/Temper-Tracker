@@ -15,12 +15,12 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 	};
 
 	const getSingleChild = () => {
-		console.log( "$routeParams.itemId", $routeParams.itemId );
+		// console.log( "$routeParams.itemId", $routeParams.itemId );
 		ChildFactory.getSingleChild($routeParams.itemId)
 		.then((data) => {
 			$scope.child = data;
 			let fixedBirth = new Date(data.birthdate);
-			console.log( "fixedBirth", fixedBirth );
+			// console.log( "fixedBirth", fixedBirth );
 			$scope.child.birthdate = fixedBirth;
 
 		});	
