@@ -1,5 +1,5 @@
 "use strict";
-console.log( "graph-ctrl-child.js" );
+// console.log( "graph-ctrl-child.js" );
 
 app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout){
 
@@ -19,7 +19,6 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
 					$scope.childInfo.push(data[i]);
 				}
 			}
-			console.log( "CHILD INFOOOOO", $scope.childrenInfo );
 		});
 	};
 	getChildrenData();
@@ -39,7 +38,6 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
 
     $timeout(function () {
       // $scope.data = [0, 0, 0];
-
       $scope.anteArray = [];
       $scope.demand = [];
       $scope.diverted = [];
@@ -58,7 +56,6 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
 	    		return $scope.anteArray.sort();
 	    	})
 	    	.then((antecedents) => {
-	    		console.log( "antecedents", antecedents );
 	    		$scope.demands = antecedents.filter(function(ante){
 	    			return ante.charAt(0) === 'P';
 	    		});
@@ -76,7 +73,6 @@ app.controller('DoughnutChildCtrl', ['$scope', '$timeout', '$routeParams',  'Use
           let totals = $scope.data.reduce((acc,cur) => acc + cur, 0);
 
           $scope.percentages = [MathFactory.calcPercent($scope.demands.length, totals), MathFactory.calcPercent($scope.diverted.length, totals), MathFactory.calcPercent($scope.itemRemoved.length, totals)];
-          // console.log( "$scope.percentages", $scope.percentages );
         })
 	    	.catch((error) => {
 	    		console.log( "error", error );
@@ -94,7 +90,6 @@ app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'Us
     
 
     $timeout(function () {
-	    // $scope.data = [4, 8, 2, 1, 3];
 	    $scope.consequenceArray = [];
 
 	    $scope.attentionArray = [];
@@ -131,11 +126,9 @@ app.controller('DoughnutChildCtrl_2', ['$scope', '$timeout', '$routeParams', 'Us
 				$scope.noneArray = consequences.filter(function(cons){
 					return cons.charAt(0) === 'N';
 				});
-				// console.log( "$scope.noneArray", $scope.noneArray );
 			})
 			.then(() => {
 				$scope.data = [$scope.attentionArray.length, $scope.givenArray.length, $scope.removedArray.length, $scope.escapeArray.length, $scope.noneArray.length];
-				console.log( "$scope.data", $scope.data );
 			})
       .then(() => {
         let conTotals = $scope.data.reduce((acc,cur) => acc + cur, 0);
@@ -171,11 +164,10 @@ app.controller("RadarChildCtrl", function ($scope, $routeParams, UserFactory, Re
   const getDurationData = () => {
   	RecordFactory.getRecordsByChildID($routeParams.itemId)
   	.then((data) => {
-  		// console.log( "duration data", data );
   		data.forEach((record) => {
   			$scope.durationArray.push(record.duration);
   		});
-  		console.log( "$scope.durationArray.sort()", $scope.durationArray.sort() );
+  		// console.log( "$scope.durationArray.sort()", $scope.durationArray.sort() );
   		return $scope.durationArray.sort();
   	})
   	.then((durations) => {
@@ -264,7 +256,6 @@ app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, Rec
   const getTimeData = () => {
   	RecordFactory.getRecordsByChildID($routeParams.itemId)
   	.then((data) => {
-  		// console.log( "time data", data );
   		data.forEach((record) => {
   			let fixedTime = new Date(record.time);
   			$scope.TimeArray.push(fixedTime.toString());
@@ -272,9 +263,7 @@ app.controller("LineChildCtrl", function ($scope, $routeParams, UserFactory, Rec
   		return $scope.TimeArray;
   	})
   	.then((times) => {
-  		// console.log( "TIMES", times );
   		times.forEach((time) =>{
-
   			if ( (/([0][6]:)([0-2][0-9]:)/ig).test(time) ) {
   				$scope.SixAmArray.push(time);
   			}
@@ -429,7 +418,6 @@ app.controller("LineChildCtrl_2", function ($scope, UserFactory, RecordFactory, 
         for (let j = 0; j < dbDates.length; j++) {
           if ($scope.dateReference[i] === dbDates[j]) {
               $scope.data[0][i]++;
-            // console.log( "dbDates", $scope.dateReference[i], dbDates[j] );
           }
         }
       }
@@ -446,7 +434,6 @@ app.controller("LineChildCtrl_2", function ($scope, UserFactory, RecordFactory, 
     }
     let today = new Date().toString().slice(4,15);
     $scope.dateReference.push(today);
-    // console.log( "$scope.dateReferencey", $scope.dateReference );
   };
   fillDateReference();
 //Dynamically fill the x-axis of the chart

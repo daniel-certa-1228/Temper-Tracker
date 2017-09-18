@@ -19,7 +19,7 @@ app.controller('ViewSingleChildCtrl', function($scope, $location, $routeParams, 
 			$scope.child = data;
 			$scope.child.id = $routeParams.itemId;
 			let fixedBirth = new Date(data.birthdate);
-			console.log( "fixedBirth", fixedBirth );
+			// console.log( "fixedBirth", fixedBirth );
 			$scope.child.birthdate = fixedBirth;
 		});
 	};

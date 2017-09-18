@@ -80,7 +80,7 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 			let editedRecordObj = JSON.stringify(obj);
 			$http.patch(`${FBCreds.databaseURL}/records/${recordID}.json`, editedRecordObj)
 			.then((data) => {
-				console.log( "edit data", data );
+				// console.log( "edit data", data );
 				resolve(data);
 			})
 			.catch((error) => {

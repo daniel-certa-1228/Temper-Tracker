@@ -14,17 +14,17 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 	};
 
 	$scope.showAllRecords = () => {
-		console.log( "showAllRecords firing" );
+		// console.log( "showAllRecords firing" );
 		ChildFactory.getAllChildren(user)
 		.then((data) => {
 			$scope.childrenData = data;
-			console.log( "$scope.childrenData", $scope.childrenData);
+			// console.log( "$scope.childrenData", $scope.childrenData);
 		})
 		.then(() => {
 			RecordFactory.getAllRecords(user)
 			.then((data) => {
 				$scope.records = data;
-				console.log( "$scope.records", $scope.records );
+				// console.log( "$scope.records", $scope.records );
 				for (let i = 0; i < $scope.records.length; i++) {
 					let fixedDate = new Date(data[i].date);
 					let fixedTime = new Date(data[i].time);

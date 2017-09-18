@@ -28,7 +28,7 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 			$scope.record.date = fixedDate;
 			$scope.record.time = fixedTime;
 			$scope.record.id = $routeParams.itemId;
-			console.log( "$scope.record", $scope.record );
+			// console.log( "$scope.record", $scope.record );
 		});
 	};
 
@@ -37,9 +37,9 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 	let getChildDropdownData = () => {
 		ChildFactory.getAllChildren(user)
 		.then((data) => {
-			console.log( "data", data );
+			// console.log( "data", data );
 			for (let i = 0; i < data.length; i++) {
-				console.log( "data", data[i] );
+				// console.log( "data", data[i] );
 				$scope.childrenInfo.push(data[i]);
 			}
 			// console.log( "$scope.childrenInfo", $scope.childrenInfo );
@@ -54,7 +54,7 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 	$scope.editRecord = () => {
 		RecordFactory.editRecord($routeParams.itemId, $scope.record)
 		.then((data) => {
-			console.log( "Edit Successfule", data );
+			console.log( "Edit Successful", data );
 			$location.url('/list-records');
 		});
 	};

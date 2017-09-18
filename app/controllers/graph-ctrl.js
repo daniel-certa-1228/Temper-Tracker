@@ -1,5 +1,5 @@
 "use strict";
-console.log( "graph-ctrl.js" );
+// console.log( "graph-ctrl.js" );
 
 app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout){
 
@@ -428,16 +428,14 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
       return dbDates;
     })
     .then((dbDates) => {
-      console.log( "dbDates", dbDates );
+      // console.log( "dbDates", dbDates );
       for (let i = 0; i < $scope.dateReference.length; i++) {
         for (let j = 0; j < dbDates.length; j++) {
           if ($scope.dateReference[i] === dbDates[j]) {
               $scope.data[0][i]++;
-            // console.log( "dbDates", $scope.dateReference[i], dbDates[j] );
           }
         }
       }
-      console.log( "thirt", thirty );
     });
   };
   getALlData();
@@ -450,7 +448,6 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
     }
     let today = new Date().toString().slice(4,15);
     $scope.dateReference.push(today);
-    // console.log( "$scope.dateReferencey", $scope.dateReference );
   };
   fillDateReference();
 //Dynamically fill the x-axis of the chart
