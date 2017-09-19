@@ -220,6 +220,10 @@ footer {
 	text-align: center;
 }
 
+#dropdownMenuButton {
+	margin-left: 10em;
+}
+
 ////////////////////////////////////////////////////////
 //////////MEDIA QUERIES/////////////////////////////////
 ////////////////////////////////////////////////////////
@@ -239,6 +243,15 @@ footer {
 	}
 
 }
+
+@media only screen and (max-width: 767px) {
+
+	#defButton3 {
+		display: none;
+	}
+
+}
+
 @media only screen and (max-width: 524px) {
 
 	#keywordSearch {
@@ -260,6 +273,10 @@ footer {
 
 	#logo {
 		margin-right: 0;
+	}
+
+	#dropdownMenuButton {
+		margin-left: 0em;
 	}
 }
 
@@ -286,6 +303,8 @@ footer {
 	.graph-div {
 		border-bottom: none;
 	}
+
+
 
 }
 
