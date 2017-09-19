@@ -10,7 +10,7 @@
       <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
     </div>
     <button type="button" class="btn btn-outline-secondary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
-    <button type="button" class="btn btn-outline-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton3">Behavior Definitions</button>
+    <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton3">Behavior Definitions</button>
   </div>
   
 <div class="row">
@@ -172,32 +172,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="legend">
-          <h5><strong>Antecedent: </strong>What happened before the behavior occurred.</h5>
-            <ul>
-              <li><strong>Diverted Attention:</strong> Attention is briefly removed or transferred to another object or individual.</li>
-              <li><strong>Demand: </strong>Request to start or stop an activity or transition to a new activity.</li>
-              <li><strong>Item Removed: </strong>Toy, food, book, or other tangible taken away.</li>
-            </ul>
-          <h5><strong>Consequence: </strong>What happened immediately following the behavior.</h5>
-            <ul>
-              <li><strong>Attention: </strong>Provided with verbal or physical attention, eye contact, or physical proximity (3 feet or closer) from another person.</li>
-              <li><strong>Item Given: </strong>Toy, food, book, or other tangible given or returned.</li>
-              <li><strong>Item Removed: </strong>Toy, food, book, or other tangible taken away.</li>
-              <li><strong>Escape: </strong>Request or activity removed without requiring completion (e.g. take speech toys away when behavior occurs).</li>
-              <li><strong>None: </strong>The behavior results in no action.</li>
-            </ul>
-          <h5><strong>Behavior: </strong>Temper tantrum</h5>
-            <ul>
-              <li>Yelling, screaming, or crying for 1 minute or longer that can be heard from another room within the home, through a closed door, or from outside the home.</li>
-              <li>Hitting, biting, kicking, pinching, scratching or otherwise hurting another individual with hands or objects within reach.</li>
-              <li>Property destruction to include throwing items, breaking items, or clearing surfaces that could cause permanent damage.</li>
-            </ul>
-        </div>
+        <div class="legend" ng-include="'partials/legend.html'">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
