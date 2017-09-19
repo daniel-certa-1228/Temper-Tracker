@@ -35,7 +35,7 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 		.then((data) => {
 			// console.log( "data", data );
 			for (let i = 0; i < data.length; i++) {
-				console.log( "data", data[i] );
+				// console.log( "data", data[i] );
 				$scope.childrenInfo.push(data[i]);
 			}
 			// console.log( "$scope.childrenInfo", $scope.childrenInfo );
