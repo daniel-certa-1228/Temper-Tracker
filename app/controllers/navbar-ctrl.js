@@ -5,6 +5,8 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 	$scope.searchText = FilterFactory;
   	$scope.isLoggedIn = false;
 
+
+
 	$scope.logOut = () => {
 		console.log( "logout firing" );
 		UserFactory.logOut()
@@ -26,6 +28,8 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
       $scope.isLoggedIn = true;
       console.log("currentUser logged in?", user);
       console.log("logged in t-f", $scope.isLoggedIn );
+      $scope.userPhoto = user.photoURL;
+      console.log( "$scope.userPhoto", $scope.userPhoto );
       $scope.$apply();
     } else {
       $scope.isLoggedIn = false;

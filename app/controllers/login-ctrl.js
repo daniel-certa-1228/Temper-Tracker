@@ -29,17 +29,17 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 			let fromFB = Object.keys(fbEmail.data);
 			if(fromFB.length ===0 ) {
 				UserFactory.postUserObj(loginObjStorage[0]);
+				$location.path('/add-child');
+				$scope.$apply();
+			}  else  {
+				$location.path('/home');
+				$scope.$apply();
 			}
 			console.log( "login successful" );
-		})
-		.then(() => {
-			$location.path('/home');
-			$scope.$apply();
 		})
 		.catch((error) => {
 			console.log( "login error", error );
 		});
 	};
-
 
 });
