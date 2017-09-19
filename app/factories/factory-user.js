@@ -14,20 +14,12 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 		return userEmailFromFB;
 	};
 
-	let userPhoto = null;
-
-	let getUserPhoto = () => {
-		return userPhoto;
-	};
-
 	//checks to see if user is authenticated, resolves true or rejects false
 	let isAuthenticated = () => {
 		return $q((resolve, reject) => {
 			firebase.auth().onAuthStateChanged((user) => {
 				if (user) {
 					currentUser = user.uid;
-					userPhoto = user.photoURL;
-					// console.log( "userPhoto", userPhoto );
 					resolve(true);
 				}  else  {
 					reject(false);
@@ -76,6 +68,6 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 		return firebase.auth().signOut();
 	};
 
-	return{getCurrentUser, getUserEmailFromFB, isAuthenticated, getUserObj, postUserObj, authWithProvider, logOut, getUserPhoto};
+	return{getCurrentUser, getUserEmailFromFB, isAuthenticated, getUserObj, postUserObj, authWithProvider, logOut};
 
 });
