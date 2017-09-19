@@ -220,6 +220,21 @@ footer {
 	text-align: center;
 }
 
+// #graph-dropdown {
+// 	display: flex;
+// 	flex-direction: row;
+// 	justify-content: center;
+// }
+
+// #defButton3 {
+// 	align-self: flex-end;
+// 	flex-basis: auto;
+// }
+
+#dropdownMenuButton {
+	margin-left: 10em;
+}
+
 ////////////////////////////////////////////////////////
 //////////MEDIA QUERIES/////////////////////////////////
 ////////////////////////////////////////////////////////
@@ -235,6 +250,14 @@ footer {
 		display: inline;
 	}
 	#behLong {
+		display: none;
+	}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+	#defButton3 {
 		display: none;
 	}
 
@@ -261,6 +284,10 @@ footer {
 	#logo {
 		margin-right: 0;
 	}
+
+	#dropdownMenuButton {
+		margin-left: 0em;
+	}
 }
 
 @media only screen and (min-width: 525px) {
@@ -286,6 +313,8 @@ footer {
 	.graph-div {
 		border-bottom: none;
 	}
+
+
 
 }
 
