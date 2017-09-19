@@ -59,7 +59,9 @@
 
   <button type="button" class="btn btn-danger" ng-hide="addRec" data-toggle="modal" data-target="#deleteRecordModal">Delete</button>
 
-  <button type="button" class="btn btn-outline-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton">Behavior Definitions</button>
+  <button type="button" class="btn btn-outline-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton" ng-hide="editRec">Behavior Definitions</button>
+
+  <button type="button" class="btn btn-outline-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton2" ng-hide="addRec"><span id="behLong">Behavior Definitions</span><span id="behShort">Behaviors</span></button>
 
 </form>
 
@@ -95,25 +97,25 @@
       </div>
       <div class="modal-body">
         <div class="legend">
-          <h5>Antecedent: What happened before the behavior occurred.</h5>
+          <h5><strong>Antecedent: </strong>What happened before the behavior occurred.</h5>
             <ul>
               <li><strong>Diverted Attention:</strong> Attention is briefly removed or transferred to another object or individual.</li>
               <li><strong>Demand: </strong>Request to start or stop an activity or transition to a new activity.</li>
               <li><strong>Item Removed: </strong>Toy, food, book, or other tangible taken away.</li>
             </ul>
-          <h5>Behavior: Temper tantrum</h5>
-            <ul>
-              <li>Yelling, screaming, or crying for 1 minute or longer that can be heard from another room within the home, through a closed door, or from outside the home.</li>
-              <li>Hitting, biting, kicking, pinching, scratching or otherwise hurting another individual with hands or objects within reach.</li>
-              <li>Property destruction to include throwing items, breaking items, or clearing surfaces that could cause permanent damage.</li>
-            </ul>
-          <h5>Consequence: What happened immediately following the behavior.</h5>
+          <h5><strong>Consequence: </strong>What happened immediately following the behavior.</h5>
             <ul>
               <li><strong>Attention: </strong>Provided with verbal or physical attention, eye contact, or physical proximity (3 feet or closer) from another person.</li>
               <li><strong>Item Given: </strong>Toy, food, book, or other tangible given or returned.</li>
               <li><strong>Item Removed: </strong>Toy, food, book, or other tangible taken away.</li>
               <li><strong>Escape: </strong>Request or activity removed without requiring completion (e.g. take speech toys away when behavior occurs).</li>
               <li><strong>None: </strong>The behavior results in no action.</li>
+            </ul>
+          <h5><strong>Behavior: </strong>Temper tantrum</h5>
+            <ul>
+              <li>Yelling, screaming, or crying for 1 minute or longer that can be heard from another room within the home, through a closed door, or from outside the home.</li>
+              <li>Hitting, biting, kicking, pinching, scratching or otherwise hurting another individual with hands or objects within reach.</li>
+              <li>Property destruction to include throwing items, breaking items, or clearing surfaces that could cause permanent damage.</li>
             </ul>
         </div>
       </div>

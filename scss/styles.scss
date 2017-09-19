@@ -2,8 +2,6 @@
 $primary-color: #8eaebd;
 $secondary-color: #30415d;
 
-$grid-gutter-width: 5px !default;
-
 body {
 	position: relative;
 	font-family: 'Open Sans', sans-serif;
@@ -72,12 +70,6 @@ body {
 	border: 1px solid lightgrey;
 }
 
-// .legend {
-// 	padding: 1em;
-// 	background-color: $secondary-color;
-// 	color: whitesmoke;
-// }
-
 footer {
 	position: fixed;
 	left: 0;
@@ -111,12 +103,10 @@ footer {
 }
 
 .card-padding {
-	// margin: 0 .25em;
 	height: 100%;
-	background-color: #fbfbff;
+	background-color: #f9f9ff;
 	padding: 1em;
 	border-radius: 10px;
-	// #f9f9ff
 }
 
 .card-interior {
@@ -150,6 +140,10 @@ footer {
 #childSelectRecords {
 	display: inline-block;
 	margin: auto;
+}
+
+#behShort {
+	display:none;
 }
 
 ////////////////////////////////////////////////////////
@@ -233,12 +227,19 @@ footer {
 
 @media only screen and (max-width: 426px) {
 
-	#defButton {
+	#defButton2 {
+		width: 100px;
+	}
+
+	#behShort {
+		display: inline;
+	}
+	#behLong {
 		display: none;
 	}
 
 }
-@media only screen and (max-width: 499px) {
+@media only screen and (max-width: 524px) {
 
 	#keywordSearch {
 		display: none;
@@ -253,7 +254,6 @@ footer {
 		max-width: 100%;
 		margin: 0;
 	}
-
 }
 
 @media only screen and (max-width: 991px) {
@@ -261,19 +261,14 @@ footer {
 	#logo {
 		margin-right: 0;
 	}
-
-
-
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 525px) {
 
 	#childSelectRecords {
 
 		max-width: 65%;
-
 	}
-
 }
 
 @media only screen and (min-width: 992px) {
@@ -286,7 +281,6 @@ footer {
 		#childSelectRecords {
 
 		max-width: 75%;
-
 	}
 
 	.graph-div {
@@ -301,7 +295,6 @@ footer {
 		margin-left: 10%;
 		margin-right: 1em;
 	}
-
 }
 
 @media only screen and (min-width: 1200px) {
@@ -310,5 +303,4 @@ footer {
 		margin-left: 30%;
 		margin-right: 1em;
 	}
-
 }
