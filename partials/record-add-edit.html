@@ -7,7 +7,6 @@
     <select class="form-control" id="childSelect" ng-model="record.childID">
       <option value="">Select Child</option>
       <option ng-repeat='child in childrenInfo' value='{{child.id}}'>{{child.name}}</option>
-
     </select>
   </div>
   <div class="form-group">
@@ -20,7 +19,7 @@
     	<input type="time" id="startTime" ng-model="record.time">
     </select>
   </div>
-    <div class="form-group">
+  <div class="form-group">
     <select class="form-control" id="duration" ng-model="record.duration">
       <option value="">Duration of Behavior</option>
       <option value="0-4">0-4 minutes</option>
@@ -59,6 +58,9 @@
   <a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
 
   <button type="button" class="btn btn-danger" ng-hide="addRec" data-toggle="modal" data-target="#deleteRecordModal">Delete</button>
+
+  <button type="button" class="btn btn-outline-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton">Behavior Definitions</button>
+
 </form>
 
 
@@ -76,7 +78,48 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger"  data-dismiss="modal" ng-click="deleteRecordFromEdit()" >Delete</button>
+        <button type="button" class="btn btn-danger"  data-dismiss="modal" ng-click="deleteRecordFromEdit()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="legendModal" tabindex="-1" role="dialog" aria-labelledby="legendModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="legendModal">Behavior Definitions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="legend">
+          <h5>Antecedent: What happened before the behavior occurred.</h5>
+            <ul>
+              <li><strong>Diverted Attention:</strong> Attention is briefly removed or transferred to another object or individual.</li>
+              <li><strong>Demand: </strong>Request to start or stop an activity or transition to a new activity.</li>
+              <li><strong>Item Removed: </strong>Toy, food, book, or other tangible taken away.</li>
+            </ul>
+          <h5>Behavior: Temper tantrum</h5>
+            <ul>
+              <li>Yelling, screaming, or crying for 1 minute or longer that can be heard from another room within the home, through a closed door, or from outside the home.</li>
+              <li>Hitting, biting, kicking, pinching, scratching or otherwise hurting another individual with hands or objects within reach.</li>
+              <li>Property destruction to include throwing items, breaking items, or clearing surfaces that could cause permanent damage.</li>
+            </ul>
+          <h5>Consequence: What happened immediately following the behavior.</h5>
+            <ul>
+              <li><strong>Attention: </strong>Provided with verbal or physical attention, eye contact, or physical proximity (3 feet or closer) from another person.</li>
+              <li><strong>Item Given: </strong>Toy, food, book, or other tangible given or returned.</li>
+              <li><strong>Item Removed: </strong>Toy, food, book, or other tangible taken away.</li>
+              <li><strong>Escape: </strong>Request or activity removed without requiring completion (e.g. take speech toys away when behavior occurs).</li>
+              <li><strong>None: </strong>The behavior results in no action.</li>
+            </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
