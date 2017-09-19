@@ -1,6 +1,7 @@
 $primary-color: #8eaebd;
 $secondary-color: #30415d;
 
+$grid-gutter-width: 5px !default;
 
 body {
 	position: relative;
@@ -91,7 +92,15 @@ footer {
 	padding-bottom: 1em;
 	margin-bottom: 2em;
 	position: relative;
-	// box-shadow: 0px 0px 5px 0px rgba(196,196,196,1);
+}
+
+.card-padding {
+	// margin: 0 .25em;
+	height: 100%;
+	background-color: #fbfbff;
+	padding: 1em;
+	border-radius: 10px;
+	// #f9f9ff
 }
 
 .card-interior {
@@ -103,9 +112,10 @@ footer {
 .comments {
 	padding-bottom: 1.5em;
 }
+
 .cardButtons {
 	position: absolute;
-	bottom: 10px;
+	bottom: 25px;
 }
 
 ////////////////////////////////////////////////////////
