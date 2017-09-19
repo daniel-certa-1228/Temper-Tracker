@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 $primary-color: #8eaebd;
 $secondary-color: #30415d;
 
@@ -5,6 +6,7 @@ $grid-gutter-width: 5px !default;
 
 body {
 	position: relative;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #loginBtn {
