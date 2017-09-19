@@ -2,6 +2,13 @@
   <h2>{{title}}</h2>
 </header>
 
+<div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  Please <strong>add a child</strong> to begin tracking.
+</div>
+
 <form>
   <div class="form-group">
     <label class="form-control-label" for="formGroupExampleInput">Child's Name:</label>
@@ -19,9 +26,9 @@
     <textarea class="form-control" id="parent_comments" rows="3" placeholder="Parent Comments" ng-model="child.comments"></textarea>
   </div>
 
-  <button type="button" class="btn btn-info" ng-click="addChild()" ng-hide="editKid">Save</button>
+  <button type="button" class="btn btn-light" ng-click="addChild()" ng-hide="editKid">Save</button>
 
-  <button type="button" class="btn btn-info" ng-click="editChild()" ng-hide="addKid">Save EDIT</button>
+  <button type="button" class="btn btn-light" ng-click="editChild()" ng-hide="addKid">Save</button>
 
   <a ng-href="#!/all-children"><button type="button" class="btn btn-secondary">Cancel</button><a>
 
