@@ -1,8 +1,7 @@
 "use strict";
 // console.log( "factory-child.js" );
-
 app.factory('ChildFactory', function($q, $http, FBCreds) {
-
+	//gets all children data for a user
 	const getAllChildren = (user) => {
 		let allChildrenArray = [];
 		return $q((resolve, reject) => {
@@ -11,6 +10,7 @@ app.factory('ChildFactory', function($q, $http, FBCreds) {
 				let allChildren = allChildrenObj.data;
 				Object.keys(allChildren)
 				.forEach((key) => {
+					//adds the firebase ugly id to the child data objects
 					allChildren[key].id = key;
 					allChildrenArray.push(allChildren[key]);
 				});
@@ -21,11 +21,10 @@ app.factory('ChildFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-
+	//gets a single child record from firebase
 	const getSingleChild = (childID) => {
 		return $q((resolve, reject) => {
 			$http.get(`${FBCreds.databaseURL}/children/${childID}.json`)
-		
 			.then((childObj) => {
 				let singleChildObj = childObj.data;
 				resolve(singleChildObj);
@@ -35,7 +34,7 @@ app.factory('ChildFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-
+	//adds a single child record to firebase
 	const addChild = (obj) => {
 		let newChildObj = JSON.stringify(obj);
 		return $q((resolve, reject) => {
@@ -50,7 +49,7 @@ app.factory('ChildFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-
+	//edits a single child record to firebase
 	const editChild = (childID, obj) => {
 		let editChildObj = JSON.stringify(obj);
 		return $q((resolve, reject) => {
@@ -65,7 +64,7 @@ app.factory('ChildFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-
+	//deletes a single child record from firebase
 	const deleteChild = (childID) => {
 		return $q((resolve, reject) => {
 			$http.delete(`${FBCreds.databaseURL}/children/${childID}.json`)
@@ -79,7 +78,5 @@ app.factory('ChildFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-
 	return{getAllChildren, getSingleChild, addChild, editChild, deleteChild};
-
 });

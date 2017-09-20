@@ -1,7 +1,14 @@
 <header class="partial-h2">
   <h2>{{title}}</h2>
 </header>
-
+<!-- ALERT for first-time users - will not show after first use-->
+<div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Add a record</strong> for <span ng-repeat='child in childrenInfo'>{{child.name}}</span>.
+</div>
+<!-- Main Record Form-->
 <form>
   <div class="form-group">
     <select class="form-control" id="childSelect" ng-model="record.childID">
@@ -51,21 +58,21 @@
     <label for="parent_comments">Comments:</label>
     <textarea class="form-control" id="parent_comments" rows="3" ng-model="record.comments"></textarea>
   </div>
+  <!-- Save Button for ADD view; triggers a POST to Friebase-->
   <button type="button" class="btn btn-light" ng-click="addRecord()" ng-hide="editRec">Save</button>
-
+  <!-- Save Button for EDIT view; triggers a PATCH to Friebase-->
   <button type="button" class="btn btn-light" ng-click="editRecord()" ng-hide="addRec">Save</button>
-
+  <!-- Cancel Button returns to record-list-->
   <a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
-
+  <!-- Delete Button triggers delete modal-->
   <button type="button" class="btn btn-danger" ng-hide="addRec" data-toggle="modal" data-target="#deleteRecordModal">Delete</button>
-
+  <!-- Behavior Definitions Button triggers Behavior Definitions modal in ADD view-->
   <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton" ng-hide="editRec"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
-
+  <!-- Behavior Definitions Button triggers Behavior Definitions modal in EDIT view; button scales down in EDIT view-->
   <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton2" ng-hide="addRec"><i class="fa fa-book" aria-hidden="true"></i> <span id="behLong">Behavior Definitions</span><span id="behShort">Behaviors</span></button>
-
 </form>
 
-
+<!-- DELETE Modal-->
 <div class="modal fade" id="deleteRecordModal" tabindex="-1" role="dialog" aria-labelledby="deleteRecordModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -80,12 +87,14 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- Delete button triggers a DELETE message to Firebase-->
         <button type="button" class="btn btn-danger"  data-dismiss="modal" ng-click="deleteRecordFromEdit()">Delete</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Behavior Definitions Modal-->
 <div class="modal fade" id="legendModal" tabindex="-1" role="dialog" aria-labelledby="legendModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

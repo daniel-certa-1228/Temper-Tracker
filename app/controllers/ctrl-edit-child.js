@@ -1,10 +1,11 @@
 "use strict";
 
 app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory) {
-
+	//defines user
 	let user = UserFactory.getCurrentUser();
-
+	//$scope.editrec lets the partial know which views to show or hide
 	$scope.editKid = true;
+	//$scope.firstUse lets the partial know to hide the alert
 	$scope.firstUse = false;
 	$scope.title = "Edit Child Info";
 
@@ -14,19 +15,17 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 		name:'',
 		uid: user
 	};
-
+	//calls a single child record from firebase and formats it for display and edit
 	const getSingleChild = () => {
-		// console.log( "$routeParams.itemId", $routeParams.itemId );
 		ChildFactory.getSingleChild($routeParams.itemId)
 		.then((data) => {
 			$scope.child = data;
+			//constructs a new date object from the string of data from firebase and adds them to the record
 			let fixedBirth = new Date(data.birthdate);
-			// console.log( "fixedBirth", fixedBirth );
 			$scope.child.birthdate = fixedBirth;
-
 		});	
 	};
-
+	//calls function to edit a single firebase child record
 	$scope.editChild = () => {
 		ChildFactory.editChild($routeParams.itemId, $scope.child)
 		.then((data) => {
@@ -34,15 +33,14 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 			$location.url('/all-children');
 		});
 	};
-
-
+	//calls function to delete a single firebase record
 	$scope.deleteChildFromEdit = () => {
 		ChildFactory.deleteChild($routeParams.itemId)
 		.then((data)=> {
 			console.log( "data", data );
 		})
 		.then(() => {
-			// console.log( "$routeParams.itemId", $routeParams.itemId );
+			//When a child is deleted, this gets the records for a that child and calls the delete function on each id
 			RecordFactory.getRecordsByChildID($routeParams.itemId)
 			.then((data) => {
 				console.log( "all child records", data );
@@ -55,6 +53,5 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 			$location.url('/all-children');
 		});
 	};
-
 	getSingleChild();
 });

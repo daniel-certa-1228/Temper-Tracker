@@ -2,11 +2,11 @@
 // console.log( "graph-ctrl.js" );
 
 app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout){
-
+  //defines user
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs - All Records";
 	$scope.childrenInfo = [];
-
+  //gets the user's children info for the dropdown menu
 	let getChildDropdownData = () => {
 		ChildFactory.getAllChildren(user)
 		.then((data) => {
@@ -16,11 +16,10 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 		});
 	};
 	getChildDropdownData();
-
+  //calls the system print window function
   $scope.printRecords = () => {
     $timeout($window.print, 0);
   };
-
 });
 
 /////////////////////////////////////////////////////////////
@@ -28,20 +27,25 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 /////////////////////////////////////////////////////////////
 
 app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFactory', 'MathFactory', function ($scope, $timeout, UserFactory, RecordFactory, MathFactory) {
+    //colors for data display
     $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a'];
+    //graph labels
     $scope.labels = ['Diverted Attention', 'Parental Demand', 'Item Removed'];
+    //initial value of graph data
     $scope.data = [0, 0, 0];
+    //initial value of percentage data for diplay
     $scope.percentages = [0, 0, 0];
 
-
+    //function to populate the graph with data
     $timeout(function () {
+      //arrays to hold values
       $scope.anteArray = [];
       $scope.demand = [];
       $scope.diverted = [];
       $scope.itemRemoved = [];
-
+      //defines user
       let user = UserFactory.getCurrentUser();
-
+      //get all user's records and push the Antecedent properties to anteArray
 	    const getAnteData = () => {
 	    	RecordFactory.getAllRecords(user)
 	    	.then((data) => {
@@ -50,6 +54,7 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
 	    		});
 	    		return $scope.anteArray.sort();
 	    	})
+        //filter and sort antecedents into their appropriate arrays
 	    	.then((antecedents) => {
 	    		$scope.demands = antecedents.filter(function(ante){
 	    			return ante.charAt(0) === 'P';
@@ -61,15 +66,15 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
 	    			return ante.charAt(0) === 'I';
 	    		});
 	    	})
+        //set $scope.data integers by calling array.length
 	    	.then(() => {
 	    		$scope.data = [$scope.demands.length, $scope.diverted.length, $scope.itemRemoved.length];
 	    	})
         .then(() => {
-          
+          //adds all data together to get total
           let totals = $scope.data.reduce((acc,cur) => acc + cur, 0);
-
+          //sets the percentages by calling Mathfactory.calcPercent
           $scope.percentages = [MathFactory.calcPercent($scope.demands.length, totals), MathFactory.calcPercent($scope.diverted.length, totals), MathFactory.calcPercent($scope.itemRemoved.length, totals)];
-          // console.log( "$scope.percentages", $scope.percentages );
         })
 	    	.catch((error) => {
 	    		console.log( "error", error );
@@ -84,34 +89,36 @@ app.controller('DoughnutCtrl', ['$scope', '$timeout', 'UserFactory', 'RecordFact
 ///////////////////////////////////////////////////////
 
 app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFactory', 'MathFactory', function ($scope, $timeout, UserFactory, RecordFactory, MathFactory) {
+    //colors for data display
     $scope.colors = ['#97bbcd', '#dcdcdc', '#f7464a', '#46bfbd', '#fdb45c'];
+    //graph labels
     $scope.labels = ['Attention', 'Item Given', 'Item Removed', 'Escape', 'None'];
+    //initial value of graph data
     $scope.data = [0, 0, 0, 0, 0];
+    //initial value of percentage data for diplay
     $scope.conPercentages = [0, 0, 0, 0, 0];
-
+    //function to populate the graph with data
     $timeout(function () {
-	    // $scope.data = [4, 8, 2, 1, 3];
+	    //arrays to hold values
 	    $scope.consequenceArray = [];
-
 	    $scope.attentionArray = [];
 	    $scope.givenArray = [];
 	    $scope.removedArray = [];
 	    $scope.escapeArray = [];
 	    $scope.noneArray = [];
-
+    //defines user  
 		let user = UserFactory.getCurrentUser();
-
+    //get all user's records and push the Consequence properties to consequenceArray
 		const getConsequenceData = () => {
 			RecordFactory.getAllRecords(user)
 			.then((data) => {
-				// console.log( "consequence data", data );
 				data.forEach(function(record){
 		    			$scope.consequenceArray.push(record.consequence);
 		    		});
 		    		return $scope.consequenceArray.sort();
 			})
+      //filter and sort consequences into their appropriate arrays
 			.then((consequences) => {
-				// console.log( "consequences", consequences );
 				$scope.attentionArray = consequences.filter(function(cons){
 					return cons.charAt(0) === 'A';
 				});
@@ -127,17 +134,16 @@ app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFa
 				$scope.noneArray = consequences.filter(function(cons){
 					return cons.charAt(0) === 'N';
 				});
-				// console.log( "$scope.noneArray", $scope.noneArray );
 			})
 			.then(() => {
+        //set $scope.data integers by calling array.length
 				$scope.data = [$scope.attentionArray.length, $scope.givenArray.length, $scope.removedArray.length, $scope.escapeArray.length, $scope.noneArray.length];
-				// console.log( "$scope.data", $scope.data );
 			})
       .then(() => {
+        //adds all data together to get total
         let conTotals = $scope.data.reduce((acc,cur) => acc + cur, 0);
-
+        //sets the percentages by calling Mathfactory.calcPercent
         $scope.conPercentages = [MathFactory.calcPercent($scope.attentionArray.length, conTotals), MathFactory.calcPercent($scope.givenArray.length, conTotals), MathFactory.calcPercent($scope.removedArray.length, conTotals), MathFactory.calcPercent($scope.escapeArray.length, conTotals), MathFactory.calcPercent($scope.noneArray.length, conTotals)];
-
       })
 			.catch((error) => {
 		    		console.log( "error", error );
@@ -152,33 +158,31 @@ app.controller('DoughnutCtrl_2', ['$scope', '$timeout', 'UserFactory', 'RecordFa
 ///////////////////////////////////////////////////////
 
 app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory, MathFactory) {
+  //graph labels
   $scope.labels =[ "0-4 min", "5-10 min", "11-20 min", "21-30 min", "Over 30 min" ];
-
+  //initial value of graph data
   $scope.data = [
     [0, 0, 0, 0, 0]
   ];
-
+  // defines user
   let user = UserFactory.getCurrentUser();
+  //arrays to hold values
   $scope.durationArray = [];
-
   $scope.ZeroArray = [];
   $scope.FiveArray = [];
   $scope.ElevenArray = [];
   $scope.TwentyOneArray = [];
   $scope.ThirtyArray = [];
-
-
-
+  //get all user's records and push the Duration properties to durationArray
   const getDurationData = () => {
   	RecordFactory.getAllRecords(user)
   	.then((data) => {
-  		// console.log( "duration data", data );
   		data.forEach((record) => {
   			$scope.durationArray.push(record.duration);
   		});
-  		// console.log( "$scope.durationArray.sort()", $scope.durationArray.sort() );
   		return $scope.durationArray.sort();
   	})
+    //filter and sort durations into their appropriate arrays
   	.then((durations) => {
   		$scope.ZeroArray = durations.filter(function(dur){
   			return dur.charAt(0) === '0';
@@ -197,13 +201,15 @@ app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory, MathFa
   		});
   	})
   	.then(() => {
+      //set $scope.data integers by calling array.length
   		$scope.data = [[$scope.ZeroArray.length, $scope.FiveArray.length, $scope.ElevenArray.length, $scope.TwentyOneArray.length, $scope.ThirtyArray.length]];
-
+      //set this for the patial to iterate through
     	$scope.numbers = $scope.data[0];
   	})
     .then(() => {
+      //adds all data together to get total
       let durTotals = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
- 
+      //sets the percentages by calling Mathfactory.calcPercent
       $scope.durPercentages = [MathFactory.calcPercent($scope.ZeroArray.length, durTotals), MathFactory.calcPercent($scope.FiveArray.length, durTotals), MathFactory.calcPercent($scope.ElevenArray.length, durTotals), MathFactory.calcPercent($scope.TwentyOneArray.length, durTotals), MathFactory.calcPercent($scope.ThirtyArray.length, durTotals)];
     });
   };
@@ -215,13 +221,14 @@ app.controller("RadarCtrl", function ($scope, UserFactory, RecordFactory, MathFa
 ///////////////////////////////////////////////////////
 
 app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFactory) {
-
+  //graph labels
   $scope.labels = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm"];
   $scope.series = ['Incidents'];
+  //initial value of graph data
   $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 55, 40]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
-
+  //graphjs setting for line graph
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
   $scope.options = {
     scales: {
@@ -241,11 +248,10 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
       ]
     }
   };
-
+  //define user
   let user = UserFactory.getCurrentUser();
-
+  //arrays to hold values
   $scope.TimeArray = [];
-
   $scope.SixAmArray = [];
   $scope.SevenAmArray = [];
   $scope.EightAmArray = [];
@@ -262,11 +268,10 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
   $scope.SevenPmArray = [];
   $scope.EightPmArray = [];
   $scope.NinePmArray = [];
-
+  //get all user's records and push the Time properties to durationArray after being converted to a string
   const getTimeData = () => {
   	RecordFactory.getAllRecords(user)
   	.then((data) => {
-  		// console.log( "time data", data );
   		data.forEach((record) => {
   			let fixedTime = new Date(record.time);
   			$scope.TimeArray.push(fixedTime.toString());
@@ -274,13 +279,11 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
   		return $scope.TimeArray;
   	})
   	.then((times) => {
-  		// console.log( "TIMES", times );
   		times.forEach((time) =>{
-
+        //filter and sort durations into their appropriate arrays
   			if ( (/([0][6]:)([0-2][0-9]:)/ig).test(time) ) {
   				$scope.SixAmArray.push(time);
   			}
-
   			if ( /([0][6]:)([3-5][0-9]:)/ig.test(time) || /([0][7]:)([0-2][0-9]:)/ig.test(time) ) {
   				$scope.SevenAmArray.push(time);
   			}
@@ -326,25 +329,25 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
   			if ( /([2][0]:)([3-5][0-9]:)/ig.test(time) || /([2][1]:)([0-5][0-9]:)/ig.test(time) ) {
   				$scope.NinePmArray.push(time);
   			}
-  		});
-  		 
+  		});	 
   	})
   	.then(() => {
+      //set $scope.data integers by calling array.length
   		$scope.data[0] = [$scope.SixAmArray.length, $scope.SevenAmArray.length, $scope.EightAmArray.length, $scope.NineAmArray.length, $scope.TenAmArray.length, $scope.ElevenAmArray.length, $scope.TwelvePmArray.length, $scope.OnePmArray.length, $scope.TwoPmArray.length, $scope.ThreePmArray.length, $scope.FourPmArray.length, $scope.FivePmArray.length, $scope.SixPmArray.length, $scope.SevenPmArray.length, $scope.EightPmArray.length, $scope.NinePmArray.length];
+      //divides up the data to display in multiple rows
   		$scope.numbers1 = $scope.data[0].slice(0,8);
   		$scope.numbers2 = $scope.data[0].slice(8,16);
   		$scope.labels1 = $scope.labels.slice(0,8);
   		$scope.labels2 = $scope.labels.slice(8,16);
   	})
     .then(() => {
-
+      //adds all data together to get total
       let timeTotals = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
-
-     $scope.timePercentages = [MathFactory.calcPercent($scope.SixAmArray.length, timeTotals), MathFactory.calcPercent($scope.SevenAmArray.length, timeTotals), MathFactory.calcPercent($scope.EightAmArray.length, timeTotals), MathFactory.calcPercent($scope.NineAmArray.length, timeTotals), MathFactory.calcPercent($scope.TenAmArray.length, timeTotals), MathFactory.calcPercent($scope.ElevenAmArray.length, timeTotals), MathFactory.calcPercent($scope.TwelvePmArray.length, timeTotals), MathFactory.calcPercent($scope.OnePmArray.length, timeTotals), MathFactory.calcPercent($scope.TwoPmArray.length, timeTotals), MathFactory.calcPercent($scope.ThreePmArray.length, timeTotals), MathFactory.calcPercent($scope.FourPmArray.length, timeTotals), MathFactory.calcPercent($scope.FivePmArray.length, timeTotals), MathFactory.calcPercent($scope.SixPmArray.length, timeTotals), MathFactory.calcPercent($scope.SevenPmArray.length, timeTotals), MathFactory.calcPercent($scope.EightPmArray.length, timeTotals), MathFactory.calcPercent($scope.NinePmArray.length, timeTotals)];
-
+      //sets the percentages by calling Mathfactory.calcPercent
+      $scope.timePercentages = [MathFactory.calcPercent($scope.SixAmArray.length, timeTotals), MathFactory.calcPercent($scope.SevenAmArray.length, timeTotals), MathFactory.calcPercent($scope.EightAmArray.length, timeTotals), MathFactory.calcPercent($scope.NineAmArray.length, timeTotals), MathFactory.calcPercent($scope.TenAmArray.length, timeTotals), MathFactory.calcPercent($scope.ElevenAmArray.length, timeTotals), MathFactory.calcPercent($scope.TwelvePmArray.length, timeTotals), MathFactory.calcPercent($scope.OnePmArray.length, timeTotals), MathFactory.calcPercent($scope.TwoPmArray.length, timeTotals), MathFactory.calcPercent($scope.ThreePmArray.length, timeTotals), MathFactory.calcPercent($scope.FourPmArray.length, timeTotals), MathFactory.calcPercent($scope.FivePmArray.length, timeTotals), MathFactory.calcPercent($scope.SixPmArray.length, timeTotals), MathFactory.calcPercent($scope.SevenPmArray.length, timeTotals), MathFactory.calcPercent($scope.EightPmArray.length, timeTotals), MathFactory.calcPercent($scope.NinePmArray.length, timeTotals)];
+      //divides up the data to display in multiple rows
       $scope.timePercentages1 = $scope.timePercentages.slice(0,8);
       $scope.timePercentages2 = $scope.timePercentages.slice(8,16);
-      
     });
   };
   getTimeData();
@@ -356,6 +359,7 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
 
 app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
 
+  //set data points as integers set to zero
   let thirty = 0;
   let twentyNine = 0;
   let twentyEight = 0;
@@ -387,14 +391,16 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
   let two = 0;
   let one = 0;
   let zero = 0;
-
+  //defines user
   let user = UserFactory.getCurrentUser();
-  //Graph Settings
+  //graph labels
   $scope.labels = [];
   $scope.series = ['Incidents'];
+  //set graph data to our varables for initial values
   $scope.data = [
     [zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyOne, twentyTwo, twentyThree, twentyFour, twentyFive, twentySix, twentySeven, twentyEight, twentyNine, thirty ]
   ];
+  //graphjs setting for line graph
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
   $scope.options = {
     scales: {
@@ -414,13 +420,15 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
       ]
     }
   };
-
+  //array to hold the user dates from firebase
   let dbDates = [];
+  //array to hold generated dates from today and last 30 days
   $scope.dateReference = [];
-
+  //get all user's records
   const getALlData = () => {
     RecordFactory.getAllRecords(user)
     .then((data) => {
+      //loop through all records and grab the user-enter dates and push to dbDates
       data.forEach((record) => {
         let dates = new Date(record.date).toString().slice(4,15);
         dbDates.push(dates);
@@ -428,10 +436,11 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
       return dbDates;
     })
     .then((dbDates) => {
-      // console.log( "dbDates", dbDates );
+      //loop through our array of reference dates and compare each one to the user dates.
       for (let i = 0; i < $scope.dateReference.length; i++) {
         for (let j = 0; j < dbDates.length; j++) {
           if ($scope.dateReference[i] === dbDates[j]) {
+              //if the reference date matches a user date
               $scope.data[0][i]++;
           }
         }
@@ -440,12 +449,14 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
   };
   getALlData();
 
-//Create a stable reference of the last 30 days
+  //Create a stable reference of the last 30 days
   const fillDateReference = () => {
     for (let i = 30; i > 0; i--) {
+      //create a new date for each of the last 30 days
       let dateRef = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,15);
       $scope.dateReference.push(dateRef);
     }
+    //create and push today's date
     let today = new Date().toString().slice(4,15);
     $scope.dateReference.push(today);
   };
@@ -453,9 +464,11 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
 //Dynamically fill the x-axis of the chart
   const fillLabels = () => {
     for (let i = 30; i > 0; i--) {
+      //create a new date for each of the last 30 days to the label array
       let dateLabel = new Date(new Date().setDate(new Date().getDate()-[i])).toString().slice(4,10);
       $scope.labels.push(dateLabel);
     }
+    //create and push today's date to the label array
     let today = new Date().toString().slice(4,10);
     $scope.labels.push("Today- " + today);
   };
