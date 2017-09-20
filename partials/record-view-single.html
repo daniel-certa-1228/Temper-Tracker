@@ -4,7 +4,6 @@
 <!-- Main display-->
 <div>
 	<p><strong>Child: </strong>{{record.child}}</p>
-
 	 <div class="form-group">
 	    <label for="dateSelect"><strong>Date: </strong></label>
 	    	<input type="date" id="dateSelect" ng-model="record.date" readonly>
@@ -23,8 +22,8 @@
 	<p><strong>Comments: </strong>{{record.comments}}</p>
   <!-- Calls single record from database to edit and goes to the edit page-->
   <a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-light">Edit</button></a>
-  <!-- Cancel Button returns to record-list-->
- 	<a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Cancel</button></a>
+  <!-- Back Button returns to record-list-->
+ 	<a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Back</button></a>
   <!-- Behavior Definitions Button triggers Behavior Definitions modal-->
  	<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
 </div>
