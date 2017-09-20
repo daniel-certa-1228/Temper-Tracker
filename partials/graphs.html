@@ -27,7 +27,9 @@
     <!-- Line Chart showing incidence of behaviors over the previous 30 days-->
     <div class="col-lg-12 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl_2">
       <div class="panel panel-default">
-        <div class="panel-heading"><h5>Incidence of Challenging Behavior per Day - Last 30 Days</h5></div>
+        <div class="panel-heading"><h5>Incidence of Challenging Behavior per Day (Last 30 Days)</h5>
+        <h6 class="graph-h5"><span class="red" ng-repeat="total in totalIncidents track by $index"><strong>{{total}}</strong></span> Total Incidents | <span class="red" ng-repeat="total in totalIncidents30 track by $index"><strong>{{total}}</strong></span> Incidents Occured in the Last 30 Days</h6>
+        </div>
         <div class="panel-body">
           <canvas id="line2" class="chart chart-line" chart-data="data" chart-labels="labels"
                   chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"

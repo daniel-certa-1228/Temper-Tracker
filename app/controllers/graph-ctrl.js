@@ -435,12 +435,18 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
   };
   //array to hold the user dates from firebase
   let dbDates = [];
+
+  $scope.totalIncidents = [];
+  $scope.totalIncidents30 = [];
   //array to hold generated dates from today and last 30 days
   $scope.dateReference = [];
   //get all user's records
   const getALlData = () => {
     RecordFactory.getAllRecords(user)
     .then((data) => {
+      let totals = data.length;
+      $scope.totalIncidents.push(totals);
+      // console.log( "$scope.totalIncidents", $scope.totalIncidents );
       //loop through all records and grab the user-enter dates and push to dbDates
       data.forEach((record) => {
         let dates = new Date(record.date).toString().slice(4,15);
@@ -458,6 +464,10 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
           }
         }
       }
+    })
+    .then(()=> {
+      let total = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
+      $scope.totalIncidents30.push(total);
     });
   };
   getALlData();
