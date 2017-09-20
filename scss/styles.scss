@@ -134,7 +134,7 @@ footer {
 
 #printBTN {
 	display: inline-block;
-	margin-left: 1.5em;
+	margin-left: 1em;
 }
 
 #childSelectRecords {
@@ -144,6 +144,11 @@ footer {
 
 #behShort {
 	display:none;
+}
+
+#defButtonAllRec {
+	display: inline-block;
+	margin-left: .8em;
 }
 
 ////////////////////////////////////////////////////////
@@ -228,11 +233,17 @@ footer {
 //////////MEDIA QUERIES/////////////////////////////////
 ////////////////////////////////////////////////////////
 
-
-@media only screen and (max-width: 426px) {
+@media only screen and (max-width: 374px) {
 
 	#defButton2 {
-		width: 100px;
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 445px) {
+
+	#defButton2 {
+		width: 125px;
 	}
 
 	#behShort {
@@ -264,7 +275,7 @@ footer {
 
 	#childSelectRecords {
 		display: block;
-		max-width: 100%;
+		// max-width: 100%;
 		margin: 0;
 	}
 }
@@ -278,13 +289,23 @@ footer {
 	#dropdownMenuButton {
 		margin-left: 0em;
 	}
+
+	#defButtonAllRec {
+		display: none;
+		margin-left: .8em;
+}	
+
+	#childSelectRecords {
+		max-width: 65%;
+	}
+
 }
 
 @media only screen and (min-width: 525px) {
 
 	#childSelectRecords {
 
-		max-width: 65%;
+		// max-width: 65%;
 	}
 }
 
@@ -297,14 +318,12 @@ footer {
 
 		#childSelectRecords {
 
-		max-width: 75%;
+		max-width: 58%;
 	}
 
 	.graph-div {
 		border-bottom: none;
 	}
-
-
 
 }
 
