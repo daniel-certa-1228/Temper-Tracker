@@ -7,7 +7,7 @@
 	<div class="select-group">
 		<select class="form-control" id="childSelectRecords" ng-model="kidFilter.search">
 		      <option value="">Select Child's Records to View </option>
-		      <!-- Poulated by the databse call in ChildFactory-->
+		      <!-- Populated by the databse call in ChildFactory-->
 		      <option ng-repeat='child in childrenData' value='{{child.id}}'>{{child.name}}</option>
 		</select>
 		<!-- Print Button calls $window.print() system dialog-->
