@@ -18,7 +18,11 @@ app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFac
 		ChildFactory.addChild($scope.child)
 		.then((data) => {
 			console.log( "data from AddChildCtrl", data );
-			$location.url('/all-children');
+			if($scope.firstUse !== true) {
+				$location.url('/all-children');
+			}  else  {
+				$location.url('/home');
+			}
 		});
 	};
 

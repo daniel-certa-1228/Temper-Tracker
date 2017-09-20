@@ -2,6 +2,10 @@
 $primary-color: #8eaebd;
 $secondary-color: #30415d;
 
+////////////////////////////////////////////////////////
+//////////MAIN PAGE/////////////////////////////////////
+////////////////////////////////////////////////////////
+
 body {
 	position: relative;
 	font-family: 'Open Sans', sans-serif;
@@ -19,46 +23,6 @@ body {
 
 #welcome {
 	margin: 5% auto 0;
-}
-
-#nav {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 99;
-	background-color: $primary-color;
-	color: white;
-
-	a {
-		color: white;
-	}
-
-	a:hover {
-		color: black;
-	}
-
-}
-
-.navbar-toggler{
-	border-color: rgba(255,255,255, 0.7);
-}
-
-.navbar-toggler-icon {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-.dropdown-menu {
-	background-color: $primary-color;
-}
-
-#logo {
-	margin-right: 1.5em;
-}
-
-#image-icon {
-	border-radius: 50%;
-	max-width: 50px;
-	margin-left: 1em;
 }
 
 #main-container {
@@ -90,6 +54,11 @@ footer {
 #child-dd {
 	background-color: white;
 }
+
+////////////////////////////////////////////////////////
+////////////CARD VIEW///////////////////////////////////
+////////////////////////////////////////////////////////
+
 .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -122,6 +91,49 @@ footer {
 .cardButtons {
 	position: absolute;
 	bottom: 25px;
+}
+
+////////////////////////////////////////////////////////
+////////////NAV BAR/////////////////////////////////////
+////////////////////////////////////////////////////////
+
+#nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+	background-color: $primary-color;
+	color: white;
+
+	a {
+		color: white;
+	}
+
+	a:hover {
+		color: black;
+	}
+}
+
+.navbar-toggler{
+	border-color: rgba(255,255,255, 0.7);
+}
+
+.navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.dropdown-menu {
+	background-color: $primary-color;
+}
+
+#logo {
+	margin-right: 1.5em;
+}
+
+#image-icon {
+	border-radius: 50%;
+	max-width: 50px;
+	margin-left: 1em;
 }
 
 ////////////////////////////////////////////////////////

@@ -5,6 +5,7 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 	let user = UserFactory.getCurrentUser();
 	let currentTime = Math.floor(Date.now());
 	$scope.addRec = true;
+	$scope.firstUse = false;
 	$scope.title = "Add Record";
 
 	$scope.record = {
@@ -30,6 +31,18 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 	// $scope.childInfo = {};
 	$scope.childrenInfo = [];
 
+	let checkForRecords = () => {
+		RecordFactory.getAllRecords(user)
+		.then((data) => {
+			if (data.length === 0) {
+				$scope.firstUse = true;
+			}  else  {
+				$scope.firstUse = false;
+			}
+		});
+	};
+	checkForRecords();
+
 	let getChildDropdownData = () => {
 		ChildFactory.getAllChildren(user)
 		.then((data) => {
@@ -41,7 +54,6 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 			// console.log( "$scope.childrenInfo", $scope.childrenInfo );
 		});
 	};
-
 	getChildDropdownData();
 
 

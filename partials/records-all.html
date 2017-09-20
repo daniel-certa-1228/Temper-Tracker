@@ -1,17 +1,23 @@
+<!-- <pdf> tag is for future pdf-generation feature-->
 <pdf>
 	<header class="partial-h2">
 	  <h2>{{title}}</h2>
 	</header>
+	<!-- Div Containing select and buttons-->
 	<div class="select-group">
 		<select class="form-control" id="childSelectRecords" ng-model="kidFilter.search">
 		      <option value="">Select Child's Records to View </option>
+		      <!-- Poulated by the databse call in ChildFactory-->
 		      <option ng-repeat='child in childrenData' value='{{child.id}}'>{{child.name}}</option>
 		</select>
+		<!-- Print Button calls $window.print() system dialog-->
 		<button type="button" class="btn btn-outline-secondary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
+		<!-- Behavior Definitions Button triggers Behavior Definitions modal-->
 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#legendModal" id="defButtonAllRec"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
 	</div>
-
+	<!-- Main display -->
 	<div class="row">
+		<!-- Card -->
 		<div class="col-lg-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
 			<div class="card-interior card-padding">
 				<p><strong>Child: </strong>{{record.child}}</p>
@@ -31,13 +37,16 @@
 				<p class="comments"><strong>Comments: </strong>{{record.comments}}</p>
 				<p ng-show="false">CHILD-ID:{{record.childID}}</p>
 				<div class="cardButtons">
+					<!-- Calls single record from database to view and goes to view page-->
 					<a ng-href="#!/record/{{record.id}}/view"><button type="button" class="btn btn-secondary">View</button></a>
+					<!-- Calls single record from database to edit and goes to the edit page-->
 					<a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-light">Edit</button></a>
 				</div>
 			</div>
 		</div>
 	</div>
 </pdf>
+<!-- Behavior Definitions Modal-->
 <div class="modal fade" id="legendModal" tabindex="-1" role="dialog" aria-labelledby="legendModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

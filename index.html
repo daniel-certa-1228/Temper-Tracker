@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="TemperTracker">
 	<head>
-		<title>Temper Tracker</title>
+		<title>TemperTracker</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Font-awesome CSS-->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<!-- Bootstrap CSS-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<!-- Compiled CSS-->
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	<body>
+		<!-- Navbar -->
 		<div ng-include="'partials/navbar.html'"></div>
-
+		<!-- MAIN VIEW -->
 		<div class="container" id="main-container" ng-view></div>
-
+		<!-- Footer -->
 		<div ng-include="'partials/footer.html'"></div>
 		<!-- Angular -->
 		<script type="text/javascript" src="./lib/node_modules/angular/angular.min.js"></script>
