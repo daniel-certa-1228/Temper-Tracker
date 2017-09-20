@@ -6,6 +6,7 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs - All Records";
 	$scope.childrenInfo = [];
+  $scope.firstUse = false;
   //gets the user's children info for the dropdown menu
 	let getChildDropdownData = () => {
 		ChildFactory.getAllChildren(user)
@@ -16,6 +17,18 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 		});
 	};
 	getChildDropdownData();
+
+  let checkForRecords = () => {
+    RecordFactory.getAllRecords(user)
+    .then((data) => {
+      if (data.length === 1) {
+        $scope.firstUse = true;
+      }  else  {
+        $scope.firstUse = false;
+      }
+    });
+  };
+  checkForRecords();
   //calls the system print window function
   $scope.printRecords = () => {
     $timeout($window.print, 0);

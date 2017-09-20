@@ -2,6 +2,13 @@
   <h2>{{title}}</h2>
 </header>
 
+  <div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <p class="alert-p">If you have more than one child, you can filter your records on a per-child basis using the <strong>Select Child to View Their Metrics</strong> dropdown menu below.</p>
+  </div>
+
   <div class="dropdown graph-drop" id="graph-dropdown">
     <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Select Child to View Their Metrics

@@ -2,6 +2,13 @@
     <h2 ng-repeat="child in childInfo">{{title}} - {{child.name}}</h2>
 </header>
 
+  <div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <p class="alert-p">Click <strong>Add Record</strong> above to record another behavior incicdent.</p>
+  </div>
+
   <div class="dropdown graph-drop">
     <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Select Child to View Their Metrics
