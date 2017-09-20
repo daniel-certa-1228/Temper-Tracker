@@ -1,7 +1,7 @@
 "use strict";
 
 app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory) {
-
+	//defines user
 	let user = UserFactory.getCurrentUser();
 
 	$scope.title = "View Record";
@@ -17,13 +17,15 @@ app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams,
 		comments:'',
 		uid: user
 	};
-
+	//calls a single record from firebase and formats it for display
 	const getSingleRecord = () => {
 		RecordFactory.getSingleRecord($routeParams.itemId)
 		.then
 		((data) => {
 			$scope.record = data;
+			//adds uglyID from routeparams to record
 			$scope.record.id = $routeParams.itemId;
+			//constructs a new date and time object from the string of data from firebase and adds them to the record
 			let fixedDate = new Date(data.date);
 			let fixedTime = new Date(data.time);
 			$scope.record.time = fixedTime;
@@ -31,11 +33,10 @@ app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams,
 			return data.childID;
 		})
 		.then((childID) => {
-			// console.log( "childID", childID );
 			ChildFactory.getSingleChild(childID)
 			.then((data) => {
+				//adds the child's name to the record based on their ID
 				$scope.record.child = data.name;
-				// console.log( "$scope.record", $scope.record );
 			});
 		});
 	};
