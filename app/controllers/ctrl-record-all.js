@@ -8,6 +8,7 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 	$scope.childrenData = [];
 	$scope.searchText = FilterFactory;
 	$scope.kidFilter = FilterFactoryChildren;
+	$scope.firstUse = false;
 	// calls system print fucntion
 	$scope.printRecords = () => {
 		$timeout($window.print, 0);
@@ -42,6 +43,13 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
     			return (a.timestamp) - (b.timestamp);
 				});
 				$scope.records.reverse();
+			})
+			.then(() => {
+				if ($scope.records.length === 1) {
+					$scope.firstUse = true;
+				}  else  {
+					$scope.firstUse = false;
+				}
 			});
 		})
 		.catch((error) => {

@@ -6,6 +6,7 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs - All Records";
 	$scope.childrenInfo = [];
+  $scope.firstUse = false;
   //gets the user's children info for the dropdown menu
 	let getChildDropdownData = () => {
 		ChildFactory.getAllChildren(user)
@@ -16,6 +17,18 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 		});
 	};
 	getChildDropdownData();
+
+  let checkForRecords = () => {
+    RecordFactory.getAllRecords(user)
+    .then((data) => {
+      if (data.length === 1) {
+        $scope.firstUse = true;
+      }  else  {
+        $scope.firstUse = false;
+      }
+    });
+  };
+  checkForRecords();
   //calls the system print window function
   $scope.printRecords = () => {
     $timeout($window.print, 0);
@@ -422,12 +435,18 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
   };
   //array to hold the user dates from firebase
   let dbDates = [];
+
+  $scope.totalIncidents = [];
+  $scope.totalIncidents30 = [];
   //array to hold generated dates from today and last 30 days
   $scope.dateReference = [];
   //get all user's records
   const getALlData = () => {
     RecordFactory.getAllRecords(user)
     .then((data) => {
+      let totals = data.length;
+      $scope.totalIncidents.push(totals);
+      // console.log( "$scope.totalIncidents", $scope.totalIncidents );
       //loop through all records and grab the user-enter dates and push to dbDates
       data.forEach((record) => {
         let dates = new Date(record.date).toString().slice(4,15);
@@ -445,6 +464,10 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
           }
         }
       }
+    })
+    .then(()=> {
+      let total = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
+      $scope.totalIncidents30.push(total);
     });
   };
   getALlData();

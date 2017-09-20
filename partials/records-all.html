@@ -3,6 +3,14 @@
 	<header class="partial-h2">
 	  <h2>{{title}}</h2>
 	</header>
+
+	<div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	  <p class="alert-p">This page shows all of your behavior records.  They can be filtered by keyword using the <strong>Keyword Search</strong> box above or by name using the <strong>Select Child's Records to View</strong> select menu below.</p>
+	  <p class="alert-p">Click the <strong>Graphs</strong> link on the upper right to see behavioral data.</p>
+	</div>
 	<!-- Div Containing select and buttons-->
 	<div class="select-group">
 		<select class="form-control" id="childSelectRecords" ng-model="kidFilter.search">
