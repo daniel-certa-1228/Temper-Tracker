@@ -9,6 +9,7 @@ app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFac
 	//$scope.firstUse lets the partial know to hide the alert
 	$scope.firstUse = false;
 	$scope.title = "Add Child";
+	$scope.newUserName = [];
 
 	$scope.child = {
 		birthdate: '',
@@ -43,6 +44,15 @@ app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFac
 				console.log( "KIDS" );
 				$scope.firstUse = false;
 			}
+		})
+		.then(() => {
+			UserFactory.getUserObjByID(user)
+			.then((data) => {
+				let email = Object.values(data.data);
+				// console.log( "email", email );
+				$scope.newUserName.push(email[0].name);
+				// console.log( "$scope.newUserName", $scope.newUserName );
+			});
 		});
 	};
 	checkForRecords();

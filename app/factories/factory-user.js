@@ -40,6 +40,21 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
+	// gets the user email by user id
+	let getUserObjByID = (id) => {
+		return $q((resolve, rejecet) => {
+			$http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${id}"`)
+			.then((data) => {
+				resolve(data);
+				console.log( "data", Object.values(data.data) );
+			})
+			.catch((error) => {
+				console.log( "error at UserFactory.getUserObjByID", error );
+			});
+		});
+	};
+
+
 	//posts a new user upon first-time login
 	let postUserObj = (userObj) => {
 		return $q((resolve, reject) => {
@@ -66,5 +81,5 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 		console.log("factoryLogOut firing");
 		return firebase.auth().signOut();
 	};
-	return{getCurrentUser, getUserEmailFromFB, isAuthenticated, getUserObj, postUserObj, authWithProvider, logOut};
+	return{getCurrentUser, getUserEmailFromFB, isAuthenticated, getUserObj, postUserObj, authWithProvider, logOut, getUserObjByID};
 });
