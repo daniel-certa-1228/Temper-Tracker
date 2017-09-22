@@ -1,11 +1,11 @@
 "use strict";
 
-app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, UserFactory, FilterFactory) {
+app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, UserFactory, FilterFactory, ToggleFactory) {
 
 	$scope.searchText = FilterFactory;
   	$scope.isLoggedIn = false;
-  	// $scope.glow_one = false;
-  	// $scope.glow_two = false;
+  	$scope.tourMode_one = false;
+  	$scope.tourMode_two = false;
   	// handles logout button functions
 	$scope.logOut = () => {
 		console.log( "logout firing" );
@@ -45,22 +45,39 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 			$scope.searchText = angular.copy($scope.default);
 		}
 	};
+
+	const tourCheck_1 = () => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		console.log( "tourCheck_1", boolean );
+		if (boolean) {
+			$scope.tourMode_one = true;
+			console.log( "$scope.tourMode_one", $scope.tourMode_one );
+		}  else  {
+			$scope.tourMode_one = false;
+			console.log( "$scope.tourMode_one", $scope.tourMode_one );
+		}
+		return boolean;
+	};
+
+	const tourCheck_2 = () => {
+		ToggleFactory.getTourModeStep_2()
+		.then((boolean) => {
+			if (boolean === true) {
+				$scope.tourMode_two = true;
+			}
+			else {
+				$scope.tourMode_two = false;
+			}
+		});
+	};
 	//watch $scope to check what page we're on; runs windowCheck
 	$scope.$watch(() => {
 		let path = $location.path();
 		windowCheck(path);
+		tourCheck_1();
 		// console.log( "$scope.searchbar", $scope.searchbar );
     return $location.path();
 	});
-
-	// $scope.$watch('firstUse', function() {
-	// 	if (firstUse === true) {	
-	// 		console.log( "firstUse is true" );
-	// 	}  else  {
-	// 		console.log( "firstUse is false" );
-
-	// 	}
-	// });
 	
 	//animation to have hambuger menu close on click
 	$(function(){ 

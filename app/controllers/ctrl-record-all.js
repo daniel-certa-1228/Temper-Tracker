@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout) {
+app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout, ToggleFactory) {
 	//defines user
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "View All Records";
@@ -47,6 +47,12 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 			.then(() => {
 				if ($scope.records.length === 1) {
 					$scope.firstUse = true;
+
+					ToggleFactory.toggleTourModeStep_1();
+					// .then((boolean) => {
+					// 	console.log( "boolean", boolean );
+					// });
+
 				}  else  {
 					$scope.firstUse = false;
 				}

@@ -137,7 +137,7 @@ footer {
 }
 
 ////////////////////////////////////////////////////////
-//////////ALERT/////////////////////////////////////////
+//////////TOUR//////////////////////////////////////////
 ////////////////////////////////////////////////////////
 
 .alert-p {
@@ -149,7 +149,7 @@ footer {
 }
 
 .flash-btn {
-	animation: glowing 1200ms infinite;
+	animation: glowing 1000ms infinite;
 }
 
 .flash-btn-2 {
@@ -161,12 +161,19 @@ footer {
 //   50% { background-color: white; box-shadow: 0 0 30px #47ff4a; }
 //   100% { background-color: white; box-shadow: 0 0 3px #00c603; }
 // }
+@keyframes glowing {
+  0% { color: white; text-shadow: 0 0 3px #cf6766; }
+  50% { color: red; text-shadow: 0 0 30px red; }
+  100% { color: white; text-shadow: 0 0 3px #cf6766; }
+}
 
 @keyframes glowing-2 {
   0% { box-shadow: 0 0 3px #FFEDBC; }
-  50% { box-shadow: 0 0 40px yellow; }
+  50% { box-shadow: 0 0 30px yellow; }
   100% { box-shadow: 0 0 3px #FFEDBC; }
 }
+
+
 ////////////////////////////////////////////////////////
 //////////PRINT/SELECT//////////////////////////////////
 ////////////////////////////////////////////////////////

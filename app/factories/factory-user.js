@@ -13,7 +13,6 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 	let getUserEmailFromFB = () => {
 		return userEmailFromFB;
 	};
-
 	//checks to see if user is authenticated, resolves true or rejects false
 	let isAuthenticated = () => {
 		return $q((resolve, reject) => {
@@ -53,8 +52,6 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 			});
 		});
 	};
-
-
 	//posts a new user upon first-time login
 	let postUserObj = (userObj) => {
 		return $q((resolve, reject) => {
