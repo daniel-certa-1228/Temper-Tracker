@@ -45,7 +45,8 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 				$scope.records.reverse();
 			})
 			.then(() => {
-				if ($scope.records.length === 1) {
+				let boolean = ToggleFactory.getTourModeStep_1();
+				if ($scope.records.length === 1 && !boolean) {
 					
 					$scope.firstUse = true;
 
@@ -61,4 +62,13 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 		});
 	};
 	$scope.showAllRecords();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleTwo();
 });

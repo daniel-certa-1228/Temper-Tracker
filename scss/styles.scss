@@ -160,11 +160,6 @@ footer {
 	animation: glowing-3 1000ms infinite;
 }
 
-// @keyframes glowing {
-//   0% { background-color: white; box-shadow: 0 0 3px #00c603; }
-//   50% { background-color: white; box-shadow: 0 0 30px #47ff4a; }
-//   100% { background-color: white; box-shadow: 0 0 3px #00c603; }
-// }
 @keyframes glowing {
   0% { color: white; text-shadow: 0 0 3px white; }
   50% { color: lightgreen; text-shadow: 0 0 30px green; }
@@ -179,7 +174,7 @@ footer {
 
 @keyframes glowing-3 {
   0% { box-shadow: 0 0 3px white; }
-  50% { box-shadow: 0 0 40px green; }
+  50% { box-shadow: 0 0 40px lightgreen; }
   100% { box-shadow: 0 0 3px white; }
 }
 

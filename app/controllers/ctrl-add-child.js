@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory) {
+app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, ToggleFactory) {
 
 	//defines user
 	let user = UserFactory.getCurrentUser();
@@ -56,4 +56,22 @@ app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFac
 		});
 	};
 	checkForRecords();
+
+	const resetToggleOne = () => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_1();
+		}
+	};
+	resetToggleOne();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleTwo();
 });

@@ -1,7 +1,7 @@
 "use strict";
 // console.log( "graph-ctrl.js" );
 
-app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout){
+app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout, ToggleFactory){
   //defines user
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs - All Records";
@@ -23,6 +23,7 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
     .then((data) => {
       if (data.length === 1) {
         $scope.firstUse = true;
+        // ToggleFactory.toggleTourModeStep_1();
       }  else  {
         $scope.firstUse = false;
       }
@@ -33,6 +34,24 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
   $scope.printRecords = () => {
     $timeout($window.print, 0);
   };
+
+  const resetToggleOne = () => {
+    let boolean = ToggleFactory.getTourModeStep_1();
+    if (boolean) {
+      console.log( "FIXED" );
+      ToggleFactory.toggleTourModeStep_1();
+    }
+  };
+  resetToggleOne();
+
+  const resetToggleTwo = () => {
+    let boolean = ToggleFactory.getTourModeStep_2();
+    if (boolean) {
+      console.log( "FIXED" );
+      ToggleFactory.toggleTourModeStep_2();
+    }
+  };
+  resetToggleTwo();
 });
 
 /////////////////////////////////////////////////////////////

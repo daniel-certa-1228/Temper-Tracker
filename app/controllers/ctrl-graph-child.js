@@ -26,11 +26,13 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
   let checkForRecords = () => {
     RecordFactory.getAllRecords(user)
     .then((data) => {
-      if (data.length === 1) {
+      let boolean = ToggleFactory.getTourModeStep_1();
+      if (data.length === 1&& !boolean) {
 
         $scope.firstUse = true;
-
         ToggleFactory.toggleTourModeStep_2();
+
+        
       }  else  {
         $scope.firstUse = false;
       }
@@ -41,6 +43,15 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
   $scope.printRecords = () => {
     $timeout($window.print, 0);
   };
+
+  const resetToggleOne = () => {
+    let boolean = ToggleFactory.getTourModeStep_1();
+    if (boolean) {
+      console.log( "FIXED" );
+      ToggleFactory.toggleTourModeStep_1();
+    }
+  };
+  resetToggleOne();
 });
 
 /////////////////////////////////////////////////////////////
