@@ -45,7 +45,8 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 			$scope.searchText = angular.copy($scope.default);
 		}
 	};
-
+	//Checks the toggle factory to see if tour mode 1 is active
+	//if true, the searchbar and Graphs link will flash
 	const tourCheck_1 = (path) => {
 		let boolean = ToggleFactory.getTourModeStep_1();
 		// console.log( "tourCheck_1", boolean );
@@ -58,7 +59,8 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 		}
 		return boolean;
 	};
-
+	//Checks the toggle factory to see if tour mode 2 is active
+	//if true, the LOGO will flash
 	const tourCheck_2 = (path) => {
 		// console.log( "CHECK", path );
 		let boolean = ToggleFactory.getTourModeStep_2();
@@ -72,7 +74,7 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 		}
 		return boolean;
 	};
-
+	//watching scope for changes to detect location and Tour Mode State
 	$scope.$watch(() => {
 		let path = $location.path();
 		windowCheck(path);
@@ -80,7 +82,6 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 		tourCheck_2(path);
     return $location.path();
 	});
-	
 	//animation to have hambuger menu close on click
 	$(function(){ 
 	    let navMain = $(".navbar-collapse");
