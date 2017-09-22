@@ -156,15 +156,19 @@ footer {
 	animation: glowing-2 1000ms infinite;
 }
 
+.flash-btn-3 {
+	animation: glowing-3 1000ms infinite;
+}
+
 // @keyframes glowing {
 //   0% { background-color: white; box-shadow: 0 0 3px #00c603; }
 //   50% { background-color: white; box-shadow: 0 0 30px #47ff4a; }
 //   100% { background-color: white; box-shadow: 0 0 3px #00c603; }
 // }
 @keyframes glowing {
-  0% { color: white; text-shadow: 0 0 3px #cf6766; }
-  50% { color: red; text-shadow: 0 0 30px red; }
-  100% { color: white; text-shadow: 0 0 3px #cf6766; }
+  0% { color: white; text-shadow: 0 0 3px white; }
+  50% { color: lightgreen; text-shadow: 0 0 30px green; }
+  100% { color: white; text-shadow: 0 0 3px white; }
 }
 
 @keyframes glowing-2 {
@@ -173,6 +177,11 @@ footer {
   100% { box-shadow: 0 0 3px #FFEDBC; }
 }
 
+@keyframes glowing-3 {
+  0% { box-shadow: 0 0 3px white; }
+  50% { box-shadow: 0 0 40px green; }
+  100% { box-shadow: 0 0 3px white; }
+}
 
 ////////////////////////////////////////////////////////
 //////////PRINT/SELECT//////////////////////////////////

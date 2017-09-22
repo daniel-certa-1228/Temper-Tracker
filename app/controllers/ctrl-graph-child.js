@@ -1,7 +1,7 @@
 "use strict";
 // console.log( "graph-ctrl-child.js" );
 
-app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout){
+app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout, ToggleFactory){
   //defines user
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "Graphs";
@@ -27,7 +27,10 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
     RecordFactory.getAllRecords(user)
     .then((data) => {
       if (data.length === 1) {
+
         $scope.firstUse = true;
+
+        ToggleFactory.toggleTourModeStep_2();
       }  else  {
         $scope.firstUse = false;
       }

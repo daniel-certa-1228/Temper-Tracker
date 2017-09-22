@@ -46,10 +46,10 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 		}
 	};
 
-	const tourCheck_1 = () => {
+	const tourCheck_1 = (path) => {
 		let boolean = ToggleFactory.getTourModeStep_1();
 		console.log( "tourCheck_1", boolean );
-		if (boolean) {
+		if (boolean &&  (path === "/list-records") ) {
 			$scope.tourMode_one = true;
 			console.log( "$scope.tourMode_one", $scope.tourMode_one );
 		}  else  {
@@ -59,23 +59,37 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 		return boolean;
 	};
 
-	const tourCheck_2 = () => {
-		ToggleFactory.getTourModeStep_2()
-		.then((boolean) => {
-			if (boolean === true) {
-				$scope.tourMode_two = true;
-			}
-			else {
-				$scope.tourMode_two = false;
-			}
-		});
+	const tourCheck_2 = (path) => {
+		console.log( "CHECK", path );
+		let boolean = ToggleFactory.getTourModeStep_2();
+		console.log( "tourCheck_2", boolean );
+		if (boolean &&  (path === `/child/${$routeParams.itemId}/graphs`) ) {
+			$scope.tourMode_two = true;
+			console.log( "$scope.tourMode_two", $scope.tourMode_two );
+		}  else  {
+			$scope.tourMode_two = false;
+			console.log( "$scope.tourMode_two", $scope.tourMode_two );
+		}
+		return boolean;
 	};
+
+	// const tourCheck_2 = (location) => {
+	// 	ToggleFactory.getTourModeStep_2()
+	// 	.then((boolean) => {
+	// 		if ( (boolean === true) && (location === "/list-records") ) {
+	// 			$scope.tourMode_two = true;
+	// 		}
+	// 		else {
+	// 			$scope.tourMode_two = false;
+	// 		}
+	// 	});
+	// };
 	//watch $scope to check what page we're on; runs windowCheck
 	$scope.$watch(() => {
 		let path = $location.path();
 		windowCheck(path);
-		tourCheck_1();
-		// console.log( "$scope.searchbar", $scope.searchbar );
+		tourCheck_1(path);
+		tourCheck_2(path);
     return $location.path();
 	});
 	
