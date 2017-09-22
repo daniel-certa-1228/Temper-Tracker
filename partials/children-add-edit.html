@@ -27,6 +27,7 @@
     <textarea class="form-control" id="parent_comments" rows="3" placeholder="Parent Comments" ng-model="child.comments"></textarea>
   </div>
   <!-- Save Button for ADD view; triggers a POST to Friebase-->
+  <!-- ng-class="{'flash-btn' : firstUse}" -->
   <button type="button" class="btn btn-light" ng-click="addChild()" ng-hide="editKid">Save</button>
   <!-- Save Button for EDIT view; triggers a PATCH to Friebase-->
   <button type="button" class="btn btn-light" ng-click="editChild()" ng-hide="addKid">Save</button>

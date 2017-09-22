@@ -1,7 +1,7 @@
 "use strict";
 console.log( "app.js" );
 
-const app = angular.module('TemperTracker', ['ngRoute', 'chart.js']);
+const app = angular.module('TemperTracker', ['ngRoute', 'chart.js', 'ngAnimate']);
 
 app.run(($location, FBCreds) => {
 	firebase.initializeApp(FBCreds);
