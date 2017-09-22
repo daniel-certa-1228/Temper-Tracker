@@ -145,14 +145,28 @@ footer {
 }
 
 .fa-exclamation-triangle {
-	color: darkorange;
+	color: #cf6766;
 }
 
-// .flash-btn {
-// 	box-shadow: -1px 0px 68px -5px rgba(243,255,71,1);
-//     transition: box-shadow 1s ease-in-out;
+.flash-btn {
+	animation: glowing 1200ms infinite;
+}
+
+.flash-btn-2 {
+	animation: glowing-2 1000ms infinite;
+}
+
+// @keyframes glowing {
+//   0% { background-color: white; box-shadow: 0 0 3px #00c603; }
+//   50% { background-color: white; box-shadow: 0 0 30px #47ff4a; }
+//   100% { background-color: white; box-shadow: 0 0 3px #00c603; }
 // }
 
+@keyframes glowing-2 {
+  0% { box-shadow: 0 0 3px #FFEDBC; }
+  50% { box-shadow: 0 0 40px yellow; }
+  100% { box-shadow: 0 0 3px #FFEDBC; }
+}
 ////////////////////////////////////////////////////////
 //////////PRINT/SELECT//////////////////////////////////
 ////////////////////////////////////////////////////////

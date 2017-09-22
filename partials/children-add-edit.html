@@ -6,8 +6,8 @@
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-  <p class="alert-p"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Welcome <strong><span ng-repeat="user in newUserName track by $index">{{user}}</span></strong>! </p>
-  <p class="alert-p">Please use this form to <strong>Add a Child</strong> to begin tracking.</p>
+  <p class="alert-p">Hello, <strong><span ng-repeat="user in newUserName track by $index">{{user}}</span></strong>.  Welcome to TemperTracker.</p>
+  <p class="alert-p"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Please <strong>Add a Child</strong> to begin tracking.</p>
 </div>
 <!-- Main Record Form-->
 <form>
@@ -28,7 +28,7 @@
   </div>
   <!-- Save Button for ADD view; triggers a POST to Friebase-->
   <!-- ng-class="{'flash-btn' : firstUse}" -->
-  <button type="button" class="btn btn-light" ng-click="addChild()" ng-hide="editKid">Save</button>
+  <button type="button" class="btn btn-light" ng-class="{'flash-btn-2' : firstUse}" ng-click="addChild()" ng-hide="editKid">Save</button>
   <!-- Save Button for EDIT view; triggers a PATCH to Friebase-->
   <button type="button" class="btn btn-light" ng-click="editChild()" ng-hide="addKid">Save</button>
   <!-- Cancel Button returns to child-list-->

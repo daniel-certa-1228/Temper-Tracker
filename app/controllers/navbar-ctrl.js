@@ -4,6 +4,8 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 
 	$scope.searchText = FilterFactory;
   	$scope.isLoggedIn = false;
+  	// $scope.glow_one = false;
+  	// $scope.glow_two = false;
   	// handles logout button functions
 	$scope.logOut = () => {
 		console.log( "logout firing" );
@@ -47,8 +49,19 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 	$scope.$watch(() => {
 		let path = $location.path();
 		windowCheck(path);
+		// console.log( "$scope.searchbar", $scope.searchbar );
     return $location.path();
 	});
+
+	// $scope.$watch('firstUse', function() {
+	// 	if (firstUse === true) {	
+	// 		console.log( "firstUse is true" );
+	// 	}  else  {
+	// 		console.log( "firstUse is false" );
+
+	// 	}
+	// });
+	
 	//animation to have hambuger menu close on click
 	$(function(){ 
 	    let navMain = $(".navbar-collapse");
