@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory, FilterFactory) {
+app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory, FilterFactory, ToggleFactory) {
 	//defines user
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "All Children";
@@ -23,4 +23,22 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 		});
 	};
 	$scope.showAllChildren();
+	//Functions to check tourmode 1 and 2 and turn them false if they are true
+	const resetToggleOne = () => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_1();
+		}
+	};
+	resetToggleOne();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleTwo();
 });
