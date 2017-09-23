@@ -12,17 +12,17 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav" id="navUl">
       <li class="nav-item active" ng-show="isLoggedIn">
-        <a class="nav-link" ng-href="#!/home">Add Record<span class="sr-only">(current)</span></a>
+        <a class="nav-link" ng-href="#!/home"><i class="fa fa-pencil" aria-hidden="true"></i> Add Record<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" ng-show="isLoggedIn">
-        <a class="nav-link" ng-href="#!/list-records">View Records</a>
+        <a class="nav-link" ng-href="#!/list-records"><i class="fa fa-file-text-o" aria-hidden="true"></i> View Records</a>
       </li>
       <li class="nav-item" ng-show="isLoggedIn">
-        <a class="nav-link" ng-href="#!/graphs" ng-class="{'flash-btn' : tourMode_one}">Graphs</a>
+        <a class="nav-link" ng-href="#!/graphs" ng-class="{'flash-btn' : tourMode_one}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Graphs</a>
       </li>
       <li class="nav-item dropdown" ng-show="isLoggedIn">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Children
+          <i class="fa fa-child" aria-hidden="true"></i> Children
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" ng-href="#!/all-children">See All Children</a>
