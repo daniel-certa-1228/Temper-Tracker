@@ -17,13 +17,12 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
 		});
 	};
 	getChildDropdownData();
-
+  //checks for a record and turns on TOUR MODE if there is one
   let checkForRecords = () => {
     RecordFactory.getAllRecords(user)
     .then((data) => {
       if (data.length === 1) {
         $scope.firstUse = true;
-        // ToggleFactory.toggleTourModeStep_1();
       }  else  {
         $scope.firstUse = false;
       }
@@ -34,11 +33,10 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
   $scope.printRecords = () => {
     $timeout($window.print, 0);
   };
-
+  //Functions to check tourmode 1 and 2 and turn them false if they are true
   const resetToggleOne = () => {
     let boolean = ToggleFactory.getTourModeStep_1();
     if (boolean) {
-      console.log( "FIXED" );
       ToggleFactory.toggleTourModeStep_1();
     }
   };
@@ -47,7 +45,6 @@ app.controller('GraphCtrl', function($scope, $location, $routeParams, UserFactor
   const resetToggleTwo = () => {
     let boolean = ToggleFactory.getTourModeStep_2();
     if (boolean) {
-      console.log( "FIXED" );
       ToggleFactory.toggleTourModeStep_2();
     }
   };

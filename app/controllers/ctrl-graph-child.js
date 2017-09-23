@@ -26,13 +26,14 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
   let checkForRecords = () => {
     RecordFactory.getAllRecords(user)
     .then((data) => {
+      //checks if TourMode 2 is TRUE or FALSE
       let boolean = ToggleFactory.getTourModeStep_1();
-      if (data.length === 1&& !boolean) {
-
+      //if there is ONE record and TourMode is FALSE
+      if (data.length === 1 && !boolean) {
+        //$scope.firstUse is set to TRUE to trigger the alert
         $scope.firstUse = true;
+        //Tourmode 1 is toggled to TRUE so that the navbar will enter TOurMode as well
         ToggleFactory.toggleTourModeStep_2();
-
-        
       }  else  {
         $scope.firstUse = false;
       }
@@ -43,11 +44,10 @@ app.controller('GraphChildCtrl', function($scope, $location, $routeParams, UserF
   $scope.printRecords = () => {
     $timeout($window.print, 0);
   };
-
+  //Function to check tourmode 1 and turn it false if it is true
   const resetToggleOne = () => {
     let boolean = ToggleFactory.getTourModeStep_1();
     if (boolean) {
-      console.log( "FIXED" );
       ToggleFactory.toggleTourModeStep_1();
     }
   };

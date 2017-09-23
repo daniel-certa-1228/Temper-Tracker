@@ -45,13 +45,14 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 				$scope.records.reverse();
 			})
 			.then(() => {
+				//checks if TourMode 1 is TRUE or FALSE
 				let boolean = ToggleFactory.getTourModeStep_1();
+				//if there is ONE record and TourMode is FALSE
 				if ($scope.records.length === 1 && !boolean) {
-					
+					//$scope.firstUse is set to TRUE to trigger the alert
 					$scope.firstUse = true;
-
+					//Tourmode 1 is toggled to TRUE so that the navbar will enter TOurMode as well
 					ToggleFactory.toggleTourModeStep_1();
-
 				}  else  {
 					$scope.firstUse = false;
 				}
@@ -62,11 +63,10 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 		});
 	};
 	$scope.showAllRecords();
-
+	//Function to check tourmode 2 and turn it false if it is true
 	const resetToggleTwo = () => {
 		let boolean = ToggleFactory.getTourModeStep_2();
 		if (boolean) {
-			console.log( "FIXED" );
 			ToggleFactory.toggleTourModeStep_2();
 		}
 	};

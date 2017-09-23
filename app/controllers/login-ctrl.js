@@ -45,11 +45,10 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 			console.log( "login error", error );
 		});
 	};
-
+	//Functions to check tourmode 1 and 2 and turn them false if they are true
 	const resetToggleOne = () => {
 		let boolean = ToggleFactory.getTourModeStep_1();
 		if (boolean) {
-			console.log( "FIXED" );
 			ToggleFactory.toggleTourModeStep_1();
 		}
 	};
@@ -58,9 +57,8 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 	const resetToggleTwo = () => {
 		let boolean = ToggleFactory.getTourModeStep_2();
 		if (boolean) {
-			console.log( "FIXED" );
 			ToggleFactory.toggleTourModeStep_2();
 		}
 	};
-	resetToggleOne();
+	resetToggleTwo();
 });
