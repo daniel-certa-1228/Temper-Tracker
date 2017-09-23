@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout) {
+app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, ChildFactory, FilterFactory, FilterFactoryChildren, $window, $timeout, ToggleFactory) {
 	//defines user
 	let user = UserFactory.getCurrentUser();
 	$scope.title = "View All Records";
@@ -45,8 +45,13 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 				$scope.records.reverse();
 			})
 			.then(() => {
-				if ($scope.records.length === 1) {
+				let boolean = ToggleFactory.getTourModeStep_1();
+				if ($scope.records.length === 1 && !boolean) {
+					
 					$scope.firstUse = true;
+
+					ToggleFactory.toggleTourModeStep_1();
+
 				}  else  {
 					$scope.firstUse = false;
 				}
@@ -57,4 +62,13 @@ app.controller('ViewRecordsCtrl', function($scope, UserFactory, RecordFactory, C
 		});
 	};
 	$scope.showAllRecords();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleTwo();
 });

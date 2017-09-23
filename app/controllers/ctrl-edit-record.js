@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory) {
+app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, ToggleFactory) {
 	//defines user
 	let user = UserFactory.getCurrentUser();
 	//$scope.firstUse lets the partial know to hide the alert
@@ -67,4 +67,22 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 			$location.url('/list-records');
 		});
 	};
+	
+	const resetToggleOne = () => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_1();
+		}
+	};
+	resetToggleOne();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleOne();
 });

@@ -137,7 +137,7 @@ footer {
 }
 
 ////////////////////////////////////////////////////////
-//////////ALERT/////////////////////////////////////////
+//////////TOUR//////////////////////////////////////////
 ////////////////////////////////////////////////////////
 
 .alert-p {
@@ -145,7 +145,37 @@ footer {
 }
 
 .fa-exclamation-triangle {
-	color: darkorange;
+	color: #cf6766;
+}
+
+.flash-btn {
+	animation: glowing 1000ms infinite;
+}
+
+.flash-btn-2 {
+	animation: glowing-2 1000ms infinite;
+}
+
+.flash-btn-3 {
+	animation: glowing-3 1000ms infinite;
+}
+
+@keyframes glowing {
+  0% { color: white; text-shadow: 0 0 3px white; }
+  50% { color: lightgreen; text-shadow: 0 0 30px green; }
+  100% { color: white; text-shadow: 0 0 3px white; }
+}
+
+@keyframes glowing-2 {
+  0% { box-shadow: 0 0 3px #FFEDBC; }
+  50% { box-shadow: 0 0 30px yellow; }
+  100% { box-shadow: 0 0 3px #FFEDBC; }
+}
+
+@keyframes glowing-3 {
+  0% { box-shadow: 0 0 3px white; }
+  50% { box-shadow: 0 0 40px lightgreen; }
+  100% { box-shadow: 0 0 3px white; }
 }
 
 ////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory) {
+app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFactory, ChildFactory, RecordFactory, ToggleFactory) {
 	//defines user
 	let user = UserFactory.getCurrentUser();
 	//$scope.editrec lets the partial know which views to show or hide
@@ -54,4 +54,22 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 		});
 	};
 	getSingleChild();
+
+	const resetToggleOne = () => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_1();
+		}
+	};
+	resetToggleOne();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleOne();
 });

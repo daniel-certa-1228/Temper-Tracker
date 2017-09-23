@@ -1,9 +1,11 @@
 "use strict";
 
-app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, UserFactory, FilterFactory) {
+app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, UserFactory, FilterFactory, ToggleFactory) {
 
 	$scope.searchText = FilterFactory;
   	$scope.isLoggedIn = false;
+  	$scope.tourMode_one = false;
+  	$scope.tourMode_two = false;
   	// handles logout button functions
 	$scope.logOut = () => {
 		console.log( "logout firing" );
@@ -43,10 +45,41 @@ app.controller('NavbarCtrl', function($scope, $location, $routeParams, $window, 
 			$scope.searchText = angular.copy($scope.default);
 		}
 	};
-	//watch $scope to check what page we're on; runs windowCheck
+	//Checks the toggle factory to see if tour mode 1 is active
+	//if true, the searchbar and Graphs link will flash
+	const tourCheck_1 = (path) => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		// console.log( "tourCheck_1", boolean );
+		if (boolean &&  (path === "/list-records") ) {
+			$scope.tourMode_one = true;
+			// console.log( "$scope.tourMode_one", $scope.tourMode_one );
+		}  else  {
+			$scope.tourMode_one = false;
+			// console.log( "$scope.tourMode_one", $scope.tourMode_one );
+		}
+		return boolean;
+	};
+	//Checks the toggle factory to see if tour mode 2 is active
+	//if true, the LOGO will flash
+	const tourCheck_2 = (path) => {
+		// console.log( "CHECK", path );
+		let boolean = ToggleFactory.getTourModeStep_2();
+		// console.log( "tourCheck_2 CHECK", boolean );
+		if (boolean &&  (path === `/child/${$routeParams.itemId}/graphs`) ) {
+			$scope.tourMode_two = true;
+			// console.log( "$scope.tourMode_two", $scope.tourMode_two );
+		}  else  {
+			$scope.tourMode_two = false;
+			// console.log( "$scope.tourMode_two", $scope.tourMode_two );
+		}
+		return boolean;
+	};
+	//watching scope for changes to detect location and Tour Mode State
 	$scope.$watch(() => {
 		let path = $location.path();
 		windowCheck(path);
+		tourCheck_1(path);
+		tourCheck_2(path);
     return $location.path();
 	});
 	//animation to have hambuger menu close on click

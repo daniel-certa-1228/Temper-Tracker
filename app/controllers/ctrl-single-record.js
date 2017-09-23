@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory) {
+app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams, UserFactory, RecordFactory, ChildFactory, ToggleFactory) {
 	//defines user
 	let user = UserFactory.getCurrentUser();
 
@@ -41,4 +41,22 @@ app.controller('ViewSingleRecordCtrl', function($scope, $location, $routeParams,
 		});
 	};
 	getSingleRecord();
+
+	const resetToggleOne = () => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_1();
+		}
+	};
+	resetToggleOne();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleOne();
 });

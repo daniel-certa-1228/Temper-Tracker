@@ -6,7 +6,7 @@
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-  <p class="alert-p"><strong>Add a Record</strong> for <span ng-repeat='child in childrenInfo'>{{child.name}}</span> using this form.</p>
+  <p class="alert-p"><strong>Add a Record</strong> of <span ng-repeat='child in childrenInfo'>{{child.name}}</span>'s most recent tantrum using this form.</p>
   <p class="alert-p"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Click the blue <strong>Behavior Definitions</strong> button on the bottom right any time you need help with the behavioral terms used in this app.</p>
 </div>
 <!-- Main Record Form-->
@@ -68,7 +68,7 @@
   <!-- Delete Button triggers delete modal-->
   <button type="button" class="btn btn-danger" ng-hide="addRec" data-toggle="modal" data-target="#deleteRecordModal">Delete</button>
   <!-- Behavior Definitions Button triggers Behavior Definitions modal in ADD view-->
-  <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton" ng-hide="editRec"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
+  <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton" ng-hide="editRec" ng-class="{'flash-btn-2' : firstUse}"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
   <!-- Behavior Definitions Button triggers Behavior Definitions modal in EDIT view; button scales down in EDIT view-->
   <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton2" ng-hide="addRec"><i class="fa fa-book" aria-hidden="true"></i> <span id="behLong">Behavior Definitions</span><span id="behShort">Behaviors</span></button>
 </form>

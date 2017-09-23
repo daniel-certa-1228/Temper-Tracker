@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactory) {
+app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactory, ToggleFactory) {
 	//constructs a user object for storage based on what is provided by google login
 	let createUserObj = (loginObj) => {
 		return {
@@ -45,4 +45,22 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 			console.log( "login error", error );
 		});
 	};
+
+	const resetToggleOne = () => {
+		let boolean = ToggleFactory.getTourModeStep_1();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_1();
+		}
+	};
+	resetToggleOne();
+
+	const resetToggleTwo = () => {
+		let boolean = ToggleFactory.getTourModeStep_2();
+		if (boolean) {
+			console.log( "FIXED" );
+			ToggleFactory.toggleTourModeStep_2();
+		}
+	};
+	resetToggleOne();
 });
