@@ -127,7 +127,7 @@ footer {
 }
 
 #logo {
-	margin-right: 1.5em;
+	margin-right: 1em;
 }
 
 #image-icon {
@@ -360,7 +360,6 @@ footer {
 	#childSelectRecords {
 		max-width: 65%;
 	}
-
 }
 
 @media only screen and (min-width: 525px) {
@@ -385,6 +384,10 @@ footer {
 
 	.graph-div {
 		border-bottom: none;
+	}
+
+		.nav-link {
+		font-size: .9em;
 	}
 
 }
