@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg" ng-controller="NavbarCtrl" id="nav">
   <!-- Logo-->
-  <a class="navbar-brand" id="logo" ng-href="#!/home" ng-class="{'flash-btn' : tourMode_two}">TemperTracker™</a>
+  <a class="navbar-brand" id="logo" ng-href="#!/home" ng-class="{'flash-btn-2' : tourMode_two}">TemperTracker™</a>
   <form class="form-inline">
     <!-- Keyword Search text input-->
-    <input id="keywordSearch" class="form-control mr-sm-2" type="text" placeholder="Keyword Search" aria-label="Keyword Search" ng-model="searchText.search" ng-disabled="!searchbar" ng-show="isLoggedIn" ng-class="{'flash-btn-2' : tourMode_one}">
+    <input id="keywordSearch" class="form-control mr-sm-2" type="text" placeholder="Keyword Search" aria-label="Keyword Search" ng-model="searchText.search" ng-disabled="!searchbar" ng-show="isLoggedIn" ng-class="{'flash-btn-3' : tourMode_one}">
   </form>
   <!-- Bootstrap nav dropdown-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" ng-show="isLoggedIn">
@@ -18,7 +18,7 @@
         <a class="nav-link" ng-href="#!/list-records"><i class="fa fa-file-text-o" aria-hidden="true"></i> View Records</a>
       </li>
       <li class="nav-item" ng-show="isLoggedIn">
-        <a class="nav-link" ng-href="#!/graphs" ng-class="{'flash-btn' : tourMode_one}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Graphs</a>
+        <a class="nav-link" ng-href="#!/graphs" ng-class="{'flash-btn-2' : tourMode_one}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Graphs</a>
       </li>
       <li class="nav-item dropdown" ng-show="isLoggedIn">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

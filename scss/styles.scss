@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 $primary-color: #8eaebd;
 $secondary-color: #30415d;
+$eye-catcher: #cf6766;
 
 ////////////////////////////////////////////////////////
 //////////MAIN PAGE/////////////////////////////////////
@@ -149,32 +150,42 @@ footer {
 }
 
 .flash-btn {
-	animation: glowing 1000ms infinite;
+	animation: glowing 1200ms infinite;
 }
 
 .flash-btn-2 {
-	animation: glowing-2 1000ms infinite;
+	animation: glowing-2 1200ms infinite;
 }
 
 .flash-btn-3 {
-	animation: glowing-3 1000ms infinite;
+	animation: glowing-3 1200ms infinite;
+}
+
+.flash-btn-4 {
+	animation: glowing-4 1200ms infinite;
 }
 
 @keyframes glowing {
   0% { color: white; text-shadow: 0 0 3px white; }
-  50% { color: lightgreen; text-shadow: 0 0 30px green; }
+  50% { color: $eye-catcher; text-shadow: 0 0 40px white; }
   100% { color: white; text-shadow: 0 0 3px white; }
 }
 
 @keyframes glowing-2 {
-  0% { box-shadow: 0 0 3px #FFEDBC; }
-  50% { box-shadow: 0 0 30px yellow; }
-  100% { box-shadow: 0 0 3px #FFEDBC; }
+  0% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
+  50% { color: white; background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
+  100% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
+}
+
+@keyframes glowing-4 {
+  0% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
+  50% {background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
+  100% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
 }
 
 @keyframes glowing-3 {
   0% { box-shadow: 0 0 3px white; }
-  50% { box-shadow: 0 0 40px lightgreen; }
+  50% { box-shadow: 0 0 40px $eye-catcher; }
   100% { box-shadow: 0 0 3px white; }
 }
 
