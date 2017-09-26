@@ -29,7 +29,7 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 	$scope.editChild = () => {
 		ChildFactory.editChild($routeParams.itemId, $scope.child)
 		.then((data) => {
-			console.log( "Edit Successful", data );
+			// console.log( "Edit Successful", data );
 			$location.url('/all-children');
 		});
 	};
@@ -43,7 +43,7 @@ app.controller('EditChildCtrl', function($scope, $location, $routeParams, UserFa
 			//When a child is deleted, this gets the records for a that child and calls the delete function on each id
 			RecordFactory.getRecordsByChildID($routeParams.itemId)
 			.then((data) => {
-				console.log( "all child records", data );
+				// console.log( "all child records", data );
 				for (let i = 0; i < data.length; i++) {
 					RecordFactory.deleteRecord(data[i].id);
 				}

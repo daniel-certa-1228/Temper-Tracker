@@ -27,7 +27,6 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 	const resetToggleOne = () => {
 		let boolean = ToggleFactory.getTourModeStep_1();
 		if (boolean) {
-			console.log( "FIXED" );
 			ToggleFactory.toggleTourModeStep_1();
 		}
 	};
@@ -36,7 +35,6 @@ app.controller('ViewChildrenCtrl', function($scope, $location, $routeParams, Use
 	const resetToggleTwo = () => {
 		let boolean = ToggleFactory.getTourModeStep_2();
 		if (boolean) {
-			console.log( "FIXED" );
 			ToggleFactory.toggleTourModeStep_2();
 		}
 	};

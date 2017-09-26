@@ -35,10 +35,10 @@ app.controller('AddRecordCtrl', function($scope, $location, $routeParams, UserFa
 		RecordFactory.getAllRecords(user)
 		.then((data) => {
 			if (data.length === 0) {
-				console.log( "true" );
+				// console.log( "true" );
 				$scope.firstUse = true;
 			}  else  {
-				console.log( "false" );
+				// console.log( "false" );
 				$scope.firstUse = false;
 			}
 		});
