@@ -53,7 +53,7 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 	$scope.editRecord = () => {
 		RecordFactory.editRecord($routeParams.itemId, $scope.record)
 		.then((data) => {
-			console.log( "Edit Successful", data );
+			// console.log( "Edit Successful", data );
 			$location.url('/list-records');
 		});
 	};
@@ -61,7 +61,7 @@ app.controller('EditRecordCtrl', function($scope, $location, $routeParams, UserF
 	$scope.deleteRecordFromEdit = () => {
 		RecordFactory.deleteRecord($routeParams.itemId)
 		.then((data) => {
-			console.log( "data", data );
+			// console.log( "data", data );
 		})
 		.then(() => {
 			$location.url('/list-records');

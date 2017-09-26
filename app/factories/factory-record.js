@@ -90,7 +90,7 @@ app.factory('RecordFactory', function($q, $http, FBCreds) {
 		return $q((resolve, reject) => {
 			$http.delete(`${FBCreds.databaseURL}/records/${recordID}.json`)
 			.then((data) => {
-				console.log( "delete data", data );
+				// console.log( "delete data", data );
 				resolve(data);
 			})
 			.catch((error) => {

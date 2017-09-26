@@ -20,7 +20,6 @@ app.factory('ToggleFactory', function() {
 		}  else if (tourModeStep_1 === true) {
 			tourModeStep_1 = false;
 		}
-		console.log( "ToggleFactory tourModeStep_1", tourModeStep_1 );
 	};
 
 	const toggleTourModeStep_2 = () => {

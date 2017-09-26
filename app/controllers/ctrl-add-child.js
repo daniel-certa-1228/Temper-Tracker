@@ -36,12 +36,12 @@ app.controller('AddChildCtrl', function($scope, $location, $routeParams, UserFac
 	const checkForRecords = () => {
 		ChildFactory.getAllChildren(user)
 		.then((data) => {
-			console.log( "data", data );
+			// console.log( "data", data );
 			if (data.length === 0) {
-				console.log( "NO KIDS" );
+				// console.log( "NO KIDS" );
 				$scope.firstUse = true;
 			}  else  {
-				console.log( "KIDS" );
+				// console.log( "KIDS" );
 				$scope.firstUse = false;
 			}
 		})

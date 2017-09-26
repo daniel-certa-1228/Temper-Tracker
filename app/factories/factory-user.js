@@ -45,7 +45,7 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 			$http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${id}"`)
 			.then((data) => {
 				resolve(data);
-				console.log( "data", Object.values(data.data) );
+				// console.log( "data", Object.values(data.data) );
 			})
 			.catch((error) => {
 				console.log( "error at UserFactory.getUserObjByID", error );
@@ -75,7 +75,7 @@ app.factory('UserFactory', function($q, $http, FBCreds) {
 	};
 	//firebase logout function
 	let logOut = () => {
-		console.log("factoryLogOut firing");
+		// console.log("factoryLogOut firing");
 		return firebase.auth().signOut();
 	};
 	return{getCurrentUser, getUserEmailFromFB, isAuthenticated, getUserObj, postUserObj, authWithProvider, logOut, getUserObjByID};
