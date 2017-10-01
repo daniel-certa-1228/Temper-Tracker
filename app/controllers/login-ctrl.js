@@ -11,6 +11,8 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 		};
 	};
 
+	$scope.userLoggedIn = false;
+
 	let loginObjStorage = [];
 	//Google login
 	$scope.logInGoogle = () => {
@@ -18,6 +20,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 		loginObjStorage.length = 0;
 		UserFactory.authWithProvider()
 		.then((userObj) => {
+			$scope.userLoggedIn = true;
 			//call createUserObj and pass it the google user data
 			let newUserObj = createUserObj(userObj);
 			loginObjStorage.push(newUserObj);

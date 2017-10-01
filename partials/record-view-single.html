@@ -1,31 +1,33 @@
-<header class="partial-h2">
-  <h2>{{title}}</h2>
-</header>
-<!-- Main display-->
-<div>
-	<p><strong>Child: </strong>{{record.child}}</p>
-	 <div class="form-group">
-	    <label for="dateSelect"><strong>Date: </strong></label>
-	    	<input type="date" id="dateSelect" ng-model="record.date" readonly>
-	    </select>
-  	</div>
+<div class="fade-in-2">
+  <header class="partial-h2">
+    <h2>{{title}}</h2>
+  </header>
+  <!-- Main display-->
+  <div>
+  	<p><strong>Child: </strong>{{record.child}}</p>
+  	 <div class="form-group">
+  	    <label for="dateSelect"><strong>Date: </strong></label>
+  	    	<input type="date" id="dateSelect" ng-model="record.date" readonly>
+  	    </select>
+    	</div>
 
-	 <div class="form-group">
-	    <label for="startTime"><strong>Start of Behavior: </strong></label>
-	    	<input type="time" id="startTime" ng-model="record.time" readonly>
-	    </select>
-  	</div>
+  	 <div class="form-group">
+  	    <label for="startTime"><strong>Start of Behavior: </strong></label>
+  	    	<input type="time" id="startTime" ng-model="record.time" readonly>
+  	    </select>
+    	</div>
 
-	<p><strong>Duration: </strong>{{record.duration}} minutes</p>
-	<p><strong>Antecedent: </strong>{{record.antecedent}}</p>
-	<p><strong>Consequence: </strong>{{record.consequence}}</p>
-	<p><strong>Comments: </strong>{{record.comments}}</p>
-  <!-- Calls single record from database to edit and goes to the edit page-->
-  <a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-light">Edit</button></a>
-  <!-- Back Button returns to record-list-->
- 	<a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Back</button></a>
-  <!-- Behavior Definitions Button triggers Behavior Definitions modal-->
- 	<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
+  	<p><strong>Duration: </strong>{{record.duration}} minutes</p>
+  	<p><strong>Antecedent: </strong>{{record.antecedent}}</p>
+  	<p><strong>Consequence: </strong>{{record.consequence}}</p>
+  	<p><strong>Comments: </strong>{{record.comments}}</p>
+    <!-- Calls single record from database to edit and goes to the edit page-->
+    <a ng-href="#!/record/{{record.id}}/edit"><button type="button" class="btn btn-light">Edit</button></a>
+    <!-- Back Button returns to record-list-->
+   	<a ng-href = "#!/list-records"><button type="button" class="btn btn-secondary">Back</button></a>
+    <!-- Behavior Definitions Button triggers Behavior Definitions modal-->
+   	<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
+  </div>
 </div>
 
 <!-- Behavior Definitions Modal-->

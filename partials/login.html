@@ -1,5 +1,7 @@
-<header class="page-header">
-	<h1 id="welcome">Welcome to <br><span class="crimson"><i class="fa fa-users" aria-hidden="true"></i> TemperTracker</span></h1>
-</header>
-<!-- Open Google popup to login-->
-<button type="button" class="btn btn-light btn-block" ng-click="logInGoogle()" id="loginBtn"><i class="fa fa-google" aria-hidden="true"></i> | Google Login </button>
+<div id="welcome-div" ng-class="{'fade-in' : !userLoggedIn, 'fade-out' : userLoggedIn}">
+	<header class="page-header">
+		<h1 id="welcome">Welcome to <br><span class="crimson"><i class="fa fa-users" aria-hidden="true"></i> TemperTracker</span></h1>
+	</header>
+	<!-- Open Google popup to login-->
+	<button type="button" class="btn btn-light btn-block" ng-click="logInGoogle()" id="loginBtn"><i class="fa fa-google" aria-hidden="true"></i> | Google Login </button>
+</div>

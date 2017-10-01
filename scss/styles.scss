@@ -99,6 +99,63 @@ footer {
 }
 
 ////////////////////////////////////////////////////////
+////////////Welcoome Animation//////////////////////////
+////////////////////////////////////////////////////////
+
+@keyframes appear {
+  	from {
+    	opacity: 0;
+  	}
+  	to {
+    	opacity: 1;
+  	}
+}
+@keyframes disappear {
+  	from {
+    	opacity: 1;
+  	}
+  	to {
+    	opacity: 0;
+  	}
+}
+
+@keyframes downward {
+  	from {
+    	opacity: 0;
+    	top: -500px;
+  	}
+  	to {
+    	opacity: 1;
+    	top: 0px;
+  	}
+}
+
+@keyframes upward {
+  	from {
+  		opacity: 1;
+    	top: 0px;
+  	}
+  	to {
+    	opacity: 0;
+    	top: -500px;
+  	}
+}
+
+.fade-in {
+	position: relative;
+	animation: 1s downward;
+}
+
+.fade-out {
+	// position: relative;
+	animation: .4s disappear;
+}
+
+.fade-in-2 {
+	animation: .4s appear;
+}
+
+////////////////////////////////////////////////////////
 ////////////NAV BAR/////////////////////////////////////
 ////////////////////////////////////////////////////////
 
@@ -150,7 +207,7 @@ footer {
 }
 
 .fa-exclamation-triangle {
-	color: #cf6766;
+	color: $eye-catcher;
 }
 
 .flash-btn {
@@ -170,27 +227,27 @@ footer {
 }
 
 @keyframes glowing {
-  0% { color: white; text-shadow: 0 0 3px $primary-color; }
-  50% { color: $eye-catcher; text-shadow: 0 0 40px $eye-catcher; }
-  100% { color: white; text-shadow: 0 0 3px $primary-color; }
+  	0% { color: white; text-shadow: 0 0 3px $primary-color; }
+  	50% { color: $eye-catcher; text-shadow: 0 0 40px $eye-catcher; }
+  	100% { color: white; text-shadow: 0 0 3px $primary-color; }
 }
 
 @keyframes glowing-2 {
-  0% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
-  50% { color: white; background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
-  100% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
+  	0% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
+  	50% { color: white; background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
+  	100% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
 }
 
 @keyframes glowing-4 {
-  0% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
-  50% {background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
-  100% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
+  	0% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
+  	50% {background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
+  	100% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
 }
 
 @keyframes glowing-3 {
-  0% { box-shadow: 0 0 3px white; }
-  50% { box-shadow: 0 0 40px $eye-catcher; }
-  100% { box-shadow: 0 0 3px white; }
+  	0% { box-shadow: 0 0 3px white; }
+  	50% { box-shadow: 0 0 40px $eye-catcher; }
+  	100% { box-shadow: 0 0 3px white; }
 }
 
 ////////////////////////////////////////////////////////
