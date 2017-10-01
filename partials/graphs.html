@@ -1,165 +1,166 @@
-<header class="partial-h2">
-  <h2>{{title}}</h2>
-</header>
+<div class="fade-in-2">
+  <header class="partial-h2">
+    <h2>{{title}}</h2>
+  </header>
 
-  <div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <p class="alert-p">The <strong><i class="fa fa-bar-chart" aria-hidden="true"></i> Graphs</strong> page aggregates your child's data and displays it in a visual format.  You and your behavioral therapist can use this information to formulate tantrum-prevention strategies.</p>
-    <p class="alert-p"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> If you are tracking more than one child, you can filter graphical data by child using the <strong>Select Child to View Metrics</strong> button below.</p>
-  </div>
-
-  <div class="dropdown graph-drop" id="graph-dropdown">
-    <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-class="{'flash-btn-2' : firstUse}">
-      Select Child to View Metrics
-    </button>
-    <!-- Dropdown is populated by call to database on ChildFactory-->
-    <div class="dropdown-menu" id="child-dd" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
+    <div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <p class="alert-p">The <strong><i class="fa fa-bar-chart" aria-hidden="true"></i> Graphs</strong> page aggregates your child's data and displays it in a visual format.  You and your behavioral therapist can use this information to formulate tantrum-prevention strategies.</p>
+      <p class="alert-p"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> If you are tracking more than one child, you can filter graphical data by child using the <strong>Select Child to View Metrics</strong> button below.</p>
     </div>
-    <!-- Print Button calls $window.print() system dialog-->
-    <button type="button" class="btn btn-outline-secondary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
-    <!-- Behavior Definitions Button triggers Behavior Definitions modal-->
-    <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton3"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
-  </div>
-<!-- Main Data Bootstrap Row-->  
-<div class="row">
-    <!-- Line Chart showing incidence of behaviors over the previous 30 days-->
-    <div class="col-lg-12 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl_2">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h5>Incidence of Challenging Behavior per Day (Last 30 Days)</h5>
-        <h6 class="graph-h5"><span class="red" ng-repeat="total in totalIncidents track by $index"><strong>{{total}}</strong></span> Total Incidents | <span class="red" ng-repeat="total in totalIncidents30 track by $index"><strong>{{total}}</strong></span> Incidents Occured in the Last 30 Days</h6>
-        </div>
-        <div class="panel-body">
-          <canvas id="line2" class="chart chart-line" chart-data="data" chart-labels="labels"
-                  chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                  chart-dataset-override="datasetOverride"></canvas>
-        </div>
+
+    <div class="dropdown graph-drop" id="graph-dropdown">
+      <button class="btn btn-outline-secondary dropdown-toggle graph-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-class="{'flash-btn-2' : firstUse}">
+        Select Child to View Metrics
+      </button>
+      <!-- Dropdown is populated by call to database on ChildFactory-->
+      <div class="dropdown-menu" id="child-dd" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" ng-repeat='child in childrenInfo' ng-href="#!/child/{{child.id}}/graphs">{{child.name}}</a>
       </div>
+      <!-- Print Button calls $window.print() system dialog-->
+      <button type="button" class="btn btn-outline-secondary" id="printBTN" ng-click="printRecords()"><i class="fa fa-print" aria-hidden="true"></i> Print Records</button>
+      <!-- Behavior Definitions Button triggers Behavior Definitions modal-->
+      <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#legendModal" id="defButton3"><i class="fa fa-book" aria-hidden="true"></i> Behavior Definitions</button>
     </div>
-    <!-- Doughnut Chart showing percentage of each Antecedent-->
-    <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutCtrl">
+  <!-- Main Data Bootstrap Row-->  
+  <div class="row">
+      <!-- Line Chart showing incidence of behaviors over the previous 30 days-->
+      <div class="col-lg-12 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl_2">
         <div class="panel panel-default">
-            <div class="panel-heading"><h5>Antecedent</h5></div>
-        	<div class="panel-body">
-          		<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
-              <!-- Row displaying metrics - each columns is a different array in the controller-->
-          		<div class="row data-row">
-                <div class="col-xs-1 data-colors">
-                  <p class="color-legend">*</p>
-                  <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
-                </div>
-	          		<div class="col-xs-6 data-labels">
-                  <p class="graph-categories">Antecedent</p>
-	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-	          		</div>
-	          		<div class="col-xs-2 data-nums-sm">
-                  <p class="graph-categories">#</p>
-	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
-	          		</div>
-                <div class="col-xs-3">
-                  <p class="graph-categories">%</p>
-                  <p ng-repeat="percentage in percentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
-                </div>
-	          	</div>	
-        	</div>
-        </div>
-    </div>
-    <!-- Doughnut Chart showing percentage of each Consequence-->
-    <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart-2" ng-controller="DoughnutCtrl_2">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h5>Consequence</h5></div>
-        	<div class="panel-body">
-          		<canvas id="doughnut2" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
-              <!-- Row displaying metrics - each columns is a different array in the controller-->
-          		<div class="row data-row">
-                <div class="col-xs-1 data-colors">
-                  <p class="color-legend">*</p>
-                  <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
-                </div>
-	          		<div class="col-xs-6 data-labels">
-                  <p class="graph-categories">Consequence</p>
-	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-	          		</div>
-                <div class="col-xs-2 data-nums-sm">
-                  <p class="graph-categories">#</p>
-                  <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
-                </div>
-                <div class="col-xs-3">
-                  <p class="graph-categories">%</p>
-                  <p ng-repeat="percentage in conPercentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
-                </div>
-	          	</div>	
-        	</div>
-        </div>
-    </div>
-    <!-- Line Chart incidence based on time-of-day -->
-    <div class="col-lg-6 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h5>Time of Day</h5></div>
-            <div class="panel-body">
-              <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                      chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                      chart-dataset-override="datasetOverride"></canvas>
-                      <!-- Row displaying metrics - each columns is a different array in the controller-->
-                <div class="row data-row">
-                    <div class="col-xs-2 data-labels-sm">
-                      <p class="graph-categories">Time</p>
-                      <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
-                    </div>
-                    <div class="col-xs-2 data-nums-xs">
-                      <p class="graph-categories">#</p>
-                      <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
-                    </div>
-                    <div class="col-xs-2 data-nums-sm">
-                      <p class="graph-categories">%</p>
-                      <p ng-repeat="percentage in timePercentages1 track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
-                    </div>
-                    <div class="col-xs-2 data-labels-sm">
-                      <p class="graph-categories">Time</p>
-                      <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
-                    </div>
-                    <div class="col-xs-2 data-nums-xs">
-                      <p class="graph-categories">#</p>
-                      <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
-                    </div>
-                    <div class="col-xs-2 data-nums-xs">
-                      <p class="graph-categories">%</p>
-                      <p ng-repeat="percentage in timePercentages2 track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
-                    </div>
-                </div>
-              </div>
-        </div>
-    </div>
-    <!-- Radar Chart showing durations of behavior incidents -->
-    <div class="col-lg-6 col-sm-12 graph-div" id="radar-chart" ng-controller="RadarCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading"><h5>Duration</h5></div>
-            <div class="panel-body">
-              <canvas id="area" class="chart chart-radar" chart-data="data"
-                      chart-labels="labels" chart-options="options" chart-click="onClick"></canvas>
-                      <!-- Row displaying metrics - each columns is a different array in the controller-->
-                <div class="row data-row">
-                  <div class="col-xs-6 data-labels">
-                    <p class="graph-categories">Duration</p>
-                    <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
-                  </div>
-                  <div class="col-xs-3 data-nums-sm">
-                    <p class="graph-categories">#</p>
-                    <p ng-repeat="number in numbers track by $index" class="graph-label">{{number}}</p>
-                  </div>
-                  <div class="col-xs-3 data-nums-sm">
-                    <p class="graph-categories">%</p>
-                    <p ng-repeat="percentage in durPercentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
-                  </div>
-                </div>  
-            </div>
+          <div class="panel-heading"><h5>Incidence of Challenging Behavior per Day (Last 30 Days)</h5>
+          <h6 class="graph-h5"><span class="red" ng-repeat="total in totalIncidents track by $index"><strong>{{total}}</strong></span> Total Incidents | <span class="red" ng-repeat="total in totalIncidents30 track by $index"><strong>{{total}}</strong></span> Incidents Occured in the Last 30 Days</h6>
+          </div>
+          <div class="panel-body">
+            <canvas id="line2" class="chart chart-line" chart-data="data" chart-labels="labels"
+                    chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+                    chart-dataset-override="datasetOverride"></canvas>
           </div>
         </div>
+      </div>
+      <!-- Doughnut Chart showing percentage of each Antecedent-->
+      <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart" ng-controller="DoughnutCtrl">
+          <div class="panel panel-default">
+              <div class="panel-heading"><h5>Antecedent</h5></div>
+          	<div class="panel-body">
+            		<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
+                <!-- Row displaying metrics - each columns is a different array in the controller-->
+            		<div class="row data-row">
+                  <div class="col-xs-1 data-colors">
+                    <p class="color-legend">*</p>
+                    <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
+                  </div>
+  	          		<div class="col-xs-6 data-labels">
+                    <p class="graph-categories">Antecedent</p>
+  	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+  	          		</div>
+  	          		<div class="col-xs-2 data-nums-sm">
+                    <p class="graph-categories">#</p>
+  	          			<p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+  	          		</div>
+                  <div class="col-xs-3">
+                    <p class="graph-categories">%</p>
+                    <p ng-repeat="percentage in percentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                  </div>
+  	          	</div>	
+          	</div>
+          </div>
+      </div>
+      <!-- Doughnut Chart showing percentage of each Consequence-->
+      <div class="col-lg-6 col-sm-12 graph-div" id="doughnut-chart-2" ng-controller="DoughnutCtrl_2">
+          <div class="panel panel-default">
+              <div class="panel-heading"><h5>Consequence</h5></div>
+          	<div class="panel-body">
+            		<canvas id="doughnut2" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels"></canvas>
+                <!-- Row displaying metrics - each columns is a different array in the controller-->
+            		<div class="row data-row">
+                  <div class="col-xs-1 data-colors">
+                    <p class="color-legend">*</p>
+                    <span ng-repeat="color in colors track by $index" style="background-color: {{color}}; color: {{color}}; display: block;" class="color-spans">*</span>
+                  </div>
+  	          		<div class="col-xs-6 data-labels">
+                    <p class="graph-categories">Consequence</p>
+  	          			<p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+  	          		</div>
+                  <div class="col-xs-2 data-nums-sm">
+                    <p class="graph-categories">#</p>
+                    <p ng-repeat="number in data track by $index" class="graph-label">{{number}}</p>
+                  </div>
+                  <div class="col-xs-3">
+                    <p class="graph-categories">%</p>
+                    <p ng-repeat="percentage in conPercentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                  </div>
+  	          	</div>	
+          	</div>
+          </div>
+      </div>
+      <!-- Line Chart incidence based on time-of-day -->
+      <div class="col-lg-6 col-sm-12 graph-div" id="line-chart" ng-controller="LineCtrl">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h5>Time of Day</h5></div>
+              <div class="panel-body">
+                <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
+                        chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+                        chart-dataset-override="datasetOverride"></canvas>
+                        <!-- Row displaying metrics - each columns is a different array in the controller-->
+                  <div class="row data-row">
+                      <div class="col-xs-2 data-labels-sm">
+                        <p class="graph-categories">Time</p>
+                        <p ng-repeat="label in labels1 track by $index" class="graph-label">{{label}}:</p>
+                      </div>
+                      <div class="col-xs-2 data-nums-xs">
+                        <p class="graph-categories">#</p>
+                        <p ng-repeat="number in numbers1 track by $index" class="graph-label">{{number}}</p>
+                      </div>
+                      <div class="col-xs-2 data-nums-sm">
+                        <p class="graph-categories">%</p>
+                        <p ng-repeat="percentage in timePercentages1 track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                      </div>
+                      <div class="col-xs-2 data-labels-sm">
+                        <p class="graph-categories">Time</p>
+                        <p ng-repeat="label in labels2 track by $index" class="graph-label">{{label}}:</p>
+                      </div>
+                      <div class="col-xs-2 data-nums-xs">
+                        <p class="graph-categories">#</p>
+                        <p ng-repeat="number in numbers2 track by $index" class="graph-label">{{number}}</p>
+                      </div>
+                      <div class="col-xs-2 data-nums-xs">
+                        <p class="graph-categories">%</p>
+                        <p ng-repeat="percentage in timePercentages2 track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                      </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+      <!-- Radar Chart showing durations of behavior incidents -->
+      <div class="col-lg-6 col-sm-12 graph-div" id="radar-chart" ng-controller="RadarCtrl">
+            <div class="panel panel-default">
+              <div class="panel-heading"><h5>Duration</h5></div>
+              <div class="panel-body">
+                <canvas id="area" class="chart chart-radar" chart-data="data"
+                        chart-labels="labels" chart-options="options" chart-click="onClick"></canvas>
+                        <!-- Row displaying metrics - each columns is a different array in the controller-->
+                  <div class="row data-row">
+                    <div class="col-xs-6 data-labels">
+                      <p class="graph-categories">Duration</p>
+                      <p ng-repeat="label in labels track by $index" class="graph-label">{{label}}:</p>
+                    </div>
+                    <div class="col-xs-3 data-nums-sm">
+                      <p class="graph-categories">#</p>
+                      <p ng-repeat="number in numbers track by $index" class="graph-label">{{number}}</p>
+                    </div>
+                    <div class="col-xs-3 data-nums-sm">
+                      <p class="graph-categories">%</p>
+                      <p ng-repeat="percentage in durPercentages track by $index" class="graph-label"><strong>{{percentage}}%</strong></p>
+                    </div>
+                  </div>  
+              </div>
+            </div>
+          </div>
 
-</div>  <!-- END main data row -->
-
+  </div>  <!-- END main data row -->
+</div>
 <!-- Behavior Definitions modal-->
 <div class="modal fade" id="legendModal" tabindex="-1" role="dialog" aria-labelledby="legendModal" aria-hidden="true">
   <div class="modal-dialog" role="document">

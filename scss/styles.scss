@@ -22,15 +22,6 @@ body {
 	text-align: center;
 }
 
-// #welcome-div {
-// 	transition: all linear 1s;
-// 	height: 100%;
-//   	width: 100%;
-//   	position: relative;
-//   	top: 0;
-//   	left: 0;
-// }
-
 #welcome {
 	margin: 5% auto 0;
 }
@@ -108,6 +99,41 @@ footer {
 }
 
 ////////////////////////////////////////////////////////
+////////////Welcoome Animation//////////////////////////
+////////////////////////////////////////////////////////
+
+@keyframes appear {
+  	from {
+    	opacity: 0;
+  	}
+  	to {
+    	opacity: 1;
+  	}
+}
+@keyframes disappear {
+  	from {
+    	opacity: 1;
+  	}
+  	to {
+    	opacity: 0;
+  	}
+}
+
+.fade-in {
+	animation: 1s appear;
+}
+
+.fade-in-2 {
+	animation: .4s appear;
+}
+
+.fade-out {
+	animation: 1s disappear;
+}
+
+
+
+////////////////////////////////////////////////////////
 ////////////NAV BAR/////////////////////////////////////
 ////////////////////////////////////////////////////////
 
@@ -179,27 +205,27 @@ footer {
 }
 
 @keyframes glowing {
-  0% { color: white; text-shadow: 0 0 3px $primary-color; }
-  50% { color: $eye-catcher; text-shadow: 0 0 40px $eye-catcher; }
-  100% { color: white; text-shadow: 0 0 3px $primary-color; }
+  	0% { color: white; text-shadow: 0 0 3px $primary-color; }
+  	50% { color: $eye-catcher; text-shadow: 0 0 40px $eye-catcher; }
+  	100% { color: white; text-shadow: 0 0 3px $primary-color; }
 }
 
 @keyframes glowing-2 {
-  0% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
-  50% { color: white; background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
-  100% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
+  	0% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
+  	50% { color: white; background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
+  	100% { color: black; background-color: white; box-shadow: 0 0 3px #fff; }
 }
 
 @keyframes glowing-4 {
-  0% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
-  50% {background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
-  100% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
+  	0% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
+  	50% {background-color: $eye-catcher; box-shadow: 0 0 10px $eye-catcher; }
+  	100% {background-color: #5bc0de; box-shadow: 0 0 3px #fff; }
 }
 
 @keyframes glowing-3 {
-  0% { box-shadow: 0 0 3px white; }
-  50% { box-shadow: 0 0 40px $eye-catcher; }
-  100% { box-shadow: 0 0 3px white; }
+  	0% { box-shadow: 0 0 3px white; }
+  	50% { box-shadow: 0 0 40px $eye-catcher; }
+  	100% { box-shadow: 0 0 3px white; }
 }
 
 ////////////////////////////////////////////////////////
