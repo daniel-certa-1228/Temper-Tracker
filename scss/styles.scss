@@ -22,6 +22,15 @@ body {
 	text-align: center;
 }
 
+// #welcome-div {
+// 	transition: all linear 1s;
+// 	height: 100%;
+//   	width: 100%;
+//   	position: relative;
+//   	top: 0;
+//   	left: 0;
+// }
+
 #welcome {
 	margin: 5% auto 0;
 }
@@ -150,7 +159,7 @@ footer {
 }
 
 .fa-exclamation-triangle {
-	color: #cf6766;
+	color: $eye-catcher;
 }
 
 .flash-btn {
