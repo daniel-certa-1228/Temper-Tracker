@@ -5,7 +5,7 @@
 		  <h2>{{title}}</h2>
 		</header>
 
-		<div class="alert alert-info alert-dismissible fade show" role="alert" ng-show="firstUse">
+		<div class="alert alert-info alert-dismissible fade show fade-in-left" role="alert" ng-show="firstUse">
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
@@ -27,7 +27,7 @@
 		<!-- Main display -->
 		<div class="row">
 			<!-- Card -->
-			<div class="col-lg-4 main-card" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
+			<div class="col-lg-4 main-card fade-in-2" ng-repeat="record in records | filter: searchText.search | filter: kidFilter.search">
 				<div class="card-interior card-padding">
 					<p><strong>Child: </strong>{{record.child}}</p>
 					<div class="form-group">
