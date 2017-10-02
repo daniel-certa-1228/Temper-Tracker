@@ -10,7 +10,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 			photoURL: loginObj.user.photoURL
 		};
 	};
-
+	//$scope.userLoggedIn value triggers the animation of the login partial
 	$scope.userLoggedIn = false;
 
 	let loginObjStorage = [];
@@ -20,6 +20,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 		loginObjStorage.length = 0;
 		UserFactory.authWithProvider()
 		.then((userObj) => {
+			//$scope.userLoggedIn set to true to trigger fade-out
 			$scope.userLoggedIn = true;
 			//call createUserObj and pass it the google user data
 			let newUserObj = createUserObj(userObj);
