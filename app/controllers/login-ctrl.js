@@ -43,7 +43,7 @@ app.controller('LoginCtrl', function($scope, $location, $routeParams, UserFactor
 				$location.path('/home');
 				$scope.$apply();
 			}
-			console.log( "login successful" );
+			// console.log( "login successful" );
 		})
 		.catch((error) => {
 			console.log( "login error", error );
