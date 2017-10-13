@@ -1,5 +1,5 @@
 "use strict";
-console.log( "app.js" );
+// console.log( "app.js" );
 
 const app = angular.module('TemperTracker', ['ngRoute', 'chart.js', 'ngAnimate']);
 
