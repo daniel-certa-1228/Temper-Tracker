@@ -10,8 +10,8 @@ I set out to create an intuitive, easy-to-use app for parents who need to track 
 
 ##### Visit my [portfolio site](http://dancerta.tech/).
 
-![Screen Shot 1](images/Screen_shot_1.png "Screen Shot 1")
-![Screen Shot 2](images/Screen_shot_4.png "Screen Shot 2")
+![Screen Shot 1](images/Screen_Shot_1.png "Screen Shot 1")
+![Screen Shot 2](images/Screen_Shot_4.png "Screen Shot 2")
 
 ##### TemperTracker was designed from the ground-up with mobile use in mind.
 
