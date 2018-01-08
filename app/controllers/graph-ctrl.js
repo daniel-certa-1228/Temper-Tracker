@@ -431,6 +431,7 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
   ];
   //graphjs setting for line graph
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  //set initial scale value for y axis; this will be overridden by the datbase max value
   $scope.options = {
     scales: {
       yAxes: [
@@ -441,8 +442,8 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
           position: 'left',
           ticks: {
             min: 0,
-            stepSize: 1
-          }
+            stepSize: 1,
+          },
         },
         {
           id: 'y-axis-2',
@@ -481,9 +482,29 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
           if ($scope.dateReference[i] === dbDates[j]) {
               //if the reference date matches a user date
               $scope.data[0][i]++;
+            }
           }
         }
-      }
+        //determine the max value in order to rescale the y axis
+        $scope.lineMax = Math.max(...$scope.data[0]);
+        //set y-axis to max value + 1
+        $scope.options = {
+          scales: {
+            yAxes: [
+              {
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left',
+                ticks: {
+                  min: 0,
+                  stepSize: 1,
+                  max: $scope.lineMax + 1
+                },
+              }
+            ]
+          }
+        };
     })
     .then(()=> {
       let total = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
