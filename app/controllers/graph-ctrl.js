@@ -438,7 +438,11 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
           id: 'y-axis-1',
           type: 'linear',
           display: true,
-          position: 'left'
+          position: 'left',
+          ticks: {
+            min: 0,
+            stepSize: 1
+          }
         },
         {
           id: 'y-axis-2',
