@@ -266,7 +266,11 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
           id: 'y-axis-1',
           type: 'linear',
           display: true,
-          position: 'left'
+          position: 'left',
+          ticks: {
+            min: 0,
+            stepSize: 1,
+          }
         },
         {
           id: 'y-axis-2',
@@ -358,7 +362,7 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
   			if ( /([2][0]:)([3-5][0-9]:)/ig.test(time) || /([2][1]:)([0-5][0-9]:)/ig.test(time) ) {
   				$scope.NinePmArray.push(time);
   			}
-  		});	 
+      });
   	})
   	.then(() => {
       //set $scope.data integers by calling array.length
@@ -367,7 +371,28 @@ app.controller("LineCtrl", function ($scope, UserFactory, RecordFactory, MathFac
   		$scope.numbers1 = $scope.data[0].slice(0,8);
   		$scope.numbers2 = $scope.data[0].slice(8,16);
   		$scope.labels1 = $scope.labels.slice(0,8);
-  		$scope.labels2 = $scope.labels.slice(8,16);
+      $scope.labels2 = $scope.labels.slice(8,16);
+      //determine the max value in order to rescale the y axis
+      $scope.lineMax = Math.max(...$scope.data[0]);
+      //set y-axis to max value + 1
+      console.log($scope.lineMax);
+      $scope.options = {
+        scales: {
+          yAxes: [
+            {
+              id: 'y-axis-1',
+              type: 'linear',
+              display: true,
+              position: 'left',
+              ticks: {
+                min: 0,
+                stepSize: 1,
+                max: $scope.lineMax + 1
+              },
+            }
+          ]
+        }
+      };
   	})
     .then(() => {
       //adds all data together to get total
@@ -431,6 +456,7 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
   ];
   //graphjs setting for line graph
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  //set initial scale value for y axis; this will be overridden by the datbase max value
   $scope.options = {
     scales: {
       yAxes: [
@@ -438,7 +464,11 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
           id: 'y-axis-1',
           type: 'linear',
           display: true,
-          position: 'left'
+          position: 'left',
+          ticks: {
+            min: 0,
+            stepSize: 1,
+          },
         },
         {
           id: 'y-axis-2',
@@ -477,9 +507,29 @@ app.controller("LineCtrl_2", function ($scope, UserFactory, RecordFactory) {
           if ($scope.dateReference[i] === dbDates[j]) {
               //if the reference date matches a user date
               $scope.data[0][i]++;
+            }
           }
         }
-      }
+        //determine the max value in order to rescale the y axis
+        $scope.lineMax = Math.max(...$scope.data[0]);
+        //set y-axis to max value + 1
+        $scope.options = {
+          scales: {
+            yAxes: [
+              {
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left',
+                ticks: {
+                  min: 0,
+                  stepSize: 1,
+                  max: $scope.lineMax + 1
+                },
+              }
+            ]
+          }
+        };
     })
     .then(()=> {
       let total = $scope.data[0].reduce((acc,cur) => acc + cur, 0);
